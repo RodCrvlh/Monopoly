@@ -6,7 +6,7 @@
 
 [node name="Jogo" type="Node2D" node_paths=PackedStringArray("espacos")]
 script = ExtResource("1_sq8yp")
-espacos = [NodePath("Inicio"), NodePath("AvenidaSumaré"), NodePath("PraçaDaSé"), NodePath("Cofre"), NodePath("ImpostoDeRenda"), NodePath("EstaçãoMaracanã"), NodePath("Rua25deMarco"), NodePath("Sorte1"), NodePath("AvenidaSaoJoao"), NodePath("Cadeia"), NodePath("AvenidaVieraSouto"), NodePath("CompanhiaEletrica"), NodePath("Niteroi"), NodePath("AvenidaAtlantica"), NodePath("EstacaoDeMetroCarioca"), NodePath("AvenidaPresidenteJuscelino"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, NodePath("RuaOscarFreire")]
+espacos = [NodePath("Inicio"), NodePath("AvenidaSumaré"), NodePath("Cofre"), NodePath("PraçaDaSé"), NodePath("ImpostoDeRenda"), NodePath("EstaçãoMaracanã"), NodePath("Rua25deMarco"), NodePath("Sorte1"), NodePath("AvenidaSaoJoao"), NodePath("AvenidaPaulista"), NodePath("Cadeia"), NodePath("AvenidaVieraSouto"), NodePath("CompanhiaEletrica"), NodePath("Niteroi"), NodePath("AvenidaAtlantica"), NodePath("EstacaoDeMetroCarioca"), NodePath("AvenidaPresidenteJuscelino"), NodePath("Cofre2"), NodePath("AvenidaEngenheiroLuisCarlosBereni"), NodePath("AvenidaBrigadeiroFariaLima"), NodePath("EstacionamentoGratis"), NodePath("Ipanema"), NodePath("Sorte2"), NodePath("Leblon"), NodePath("Copacabana"), NodePath("EstacaoDeMetroConsolação"), NodePath("AvenidaCidadeJardim"), NodePath("Pacaembu"), NodePath("CompanhiadeDistribuicaoDeAgua"), NodePath("Ibirapuera"), NodePath("VaParaACadeia"), NodePath("BarraDaTijuca"), NodePath("JardimBotanico"), NodePath("Cofre3"), NodePath("LagoaRodrigoDeFreitas"), NodePath("EstacaoDeMetroRepublica"), NodePath("Sorte3"), NodePath("AvenidaMorumbi"), NodePath("TaxaRiqueza"), NodePath("RuaOscarFreire")]
 
 [node name="TabuleiroMonopolyOficial" type="Sprite2D" parent="."]
 position = Vector2(960, 520)
@@ -26,12 +26,12 @@ gizmo_extents = 213.2
 position = Vector2(1432, 984)
 gizmo_extents = 213.2
 
-[node name="PraçaDaSé" type="Marker2D" parent="."]
-position = Vector2(1200, 984)
-gizmo_extents = 213.2
-
 [node name="Cofre" type="Marker2D" parent="."]
 position = Vector2(1320, 984)
+gizmo_extents = 213.2
+
+[node name="PraçaDaSé" type="Marker2D" parent="."]
+position = Vector2(1200, 984)
 gizmo_extents = 213.2
 
 [node name="ImpostoDeRenda" type="Marker2D" parent="."]
@@ -83,10 +83,91 @@ position = Vector2(328, 504)
 gizmo_extents = 213.2
 
 [node name="AvenidaPresidenteJuscelino" type="Marker2D" parent="."]
+position = Vector2(336, 432)
 scale = Vector2(840.642, 41845.6)
 
-[node name="RuaOscarFreire" type="Marker2D" parent="."]
-position = Vector2(1584, 856)
+[node name="Cofre2" type="Marker2D" parent="."]
+position = Vector2(352, 360)
+scale = Vector2(840.642, 41845.6)
+
+[node name="AvenidaEngenheiroLuisCarlosBereni" type="Marker2D" parent="."]
+position = Vector2(344, 264)
+scale = Vector2(840.642, 41845.6)
+
+[node name="AvenidaBrigadeiroFariaLima" type="Marker2D" parent="."]
+position = Vector2(344, 184)
+scale = Vector2(840.642, 41845.6)
+
+[node name="EstacionamentoGratis" type="Marker2D" parent="."]
+position = Vector2(328, 72)
+scale = Vector2(840.642, 41845.6)
+
+[node name="Ipanema" type="Marker2D" parent="."]
+position = Vector2(504, 72)
+scale = Vector2(840.642, 41845.6)
+
+[node name="Sorte2" type="Marker2D" parent="."]
+position = Vector2(616, 72)
+scale = Vector2(840.642, 41845.6)
+
+[node name="Leblon" type="Marker2D" parent="."]
+position = Vector2(736, 72)
+scale = Vector2(840.642, 41845.6)
+
+[node name="Copacabana" type="Marker2D" parent="."]
+position = Vector2(848, 72)
+scale = Vector2(840.642, 41845.6)
+
+[node name="EstacaoDeMetroConsolação" type="Marker2D" parent="."]
+position = Vector2(960, 72)
+scale = Vector2(840.642, 41845.6)
+
+[node name="AvenidaCidadeJardim" type="Marker2D" parent="."]
+position = Vector2(1072, 72)
+scale = Vector2(840.642, 41845.6)
+
+[node name="Pacaembu" type="Marker2D" parent="."]
+position = Vector2(1184, 64)
+scale = Vector2(840.642, 41845.6)
+
+[node name="CompanhiadeDistribuicaoDeAgua" type="Marker2D" parent="."]
+position = Vector2(1304, 64)
+scale = Vector2(840.642, 41845.6)
+
+[node name="Ibirapuera" type="Marker2D" parent="."]
+position = Vector2(1416, 64)
+scale = Vector2(840.642, 41845.6)
+
+[node name="VaParaACadeia" type="Marker2D" parent="."]
+position = Vector2(1576, 72)
+scale = Vector2(840.642, 41845.6)
+
+[node name="BarraDaTijuca" type="Marker2D" parent="."]
+position = Vector2(1584, 184)
+scale = Vector2(840.642, 41845.6)
+
+[node name="JardimBotanico" type="Marker2D" parent="."]
+position = Vector2(1576, 264)
+scale = Vector2(840.642, 41845.6)
+
+[node name="Cofre3" type="Marker2D" parent="."]
+position = Vector2(1576, 344)
+scale = Vector2(840.642, 41845.6)
+
+[node name="LagoaRodrigoDeFreitas" type="Marker2D" parent="."]
+position = Vector2(1576, 432)
+scale = Vector2(840.642, 41845.6)
+
+[node name="EstacaoDeMetroRepublica" type="Marker2D" parent="."]
+position = Vector2(1584, 528)
+scale = Vector2(840.642, 41845.6)
+
+[node name="Sorte3" type="Marker2D" parent="."]
+position = Vector2(1584, 600)
+scale = Vector2(840.642, 41845.6)
+
+[node name="AvenidaMorumbi" type="Marker2D" parent="."]
+position = Vector2(1584, 696)
 rotation = 3.14159
 scale = Vector2(123635, 7.21925e+12)
 gizmo_extents = 213.2
@@ -97,8 +178,8 @@ rotation = 3.14159
 scale = Vector2(123635, 7.21925e+12)
 gizmo_extents = 213.2
 
-[node name="AvenidaMorumbi" type="Marker2D" parent="."]
-position = Vector2(1584, 680)
+[node name="RuaOscarFreire" type="Marker2D" parent="."]
+position = Vector2(1584, 864)
 rotation = 3.14159
 scale = Vector2(123635, 7.21925e+12)
 gizmo_extents = 213.2
