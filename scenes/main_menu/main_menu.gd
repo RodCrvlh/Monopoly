@@ -14,6 +14,7 @@ func _ready() -> void:
 	
 
 func on_start_pressed() -> void:
+	
 	get_tree().change_scene_to_file("res://scenes/jogo.tscn")
 
 
@@ -21,7 +22,7 @@ func on_options_pressed() -> void:
 	margin_container.visible = false
 	options_menu.set_process(true)
 	options_menu.visible = true 
-	title_label.visible = true
+	title_label.visible = false
 	
 
 func on_exit_pressed() -> void:
