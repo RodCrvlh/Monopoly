@@ -6,19 +6,19 @@ extends Node2D
 @export var espacos: Array[Node]
 var posicao: int = 0
 var numero_espacos: int 
+@onready var dado1 := $Dado 
 
 func _ready() -> void:
 	numero_espacos = espacos.size()
 	print(numero_espacos)
-
-func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_click") and posicao <= (numero_espacos-1):
-		var tween = create_tween()
-		tween.tween_property(peca, "position", espacos[posicao].position, 1)
-		posicao += 1
-	elif posicao == numero_espacos:
-		posicao =0
 		
-
-   
-	
+func _on_dado_dado_foi_rolado(resultado: Variant) -> void:
+	print(resultado)
+	while resultado!=0 :
+		var tween = create_tween()
+		tween.tween_property(peca, "position", espacos[posicao].position, 1) 
+		posicao += 1
+		resultado -=1
+		
+		if posicao >= numero_espacos:
+			posicao = 0

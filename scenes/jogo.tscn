@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwmy3fpfix05v"]
+[gd_scene load_steps=5 format=3 uid="uid://cwmy3fpfix05v"]
 
 [ext_resource type="Script" uid="uid://cbbor56vu71ns" path="res://scenes/jogo.gd" id="1_sq8yp"]
 [ext_resource type="Texture2D" uid="uid://bcpib3qv05qcj" path="res://art/peca.png" id="2_k05ng"]
 [ext_resource type="Texture2D" uid="uid://brb7xk3p5p8d2" path="res://art/tabuleiro monopoly oficial.jpg" id="3_1b3iq"]
+[ext_resource type="PackedScene" uid="uid://do18u77xw150c" path="res://scenes/dado.tscn" id="4_k05ng"]
 
 [node name="Jogo" type="Node2D" node_paths=PackedStringArray("espacos")]
 script = ExtResource("1_sq8yp")
@@ -183,3 +184,8 @@ position = Vector2(1584, 864)
 rotation = 3.14159
 scale = Vector2(123635, 7.21925e+12)
 gizmo_extents = 213.2
+
+[node name="Dado" parent="." instance=ExtResource("4_k05ng")]
+position = Vector2(1672, 48)
+
+[connection signal="dado_foi_rolado" from="Dado" to="." method="_on_dado_dado_foi_rolado"]
