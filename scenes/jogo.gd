@@ -4,7 +4,7 @@ extends Node2D
 @onready var peca: Sprite2D = $Peca
 @onready var ferrovia: Marker2D = $Ferrovia
 @export var espacos: Array[Node]
-var posicao: int = 0
+var posicao: int = 1
 var numero_espacos: int 
 @onready var dado1 := $Dado 
 
