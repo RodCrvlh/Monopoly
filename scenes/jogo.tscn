@@ -186,6 +186,10 @@ scale = Vector2(123635, 7.21925e+12)
 gizmo_extents = 213.2
 
 [node name="Dado" parent="." instance=ExtResource("4_k05ng")]
-position = Vector2(1672, 48)
+position = Vector2(1608, 48)
+
+[node name="Dado2" parent="." instance=ExtResource("4_k05ng")]
+position = Vector2(1696, 48)
 
 [connection signal="dado_foi_rolado" from="Dado" to="." method="_on_dado_dado_foi_rolado"]
+[connection signal="dado_foi_rolado" from="Dado2" to="." method="_on_dado_dado_foi_rolado"]

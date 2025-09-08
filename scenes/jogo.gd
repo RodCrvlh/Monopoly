@@ -8,6 +8,7 @@ var posicao: int = 0
 var numero_espacos: int 
 @onready var dado1 := $Dado 
 
+
 func _ready() -> void:
 	numero_espacos = espacos.size()
 	print(numero_espacos)
