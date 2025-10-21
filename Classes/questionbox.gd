@@ -1,0 +1,2 @@
+extends CenterContainer
+class_name QuestionBox

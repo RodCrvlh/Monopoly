@@ -1,0 +1,2 @@
+extends EspacoDado
+class_name Especial
