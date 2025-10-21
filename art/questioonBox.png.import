@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c23fdtqt7awc6"
-path="res://.godot/imported/Jogo de Tabuleiro Monopoly 2.0.jpg-3c40af1b25affa06b8ea12c255bb5ac8.ctex"
+uid="uid://ubg7qovrv8c8"
+path="res://.godot/imported/questioonBox.png-7793fe534cadbd38009ec80be5ab709e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Jogo de Tabuleiro Monopoly 2.0.jpg"
-dest_files=["res://.godot/imported/Jogo de Tabuleiro Monopoly 2.0.jpg-3c40af1b25affa06b8ea12c255bb5ac8.ctex"]
+source_file="res://art/questioonBox.png"
+dest_files=["res://.godot/imported/questioonBox.png-7793fe534cadbd38009ec80be5ab709e.ctex"]
 
 [params]
 
