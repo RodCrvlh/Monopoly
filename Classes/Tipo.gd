@@ -1,0 +1,16 @@
+extends Node
+class_name Tipo
+
+enum Espaco{
+	INICIO,
+	TERRENO,
+	FERROVIA,
+	SERVICO,
+	IMPOSTODERENDA,
+	TAXADERIQUEZA,
+	SORTE,
+	PRISAO,
+	COFRE,
+	CADEIA,
+	VAPARACADEIA
+}
