@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://do18u77xw150c"]
 
 [ext_resource type="Texture2D" uid="uid://dxa3d04b58un3" path="res://art/dice.png" id="1_nntwd"]
-[ext_resource type="Script" uid="uid://cl7iuge5qw1ug" path="res://scenes/dado.gd" id="1_tbv0i"]
+[ext_resource type="Script" uid="uid://cl7iuge5qw1ug" path="res://Classes/dado.gd" id="1_tbv0i"]
 
 [sub_resource type="Animation" id="Animation_uvwln"]
 resource_name = "1"

@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func on_start_pressed() -> void:
 	
-	get_tree().change_scene_to_file("res://scenes/jogo.tscn")
+	get_tree().change_scene_to_file("res://scenes/jogo/jogo.tscn")
 
 
 func on_options_pressed() -> void:

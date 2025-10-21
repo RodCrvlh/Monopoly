@@ -1,0 +1,461 @@
+[gd_scene load_steps=15 format=3 uid="uid://cwmy3fpfix05v"]
+
+[ext_resource type="Script" uid="uid://cbbor56vu71ns" path="res://scenes/jogo.gd" id="1_sq8yp"]
+[ext_resource type="Texture2D" uid="uid://brb7xk3p5p8d2" path="res://art/tabuleiro monopoly oficial.jpg" id="2_0c0ry"]
+[ext_resource type="Texture2D" uid="uid://bcpib3qv05qcj" path="res://art/peca.png" id="2_k05ng"]
+[ext_resource type="PackedScene" uid="uid://cds5tqoo24nhh" path="res://espacos_2.tscn" id="4_0c0ry"]
+[ext_resource type="PackedScene" uid="uid://do18u77xw150c" path="res://scenes/dado.tscn" id="4_k05ng"]
+[ext_resource type="Script" uid="uid://cj5aocnpx3y8y" path="res://Especial.gd" id="5_8i8hp"]
+[ext_resource type="Script" uid="uid://bqyh6orgjev4e" path="res://PontoPartida.gd" id="5_t8n7k"]
+[ext_resource type="Script" uid="uid://dilrp2pxs227a" path="res://Tabuleiro.gd" id="6_4sjka"]
+[ext_resource type="Script" uid="uid://dlxglgcv2lcop" path="res://Propriedade.gd" id="6_gsaar"]
+[ext_resource type="Script" uid="uid://cr8u5x6tov0by" path="res://Ferrovia.gd" id="7_drirx"]
+[ext_resource type="Script" uid="uid://khmcl00jmdsu" path="res://Servico.gd" id="9_y6f35"]
+[ext_resource type="Script" uid="uid://dvm3n3bux5rme" path="res://Terreno.gd" id="10_avosf"]
+[ext_resource type="Script" uid="uid://c6uqflxavcxch" path="res://Espaco.gd" id="11_wa8a0"]
+
+[sub_resource type="GDScript" id="GDScript_1b3iq"]
+
+[node name="Jogo" type="Node2D"]
+script = ExtResource("1_sq8yp")
+
+[node name="Tabuleiro7" type="Sprite2D" parent="."]
+position = Vector2(859.396, 527.935)
+scale = Vector2(1.12756, 0.953004)
+texture = ExtResource("2_0c0ry")
+
+[node name="Peca" type="Sprite2D" parent="."]
+position = Vector2(1584, 992)
+scale = Vector2(0.367648, 0.41)
+texture = ExtResource("2_k05ng")
+
+[node name="Dado" parent="." instance=ExtResource("4_k05ng")]
+position = Vector2(1608, 48)
+
+[node name="Dado2" parent="." instance=ExtResource("4_k05ng")]
+position = Vector2(1712, 48)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+script = SubResource("GDScript_1b3iq")
+
+[node name="Tabuleiro" parent="." node_paths=PackedStringArray("espacos_visuais") instance=ExtResource("4_0c0ry")]
+script = ExtResource("6_4sjka")
+espacos_visuais = [NodePath("Inicio"), NodePath("AvenidaSumaré3"), NodePath("Cofre7"), NodePath("PraçaDaSé3"), NodePath("ImpostoDeRenda3"), NodePath("EstaçãoMaracanã3"), NodePath("Rua25deMarco3"), NodePath("Sorte7"), NodePath("AvenidaSaoJoao3"), NodePath("AvenidaPaulista3"), NodePath("Cadeia3"), NodePath("AvenidaVieraSouto3"), NodePath("CompanhiaEletrica3"), NodePath("RuaOscarFreire3/Niteroi3"), NodePath("AvenidaAtlantica3"), NodePath("EstacaoDeMetroCarioca3"), NodePath("AvenidaPresidenteJuscelino3"), NodePath("Cofre8"), NodePath("AvenidaEngenheiroLuisCarlosBereni3"), NodePath("AvenidaBrigadeiroFariaLima3"), NodePath("RuaOscarFreire3/EstacionamentoGratis3"), NodePath("RuaOscarFreire3/Ipanema3"), NodePath("RuaOscarFreire3/Sorte8"), NodePath("RuaOscarFreire3/Leblon3"), NodePath("RuaOscarFreire3/Copacabana3"), NodePath("RuaOscarFreire3/EstacaoDeMetroConsolação3"), NodePath("RuaOscarFreire3/AvenidaCidadeJardim3"), NodePath("RuaOscarFreire3/Pacaembu3"), NodePath("RuaOscarFreire3/CompanhiadeDistribuicaoDeAgua3"), NodePath("RuaOscarFreire3/Ibirapuera3"), NodePath("RuaOscarFreire3/VaParaACadeia3"), NodePath("RuaOscarFreire3/BarraDaTijuca3"), NodePath("RuaOscarFreire3/JardimBotanico3"), NodePath("RuaOscarFreire3/Cofre9"), NodePath("RuaOscarFreire3/LagoaRodrigoDeFreitas3"), NodePath("RuaOscarFreire3/EstacaoDeMetroRepublica3"), NodePath("RuaOscarFreire3/Sorte9"), NodePath("RuaOscarFreire3/AvenidaMorumbi3"), NodePath("RuaOscarFreire3/TaxaRiqueza3"), NodePath("RuaOscarFreire3/RuaOscarFreire3")]
+
+[node name="Inicio" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1584, 984)
+gizmo_extents = 213.2
+script = ExtResource("5_t8n7k")
+
+[node name="AvenidaSumaré3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1392, 984)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="Cofre7" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1248, 984)
+gizmo_extents = 213.2
+script = ExtResource("5_8i8hp")
+
+[node name="PraçaDaSé3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1120, 984)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="ImpostoDeRenda3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(992, 992)
+gizmo_extents = 213.2
+script = ExtResource("5_8i8hp")
+
+[node name="EstaçãoMaracanã3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(864, 984)
+gizmo_extents = 213.2
+script = ExtResource("7_drirx")
+
+[node name="Rua25deMarco3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(728, 992)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="Sorte7" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(592, 992)
+gizmo_extents = 213.2
+script = ExtResource("5_8i8hp")
+
+[node name="AvenidaSaoJoao3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(464, 984)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="AvenidaPaulista3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(344, 992)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="Cadeia3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(184, 984)
+gizmo_extents = 213.2
+script = ExtResource("5_8i8hp")
+
+[node name="AvenidaVieraSouto3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(168, 856)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="CompanhiaEletrica3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(168, 784)
+gizmo_extents = 213.2
+script = ExtResource("9_y6f35")
+
+[node name="Niteroi3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(160, 672)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="AvenidaAtlantica3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(160, 600)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="EstacaoDeMetroCarioca3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(160, 504)
+gizmo_extents = 213.2
+script = ExtResource("7_drirx")
+
+[node name="AvenidaPresidenteJuscelino3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(160, 448)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="Cofre8" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(160, 360)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("5_8i8hp")
+
+[node name="AvenidaEngenheiroLuisCarlosBereni3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(168, 272)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="AvenidaBrigadeiroFariaLima3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(160, 184)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="EstacionamentoGratis3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(160, 48)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("11_wa8a0")
+
+[node name="Ipanema3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(336, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="Sorte8" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(472, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("5_8i8hp")
+
+[node name="Leblon3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(616, 64)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="Copacabana3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(744, 64)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="EstacaoDeMetroConsolação3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(872, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("7_drirx")
+
+[node name="AvenidaCidadeJardim3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(992, 64)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="Pacaembu3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1120, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="CompanhiadeDistribuicaoDeAgua3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1248, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("9_y6f35")
+
+[node name="Ibirapuera3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1384, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="VaParaACadeia3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1576, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("5_8i8hp")
+
+[node name="BarraDaTijuca3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1584, 184)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="JardimBotanico3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1576, 264)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="Cofre9" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1576, 344)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("5_8i8hp")
+
+[node name="LagoaRodrigoDeFreitas3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1584, 448)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="EstacaoDeMetroRepublica3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1584, 528)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("7_drirx")
+
+[node name="Sorte9" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1584, 600)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("5_8i8hp")
+
+[node name="AvenidaMorumbi3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1584, 696)
+rotation = 3.14159
+scale = Vector2(123635, 7.21925e+12)
+gizmo_extents = 213.2
+script = ExtResource("10_avosf")
+
+[node name="TaxaRiqueza3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1584, 776)
+rotation = 3.14159
+scale = Vector2(123635, 7.21925e+12)
+gizmo_extents = 213.2
+script = ExtResource("5_8i8hp")
+
+[node name="RuaOscarFreire3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1576, 864)
+rotation = 3.14159
+scale = Vector2(123635, 7.21925e+12)
+gizmo_extents = 213.2
+script = ExtResource("10_avosf")
+
+[node name="Inicio" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1584, 984)
+gizmo_extents = 213.2
+script = ExtResource("5_t8n7k")
+
+[node name="AvenidaSumaré3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1392, 984)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="Cofre7" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1248, 984)
+gizmo_extents = 213.2
+script = ExtResource("5_8i8hp")
+
+[node name="PraçaDaSé3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1120, 984)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="ImpostoDeRenda3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(992, 992)
+gizmo_extents = 213.2
+script = ExtResource("5_8i8hp")
+
+[node name="EstaçãoMaracanã3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(864, 984)
+gizmo_extents = 213.2
+script = ExtResource("7_drirx")
+
+[node name="Rua25deMarco3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(728, 992)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="Sorte7" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(592, 992)
+gizmo_extents = 213.2
+script = ExtResource("5_8i8hp")
+
+[node name="AvenidaSaoJoao3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(464, 984)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="AvenidaPaulista3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(344, 992)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="Cadeia3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(184, 984)
+gizmo_extents = 213.2
+script = ExtResource("5_8i8hp")
+
+[node name="AvenidaVieraSouto3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(168, 856)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="CompanhiaEletrica3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(168, 784)
+gizmo_extents = 213.2
+script = ExtResource("9_y6f35")
+
+[node name="Niteroi3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(160, 672)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="AvenidaAtlantica3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(160, 600)
+gizmo_extents = 213.2
+script = ExtResource("6_gsaar")
+
+[node name="EstacaoDeMetroCarioca3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(160, 504)
+gizmo_extents = 213.2
+script = ExtResource("7_drirx")
+
+[node name="AvenidaPresidenteJuscelino3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(160, 448)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="Cofre8" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(160, 360)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("5_8i8hp")
+
+[node name="AvenidaEngenheiroLuisCarlosBereni3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(168, 272)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="AvenidaBrigadeiroFariaLima3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(160, 184)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="EstacionamentoGratis3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(160, 48)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("11_wa8a0")
+
+[node name="Ipanema3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(336, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="Sorte8" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(472, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("5_8i8hp")
+
+[node name="Leblon3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(616, 64)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="Copacabana3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(744, 64)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="EstacaoDeMetroConsolação3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(872, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("7_drirx")
+
+[node name="AvenidaCidadeJardim3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(992, 64)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="Pacaembu3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1120, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="CompanhiadeDistribuicaoDeAgua3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1248, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("9_y6f35")
+
+[node name="Ibirapuera3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1384, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="VaParaACadeia3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1576, 72)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("5_8i8hp")
+
+[node name="BarraDaTijuca3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1584, 184)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="JardimBotanico3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1576, 264)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="Cofre9" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1576, 344)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("5_8i8hp")
+
+[node name="LagoaRodrigoDeFreitas3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1584, 448)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("10_avosf")
+
+[node name="EstacaoDeMetroRepublica3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1584, 528)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("7_drirx")
+
+[node name="Sorte9" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1584, 600)
+scale = Vector2(840.642, 41845.6)
+script = ExtResource("5_8i8hp")
+
+[node name="AvenidaMorumbi3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1584, 696)
+rotation = 3.14159
+scale = Vector2(123635, 7.21925e+12)
+gizmo_extents = 213.2
+script = ExtResource("10_avosf")
+
+[node name="TaxaRiqueza3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1584, 776)
+rotation = 3.14159
+scale = Vector2(123635, 7.21925e+12)
+gizmo_extents = 213.2
+script = ExtResource("5_8i8hp")
+
+[node name="RuaOscarFreire3" type="Marker2D" parent="Tabuleiro/RuaOscarFreire3"]
+position = Vector2(1576, 864)
+rotation = 3.14159
+scale = Vector2(123635, 7.21925e+12)
+gizmo_extents = 213.2
+script = ExtResource("10_avosf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="dado_foi_rolado" from="Dado" to="." method="get_resultado1"]
+[connection signal="dado_foi_rolado" from="Dado2" to="." method="get_resultado2"]

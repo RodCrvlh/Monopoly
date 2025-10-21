@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwmy3fpfix05v"]
+
+[ext_resource type="Script" uid="uid://cbbor56vu71ns" path="res://scenes/jogo.gd" id="1_sq8yp"]
+[ext_resource type="Texture2D" uid="uid://brb7xk3p5p8d2" path="res://art/tabuleiro monopoly oficial.jpg" id="2_0c0ry"]
+[ext_resource type="Texture2D" uid="uid://bcpib3qv05qcj" path="res://art/peca.png" id="2_k05ng"]
+[ext_resource type="PackedScene" uid="uid://cle06fmrhrvks" path="res://scenes/Comprarbox.tscn" id="3_drirx"]
+[ext_resource type="PackedScene" uid="uid://be5yp650m3a1b" path="res://scenes/PrisaoBox.tscn" id="3_gsaar"]
+[ext_resource type="PackedScene" uid="uid://cds5tqoo24nhh" path="res://espacos_2.tscn" id="4_0c0ry"]
+[ext_resource type="PackedScene" uid="uid://do18u77xw150c" path="res://scenes/dado.tscn" id="4_k05ng"]
+[ext_resource type="Script" uid="uid://dilrp2pxs227a" path="res://Tabuleiro.gd" id="6_4sjka"]
+[ext_resource type="Script" uid="uid://c6uqflxavcxch" path="res://Espaco.gd" id="7_ogo8m"]
+[ext_resource type="Theme" uid="uid://bkfdl8u4ommu1" path="res://art/DefaultTheme.tres" id="10_drirx"]
+[ext_resource type="Script" uid="uid://rrrxq50bm5ra" path="res://scenes/jogadora.gd" id="10_qbbxf"]
+
+[sub_resource type="GDScript" id="GDScript_1b3iq"]
+
+[node name="Jogo" type="Node2D"]
+script = ExtResource("1_sq8yp")
+boxs = Array[PackedScene]([ExtResource("3_drirx"), ExtResource("3_gsaar")])
+
+[node name="Tabuleiro7" type="Sprite2D" parent="."]
+position = Vector2(859.396, 527.935)
+scale = Vector2(1.12756, 0.953004)
+texture = ExtResource("2_0c0ry")
+
+[node name="Dado" parent="." instance=ExtResource("4_k05ng")]
+position = Vector2(1592, 152)
+
+[node name="Dado2" parent="." instance=ExtResource("4_k05ng")]
+position = Vector2(1704, 152)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+script = SubResource("GDScript_1b3iq")
+
+[node name="Tabuleiro" parent="." node_paths=PackedStringArray("espacos") instance=ExtResource("4_0c0ry")]
+script = ExtResource("6_4sjka")
+espacos = [NodePath("Casa1"), NodePath("Casa2"), NodePath("Casa3"), NodePath("Casa4"), NodePath("Casa5"), NodePath("Casa6"), NodePath("Casa7"), NodePath("Casa8"), NodePath("Casa9"), NodePath("Casa10"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+
+[node name="Casa1" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1384, 1000)
+script = ExtResource("7_ogo8m")
+
+[node name="Casa2" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1248, 992)
+script = ExtResource("7_ogo8m")
+
+[node name="Casa3" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1120, 1000)
+script = ExtResource("7_ogo8m")
+
+[node name="Casa4" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(984, 984)
+script = ExtResource("7_ogo8m")
+
+[node name="Casa5" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(848, 1008)
+script = ExtResource("7_ogo8m")
+
+[node name="Casa6" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(720, 1000)
+script = ExtResource("7_ogo8m")
+
+[node name="Casa7" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(600, 992)
+script = ExtResource("7_ogo8m")
+
+[node name="Casa8" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(464, 992)
+script = ExtResource("7_ogo8m")
+
+[node name="Casa9" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(328, 992)
+script = ExtResource("7_ogo8m")
+
+[node name="Casa10" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(184, 984)
+script = ExtResource("7_ogo8m")
+tipo = 8
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Tabuleiro"]
+
+[node name="Label" type="Label" parent="Tabuleiro/CanvasLayer"]
+offset_left = 1704.0
+offset_top = 40.0
+offset_right = 1832.0
+offset_bottom = 104.0
+theme = ExtResource("10_drirx")
+text = "Turno"
+
+[node name="jogadora" type="Node2D" parent="."]
+script = ExtResource("10_qbbxf")
+metadata/_custom_type_script = "uid://rrrxq50bm5ra"
+
+[node name="Peca" type="Sprite2D" parent="."]
+position = Vector2(1584, 992)
+scale = Vector2(0.367648, 0.41)
+texture = ExtResource("2_k05ng")
+
+[connection signal="dado_foi_rolado" from="Dado" to="." method="get_resultado1"]
+[connection signal="dado_foi_rolado" from="Dado2" to="." method="get_resultado2"]
