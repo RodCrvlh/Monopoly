@@ -5,10 +5,12 @@
 
 [node name="QuestionBox" instance=ExtResource("1_h2n06")]
 script = ExtResource("2_h8fis")
-sim_e_correto = false
+sim = false
 
 [node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
-text = "Deseja comprar a propriedade?"
+text = "Deseja comprar a propriedade?
+			
+			Preço: "
 
 [node name="sim" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
 custom_minimum_size = Vector2(100, 0)

@@ -30,53 +30,71 @@ position = Vector2(1592, 152)
 position = Vector2(1704, 152)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
 script = SubResource("GDScript_1b3iq")
 
 [node name="Tabuleiro" parent="." node_paths=PackedStringArray("espacos") instance=ExtResource("4_0c0ry")]
 script = ExtResource("6_4sjka")
-espacos = [NodePath("Casa1"), NodePath("Casa2"), NodePath("Casa3"), NodePath("Casa4"), NodePath("Casa5"), NodePath("Casa6"), NodePath("Casa7"), NodePath("Casa8"), NodePath("Casa9"), NodePath("Casa10"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+espacos = [NodePath("Casa0"), NodePath("Casa1"), NodePath("Casa2"), NodePath("Casa3"), NodePath("Casa4"), NodePath("Casa5"), NodePath("Casa6"), NodePath("Casa7"), NodePath("Casa8"), NodePath("Casa9"), NodePath("Casa10"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+
+[node name="Casa0" type="Marker2D" parent="Tabuleiro"]
+position = Vector2(1536, 992)
+script = ExtResource("7_ogo8m")
+tipo = 0
+metadata/_custom_type_script = "uid://c6uqflxavcxch"
 
 [node name="Casa1" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(1384, 1000)
 script = ExtResource("7_ogo8m")
+posicao = 1
 
 [node name="Casa2" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(1248, 992)
 script = ExtResource("7_ogo8m")
+posicao = 2
+tipo = 8
 
 [node name="Casa3" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(1120, 1000)
 script = ExtResource("7_ogo8m")
+posicao = 3
 
 [node name="Casa4" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(984, 984)
 script = ExtResource("7_ogo8m")
+posicao = 4
 
 [node name="Casa5" type="Marker2D" parent="Tabuleiro"]
-position = Vector2(848, 1008)
+position = Vector2(864, 992)
 script = ExtResource("7_ogo8m")
+posicao = 5
+tipo = 2
 
 [node name="Casa6" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(720, 1000)
 script = ExtResource("7_ogo8m")
+posicao = 6
 
 [node name="Casa7" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(600, 992)
 script = ExtResource("7_ogo8m")
+posicao = 7
+tipo = 6
 
 [node name="Casa8" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(464, 992)
 script = ExtResource("7_ogo8m")
+posicao = 8
 
 [node name="Casa9" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(328, 992)
 script = ExtResource("7_ogo8m")
+posicao = 9
 
 [node name="Casa10" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(184, 984)
 script = ExtResource("7_ogo8m")
-tipo = 7
+posicao = 10
+tipo = 8
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -89,12 +107,29 @@ theme = ExtResource("10_drirx")
 text = "Turno"
 
 [node name="jogadora" type="Node2D" parent="."]
+position = Vector2(-16, -24)
 script = ExtResource("10_qbbxf")
 
 [node name="Peca" type="Sprite2D" parent="jogadora"]
-position = Vector2(1584, 992)
+position = Vector2(1560, 1008)
 scale = Vector2(0.367648, 0.41)
 texture = ExtResource("2_k05ng")
+
+[node name="Dinheiro" type="Label" parent="jogadora"]
+offset_left = 1672.0
+offset_top = 328.0
+offset_right = 1712.0
+offset_bottom = 371.0
+theme = ExtResource("10_drirx")
+text = "a"
+
+[node name="Nome" type="Label" parent="jogadora"]
+offset_left = 1672.0
+offset_top = 280.0
+offset_right = 1712.0
+offset_bottom = 323.0
+theme = ExtResource("10_drirx")
+text = "a"
 
 [connection signal="dado_foi_rolado" from="Dado" to="." method="get_resultado1"]
 [connection signal="dado_foi_rolado" from="Dado2" to="." method="get_resultado2"]

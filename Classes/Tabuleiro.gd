@@ -5,7 +5,7 @@ var terrenos: Array[Terreno]
 var servicos: Array[Servico]
 var ferrovias: Array[Ferrovia]
 var especiais: Array[Especial] 
-@export var espacos: Array[Marker2D]
+@export var espacos: Array[Espaco]
 
 func _init() -> void:
 	terrenos.resize(22)
@@ -54,3 +54,22 @@ func _init() -> void:
 	especiais[9] = Especial.new("Cadeia", 33)
 	especiais[10] = Especial.new("Sorte", 36)
 	especiais[11] = Especial.new("TaxaDeRiqueza", 38)
+	
+func encontrarPrecoCompra(posicao: int, tipo: Tipo.Espaco) -> int:
+
+	if tipo == Tipo.Espaco.TERRENO:
+		for terreno in terrenos:
+			if terreno.posicao == posicao:
+				return terreno.precoCompra
+				
+	elif tipo == Tipo.Espaco.FERROVIA:
+		for ferrovia in ferrovias:
+			print(ferrovia.posicao)
+			if ferrovia.posicao == posicao:
+				return ferrovia.precoCompra
+				
+	if tipo == Tipo.Espaco.SERVICO:
+		for servico in servicos:
+			if servico.posicao == posicao:
+				return servico.precoCompra
+	return 0

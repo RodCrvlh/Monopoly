@@ -1,5 +1,5 @@
 class_name Espaco
 extends Marker2D
 
-var dados: EspacoDado 
-@export var tipo = Tipo.Espaco.TERRENO
+@export var posicao: int 
+@export var tipo: Tipo.Espaco = Tipo.Espaco.TERRENO

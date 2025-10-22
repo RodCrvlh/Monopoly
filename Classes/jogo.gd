@@ -15,21 +15,26 @@ var resultadoTotal: int
 
 func _ready() -> void:
 	Events.box_acabou.connect(on_box_acabou)
+	Events.compra_sim.connect(on_compra_sim)
 
 #Faz a iteracao de cada espaco a ser andando de acordo com o resultadoTotal do movimento
 func movimenta_peca() -> void:
+	#Teste
+	resultadoTotal = 10
 	while resultadoTotal>0 : 
-		await(mover(player.get_posicao()))
 		player.posicao += 1	
 		resultadoTotal -=1
+		await(mover(player.posicao))
 		if player.posicao >=tabuleiro.espacos.size():
 			player.posicao = 0
 	
 	dado1.can_click = true 
 	dado2.can_click = true 
+	print(player.posicao)
+	print(tabuleiro.espacos[player.posicao].tipo)
 	encontrar_box(tabuleiro.espacos[player.posicao].tipo)
 	resultadoTotal = 0
-
+	  
 #Apaga a imagem de peca e coloca ela em um novo local
 func mover(posicao) -> void: 
 	var tween = create_tween()
@@ -42,40 +47,46 @@ func mover(posicao) -> void:
 func encontrar_box(tipo: Tipo.Espaco) -> void:
 	dado1.can_click = false 
 	dado2.can_click = false
+	if tipo == Tipo.Espaco.TERRENO:
+		print("oi")
 	if tipo == Tipo.Espaco.TERRENO or tipo == Tipo.Espaco.FERROVIA or tipo == Tipo.Espaco.SERVICO:
-		var box =  boxs[0] 
-		var box_compra = box.instantiate()
-		canvas_layer.add_child(box_compra)
+		var preco_compra: int = tabuleiro.encontrarPrecoCompra(player.posicao, tipo)
+		if player.dinheiro >= preco_compra:
+			var box =  boxs[0] 
+			var box_compra = box.instantiate()
+			canvas_layer.add_child(box_compra)
+			box_compra.setMensagem(preco_compra)
 		
 	if tipo == Tipo.Espaco.CADEIA:
 		var box =  boxs[1] 
-		var box_compra = box.instantiate()
-		canvas_layer.add_child(box_compra)
+		var box_prisao = box.instantiate()
+		canvas_layer.add_child(box_prisao)
 		
 	if tipo == Tipo.Espaco.COFRE:
+		dado1.can_click = true 
+		dado2.can_click = true 	
 		pass
 			
 	if tipo == Tipo.Espaco.SORTE:
+		dado1.can_click = true 
+		dado2.can_click = true 	
 		pass
 	
 	if tipo == Tipo.Espaco.IMPOSTODERENDA:
+		dado1.can_click = true 
+		dado2.can_click = true 	
 		pass
 		
 	if tipo == Tipo.Espaco.TAXADERIQUEZA: 
+		dado1.can_click = true 
+		dado2.can_click = true 	
 		pass
 	
 	if tipo == Tipo.Espaco.VAPARACADEIA:
+		dado1.can_click = true 
+		dado2.can_click = true 	
 		pass
 		
-	#Estava dando erro fazer polimorfirsmo com espaco
-	#Ela só ve se o espaco é uma propriedade
-	#var pos: int = tabuleiro.espacos[player.posicao].espacoDados.posicao
-	#if tabuleiro.propriedades[pos].comprada == false: 
-	#	if player.comprar(tabuleiro.espacos[player.posicao].precoCompra):
-	#		tabuleiro.propriedades[pos].comprada = true 
-	#	else :
-			#instancia a classe leilao
-			#print("leilao") 
 	
 func get_resultado1(resultado: Variant) -> void:
 	resultadoTotal += resultado
@@ -89,4 +100,10 @@ func on_box_acabou() -> void:
 	await get_tree().process_frame 
 	dado1.can_click = true
 	dado2.can_click = true
+	
+func on_compra_sim() -> void:
+	var tipo = tabuleiro.espacos[player.posicao].tipo
+	var preco_compra = tabuleiro.encontrarPrecoCompra(player.posicao, tipo)
+	player.dinheiro -= preco_compra 
+	player.dinheiroLabel.text = str(player.dinheiro)
 	

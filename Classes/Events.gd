@@ -1,3 +1,4 @@
 extends Node
 
-signal box_acabou(point)
+signal box_acabou()
+signal compra_sim()
