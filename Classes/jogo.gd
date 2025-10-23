@@ -19,7 +19,7 @@ func _ready() -> void:
 #Faz a iteracao de cada espaco a ser andando de acordo com o resultadoTotal do movimento
 func movimenta_peca() -> void:
 	#Teste
-	resultadoTotal = 10
+	#resultadoTotal = 10
 	while resultadoTotal>0 : 
 		player.posicao += 1	
 		resultadoTotal -=1
