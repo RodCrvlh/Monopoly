@@ -14,7 +14,8 @@ func _ready() -> void:
 	
 
 func on_start_pressed() -> void:
-	
+	DadosJogo.n_jogadores = options_menu.n_jogadores
+	DadosJogo.jogo.n_bots = options_menu.n_bots
 	get_tree().change_scene_to_file("res://scenes/jogo/jogo.tscn")
 
 

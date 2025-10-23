@@ -12,11 +12,10 @@ var numero_espacos: int
 var resultadoTotal: int 
 
 
-
 func _ready() -> void:
 	Events.box_acabou.connect(on_box_acabou)
 	Events.compra_sim.connect(on_compra_sim)
-
+	
 #Faz a iteracao de cada espaco a ser andando de acordo com o resultadoTotal do movimento
 func movimenta_peca() -> void:
 	#Teste

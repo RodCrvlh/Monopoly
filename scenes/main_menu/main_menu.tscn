@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm18rj6e1f2rr"]
+[gd_scene load_steps=14 format=3 uid="uid://bm18rj6e1f2rr"]
 
 [ext_resource type="Script" uid="uid://h1msl2ni8lgf" path="res://scenes/main_menu/main_menu.gd" id="1_ob46e"]
 [ext_resource type="Texture2D" uid="uid://nx3dplmnqryj" path="res://art/monopoly3.webp" id="2_ob46e"]
+[ext_resource type="Theme" uid="uid://bkfdl8u4ommu1" path="res://art/DefaultTheme.tres" id="3_3ovsr"]
 [ext_resource type="PackedScene" uid="uid://co46t68sretbd" path="res://scenes/options_menu/options_menu.tscn" id="3_wem23"]
 [ext_resource type="Script" uid="uid://buatg88srx7ux" path="res://scenes/main_menu/resize.gd" id="4_uqeha"]
 
@@ -109,11 +110,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -405.0
-offset_top = -140.0
-offset_right = 78.0
-offset_bottom = -3.0
+offset_left = -320.0
+offset_top = -151.0
+offset_right = 163.0
+offset_bottom = -14.0
 grow_horizontal = 2
+theme = ExtResource("3_3ovsr")
 theme_override_font_sizes/font_size = 100
 text = "Monopoly"
 
@@ -141,6 +143,7 @@ theme_override_constants/separation = 35
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme = ExtResource("3_3ovsr")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 35
 theme_override_styles/hover = SubResource("StyleBoxFlat_glbon")
@@ -151,6 +154,7 @@ text = "Começar Jogo"
 [node name="Options_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
+theme = ExtResource("3_3ovsr")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 35
 theme_override_styles/hover = SubResource("StyleBoxFlat_nlkkf")
@@ -160,6 +164,7 @@ text = "Opções"
 
 [node name="Exit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_3ovsr")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 35
 theme_override_styles/hover = SubResource("StyleBoxFlat_fu7sn")
@@ -169,9 +174,9 @@ text = "Sair"
 
 [node name="Options_Menu" parent="." instance=ExtResource("3_wem23")]
 layout_mode = 1
-offset_left = -156.0
+offset_left = -151.0
 offset_top = -155.0
-offset_right = -167.0
+offset_right = -162.0
 offset_bottom = -177.0
 
 [node name="Resize" type="Control" parent="."]

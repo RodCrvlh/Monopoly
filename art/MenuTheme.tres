@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://das3sa340yprp"]
+
+[ext_resource type="FontFile" uid="uid://cx4kk6ielh52p" path="res://art/Mistake Note.otf" id="1_j8nlm"]
+
+[resource]
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("1_j8nlm")
+Label/font_sizes/font_size = 50
+Label/fonts/font = ExtResource("1_j8nlm")

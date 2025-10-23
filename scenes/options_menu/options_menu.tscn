@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://co46t68sretbd"]
+[gd_scene load_steps=3 format=3 uid="uid://co46t68sretbd"]
 
 [ext_resource type="Script" uid="uid://wcbu3a4e2oot" path="res://scenes/options_menu/options_menu.gd" id="1_sglii"]
+[ext_resource type="Theme" uid="uid://das3sa340yprp" path="res://art/MenuTheme.tres" id="2_yv8em"]
 
 [node name="Options_Menu" type="Control"]
+clip_contents = true
+layout_direction = 4
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +20,7 @@ script = ExtResource("1_sglii")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -28,16 +31,71 @@ theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-theme_override_constants/separation = -48
+theme_override_constants/separation = 100
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LabelOptions" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 35
+theme = ExtResource("2_yv8em")
 text = "Options"
+
+[node name="BoxJogadores" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="LabelJogadores" type="Label" parent="MarginContainer/VBoxContainer/BoxJogadores"]
+layout_mode = 2
+theme = ExtResource("2_yv8em")
+text = "Numero de Jogadores: 2"
+
+[node name="MaisJogador" type="Button" parent="MarginContainer/VBoxContainer/BoxJogadores"]
+custom_minimum_size = Vector2(100, 50.1)
+layout_mode = 2
+theme = ExtResource("2_yv8em")
+text = "+
+"
+
+[node name="MenosJogador" type="Button" parent="MarginContainer/VBoxContainer/BoxJogadores"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("2_yv8em")
+text = "-
+"
+
+[node name="BoxBots" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="LabelBots" type="Label" parent="MarginContainer/VBoxContainer/BoxBots"]
+layout_mode = 2
+theme = ExtResource("2_yv8em")
+text = "Numero de Bots: 0
+"
+
+[node name="maisBot" type="Button" parent="MarginContainer/VBoxContainer/BoxBots"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme = ExtResource("2_yv8em")
+text = "+
+"
+
+[node name="menosBot" type="Button" parent="MarginContainer/VBoxContainer/BoxBots"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("2_yv8em")
+text = "-
+"
 
 [node name="Exit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
 text = "Sair"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BoxJogadores/MaisJogador" to="." method="_on_mais_jogador_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BoxJogadores/MenosJogador" to="." method="_on_menos_jogador_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BoxBots/maisBot" to="." method="_on_mais_bot_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BoxBots/menosBot" to="." method="_on_menos_bot_pressed"]
