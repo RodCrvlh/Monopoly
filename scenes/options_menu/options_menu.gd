@@ -23,7 +23,7 @@ func on_exit_pressed() -> void:
 	set_process(false)
 
 func _on_mais_jogador_pressed() -> void:
-	if n_jogadores + n_bots < 6:
+	if n_jogadores + n_bots < 8:
 		n_jogadores += 1
 		label_jogadores.text = "Numero de Jogadores: "+str(n_jogadores)
 		
@@ -35,7 +35,7 @@ func _on_menos_jogador_pressed() -> void:
 
 
 func _on_mais_bot_pressed() -> void:
-	if n_jogadores + n_bots < 6:
+	if n_jogadores + n_bots < 8:
 		n_bots += 1
 		label_bots.text = "Numero de Bots:"+str(n_bots)
 

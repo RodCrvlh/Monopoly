@@ -22,7 +22,7 @@ func instanciando_pecas() -> void:
 	var x = 1465
 	var y = 950 
 	var offset_x = 50
-	var offset_y = 25
+	var offset_y = 50
 		
 	for regiao in regioes:
 		var nova_peca = Sprite2D.new()
@@ -32,9 +32,9 @@ func instanciando_pecas() -> void:
 		nova_peca.position = Vector2(x, y)
 		nova_peca.scale = Vector2(0.25, 0.25)
 		container_pecas.append(nova_peca)
-			
+		
 		x += offset_x
 		if x >= 1665: 
 			x = 1465
-			offset_y += offset_y + regiao.size.y
+			y += offset_y
 			
