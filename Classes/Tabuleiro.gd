@@ -6,6 +6,8 @@ var servicos: Array[Servico]
 var ferrovias: Array[Ferrovia]
 var especiais: Array[Especial] 
 @export var espacos: Array[Espaco]
+@onready var tabuleiro: Sprite2D = $Tabuleiro7
+
 
 func _init() -> void:
 	terrenos.resize(22)

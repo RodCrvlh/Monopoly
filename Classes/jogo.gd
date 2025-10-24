@@ -5,39 +5,74 @@ extends Node2D
 @onready var tabuleiro: Node = $Tabuleiro 
 @onready var dado1 := $Dado 
 @onready var dado2: Dado = $Dado2
-@onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var canvas_layer: CanvasLayer = $CanvasLayer 
 @export var boxs: Array[PackedScene]
-@onready var player: Player = $jogadora
+var players: Array[Player]
 var numero_espacos: int
 var resultadoTotal: int 
+var turno: int = 0
+@onready var turnoLabel: Label = $CanvasLayer/Turno
 
-
+func _init() -> void:
+	
+	var i = 0
+	var x = 1660
+	var y = 200
+	var offset_x = 150
+	var offset_y = 50
+	players.resize(DadosJogo.n_jogadores) 
+	
+	while i < players.size():
+		var peca = DadosJogo.container_pecas[i]
+		players[i] = Player.new("Player"+str(i),peca, x, y, offset_x, offset_y)
+		y += offset_y
+		i += 1	
+	
 func _ready() -> void:
 	Events.box_acabou.connect(on_box_acabou)
 	Events.compra_sim.connect(on_compra_sim)
+	var i = 0
+	while i < players.size():
+		add_child(players[i])
+		i += 1
+	
+	turnoLabel.text = "Turno: " + players[turno].nome
+
+
+func jogada() -> void:
+	movimenta_peca()
+	
+	if turno >= DadosJogo.n_jogadores:
+		turno = 0
 	
 #Faz a iteracao de cada espaco a ser andando de acordo com o resultadoTotal do movimento
 func movimenta_peca() -> void:
 	#Teste
-	#resultadoTotal = 10
-	while resultadoTotal>0 : 
-		player.posicao += 1	
+	#resultadoTotal = 1
+	while resultadoTotal>0 :
+		players[turno].posicao += 1
 		resultadoTotal -=1
-		await(mover(player.posicao))
-		if player.posicao >=tabuleiro.espacos.size():
-			player.posicao = 0
+		await(mover())
+		if players[turno].posicao >=tabuleiro.espacos.size():
+			players[turno].posicao = 0
 	
 	dado1.can_click = true 
 	dado2.can_click = true 
-	print(player.posicao)
-	print(tabuleiro.espacos[player.posicao].tipo)
-	encontrar_box(tabuleiro.espacos[player.posicao].tipo)
+	encontrar_box(tabuleiro.espacos[players[turno].posicao].tipo)
+	await(Events.box_acabou)
 	resultadoTotal = 0
+	turno += 1
+	
+	if(turno >= DadosJogo.n_jogadores):
+		turno = 0
+	
+	turnoLabel.text = "Turno: "+ players[turno].nome 
+
 	  
 #Apaga a imagem de peca e coloca ela em um novo local
-func mover(posicao) -> void: 
+func mover() -> void: 
 	var tween = create_tween()
-	tween.tween_property(player.peca, "position", tabuleiro.espacos[player.posicao].position, 1.0)
+	tween.tween_property(players[turno].peca, "position", tabuleiro.espacos[players[turno].posicao].position, 1.0)
 	timer.start()
 	await timer.timeout
 
@@ -46,11 +81,10 @@ func mover(posicao) -> void:
 func encontrar_box(tipo: Tipo.Espaco) -> void:
 	dado1.can_click = false 
 	dado2.can_click = false
-	if tipo == Tipo.Espaco.TERRENO:
-		print("oi")
+	
 	if tipo == Tipo.Espaco.TERRENO or tipo == Tipo.Espaco.FERROVIA or tipo == Tipo.Espaco.SERVICO:
-		var preco_compra: int = tabuleiro.encontrarPrecoCompra(player.posicao, tipo)
-		if player.dinheiro >= preco_compra:
+		var preco_compra: int = tabuleiro.encontrarPrecoCompra(players[turno].posicao, tipo)
+		if players[turno].dinheiro >= preco_compra:
 			var box =  boxs[0] 
 			var box_compra = box.instantiate()
 			canvas_layer.add_child(box_compra)
@@ -92,7 +126,7 @@ func get_resultado1(resultado: Variant) -> void:
 
 func get_resultado2(resultado: Variant) -> void:
 	resultadoTotal += resultado
-	movimenta_peca()
+	jogada()
 	
 func on_box_acabou() -> void:
 	#impede o jogador de clicar no dado assim que ele acaba
@@ -101,8 +135,8 @@ func on_box_acabou() -> void:
 	dado2.can_click = true
 	
 func on_compra_sim() -> void:
-	var tipo = tabuleiro.espacos[player.posicao].tipo
-	var preco_compra = tabuleiro.encontrarPrecoCompra(player.posicao, tipo)
-	player.dinheiro -= preco_compra 
-	player.dinheiroLabel.text = str(player.dinheiro)
+	var tipo = tabuleiro.espacos[players[turno].posicao].tipo
+	var preco_compra = tabuleiro.encontrarPrecoCompra(players[turno].posicao, tipo)
+	players[turno].dinheiro -= preco_compra 
+	players[turno].dinheiroLabel.text = str(players[turno].dinheiro)
 	
