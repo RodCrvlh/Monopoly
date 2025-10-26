@@ -9,7 +9,6 @@ extends Node2D
 @onready var turnoLabel: Label = $CanvasLayer/Turno
 @onready var propriedadesButton: Button = $Propriedades
 @export var boxs: Array[PackedScene]
-@onready var v_box: VBoxContainer = $CanvasLayer/VBoxContainer
 var players: Array[Player]
 var numero_espacos: int
 var resultadoTotal: int 
@@ -35,7 +34,6 @@ func _init() -> void:
 func _ready() -> void:
 	Events.box_acabou.connect(on_box_acabou)
 	Events.compra_sim.connect(on_compra_sim)
-	v_box.position = Vector2(1800, 1800)
 
 	var i = 0
 	while i < players.size():
@@ -58,9 +56,10 @@ func movimenta_peca() -> void:
 	while resultadoTotal>0 :
 		players[turno].posicao += 1
 		resultadoTotal -=1
-		await(mover())
-		if players[turno].posicao >=tabuleiro.espacos.size():
+		if players[turno].posicao >= tabuleiro.espacos.size():
 			players[turno].posicao = 0
+		await(mover())
+
 	
 	dado1.can_click = true 
 	dado2.can_click = true 
