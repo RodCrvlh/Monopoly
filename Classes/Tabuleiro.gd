@@ -57,21 +57,62 @@ func _init() -> void:
 	especiais[10] = Especial.new("Sorte", 36)
 	especiais[11] = Especial.new("TaxaDeRiqueza", 38)
 	
-func encontrarPrecoCompra(posicao: int, tipo: Tipo.Espaco) -> int:
+func encontrarPropriedade(posicao: int, tipo: Tipo.Espaco) -> Propriedade:
 
 	if tipo == Tipo.Espaco.TERRENO:
 		for terreno in terrenos:
 			if terreno.posicao == posicao:
-				return terreno.precoCompra
+				return terreno
 				
 	elif tipo == Tipo.Espaco.FERROVIA:
 		for ferrovia in ferrovias:
 			print(ferrovia.posicao)
 			if ferrovia.posicao == posicao:
-				return ferrovia.precoCompra
+				return ferrovia
 				
 	if tipo == Tipo.Espaco.SERVICO:
 		for servico in servicos:
 			if servico.posicao == posicao:
-				return servico.precoCompra
-	return 0
+				return servico
+	return null
+
+	
+
+func get_comprada(posicao: int, tipo: Tipo.Espaco) -> bool:
+	if tipo == Tipo.Espaco.TERRENO:
+		for terreno in terrenos:
+			if terreno.posicao == posicao:
+				return terreno.comprada
+				
+	elif tipo == Tipo.Espaco.FERROVIA:
+		for ferrovia in ferrovias:
+			print(ferrovia.posicao)
+			if ferrovia.posicao == posicao:
+				return ferrovia.comprada
+				
+	else: 
+		for servico in servicos:
+			if servico.posicao == posicao:
+				return servico.comprada 
+	
+	#em caso de nao ser realmente uma propriedade
+	return false
+
+func set_comprada(posicao: int, tipo: Tipo.Espaco) -> void:
+	
+	if tipo == Tipo.Espaco.TERRENO:
+		for terreno in terrenos:
+			if terreno.posicao == posicao:
+				terreno.comprada = true
+				
+	elif tipo == Tipo.Espaco.FERROVIA:
+		for ferrovia in ferrovias:
+			print(ferrovia.posicao)
+			if ferrovia.posicao == posicao:
+				ferrovia.comprada = true
+				
+	else: 
+		for servico in servicos:
+			if servico.posicao == posicao:
+				servico.comprada = true
+	

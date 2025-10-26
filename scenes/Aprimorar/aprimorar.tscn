@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://xprvsrvffc6y"]
+
+[ext_resource type="Script" uid="uid://vu6hb3ryr7wy" path="res://Classes/Aprimorar.gd" id="1_ibf3q"]
+
+[node name="Aprimorar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ibf3q")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2

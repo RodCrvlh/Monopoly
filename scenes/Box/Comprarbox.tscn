@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cle06fmrhrvks"]
 
-[ext_resource type="PackedScene" uid="uid://cmqm1k0kvwfan" path="res://scenes/jogo/questionbox.tscn" id="1_h2n06"]
+[ext_resource type="PackedScene" uid="uid://cmqm1k0kvwfan" path="res://scenes/Box/questionbox.tscn" id="1_h2n06"]
 [ext_resource type="Script" uid="uid://ou1rbpqdyj2o" path="res://Classes/comprarbox.gd" id="2_h8fis"]
 
 [node name="QuestionBox" instance=ExtResource("1_h2n06")]

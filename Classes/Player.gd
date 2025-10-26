@@ -5,19 +5,16 @@ var nome: String
 var dinheiro: int = 1000
 var movimento: int = 0
 var posicao: int
-var x: int
-var y: int
+var propriedades: Array[Propriedade]
 @onready var dinheiroLabel: Label 
 @onready var nomeLabel: Label 
 @onready var peca: Sprite2D 
 
 
-func _init(n: String, p: Sprite2D, xs: int, ys: int, offset_x:int, offset_y:int) -> void:
+func _init(n: String, p: Sprite2D, x: int, y: int, offset_x:int, offset_y:int) -> void:
 	nome = n
 	peca = p
 	posicao = 0
-	x = xs
-	y = ys
 	nomeLabel = Label.new()
 	dinheiroLabel = Label.new()
 	nomeLabel.theme = load("res://art/DefaultTheme.tres")
@@ -35,18 +32,22 @@ func _ready() -> void:
 	add_child(dinheiroLabel)
 	nomeLabel.text = nome
 	dinheiroLabel.text = str(dinheiro)
-
+ 
+func comprar(propriedade: Propriedade) -> void:
+	propriedades.append(propriedade)
+	dinheiro -= propriedade.preco_compra
+	dinheiroLabel.text = str(dinheiro)
 	
-func comprar(precoCompra: int) -> bool:
-	if dinheiro == precoCompra:
-		
-		return true
-		
-	else:
-		return false 
+func pagarAluguel(valor_aluguel: int) -> void:
+	dinheiro -= valor_aluguel
+	dinheiroLabel.text = str(dinheiro)
 
-func get_posicao() -> int:
+func receberAluguel(valor_aluguel: int) -> void:
+	dinheiro += valor_aluguel
+	dinheiroLabel.text = str(dinheiro)
+	
+func getPosicao() -> int:
 	return posicao 
 
-func set_posicao(p: int) -> void:
+func setPosicao(p: int) -> void:
 	posicao = p
