@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwmy3fpfix05v"]
+[gd_scene load_steps=12 format=3 uid="uid://cwmy3fpfix05v"]
 
 [ext_resource type="Script" uid="uid://cbbor56vu71ns" path="res://Classes/jogo.gd" id="1_sq8yp"]
 [ext_resource type="Texture2D" uid="uid://brb7xk3p5p8d2" path="res://art/tabuleiro monopoly oficial.jpg" id="2_0c0ry"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://be5yp650m3a1b" path="res://scenes/Box/PrisaoBox.tscn" id="3_gsaar"]
 [ext_resource type="PackedScene" uid="uid://do18u77xw150c" path="res://scenes/dado/dado.tscn" id="4_k05ng"]
 [ext_resource type="PackedScene" uid="uid://gth1xi13d2ga" path="res://scenes/Box/AluguelBox.tscn" id="4_r5l4e"]
+[ext_resource type="PackedScene" uid="uid://xprvsrvffc6y" path="res://scenes/Aprimorar/aprimorar.tscn" id="5_r5l4e"]
 [ext_resource type="Script" uid="uid://dilrp2pxs227a" path="res://Classes/Tabuleiro.gd" id="6_4sjka"]
 [ext_resource type="Script" uid="uid://c6uqflxavcxch" path="res://Classes/Espaco.gd" id="7_ogo8m"]
 [ext_resource type="Theme" uid="uid://bkfdl8u4ommu1" path="res://art/DefaultTheme.tres" id="10_drirx"]
@@ -15,6 +16,8 @@
 [node name="Jogo" type="Node2D"]
 script = ExtResource("1_sq8yp")
 boxs = Array[PackedScene]([ExtResource("3_drirx"), ExtResource("3_gsaar"), ExtResource("4_r5l4e")])
+
+[node name="Aprimorar" parent="." instance=ExtResource("5_r5l4e")]
 
 [node name="Tabuleiro" type="Node" parent="." node_paths=PackedStringArray("espacos")]
 script = ExtResource("6_4sjka")
@@ -106,21 +109,24 @@ offset_bottom = 112.0
 theme = ExtResource("10_drirx")
 text = "Turno: "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-z_index = 9
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Propriedades" type="Button" parent="CanvasLayer"]
+offset_left = 1760.0
+offset_top = 1008.0
+offset_right = 1911.0
+offset_bottom = 1050.0
+theme = ExtResource("10_drirx")
+text = "Propriedades"
 
-[node name="Cartas" type="Button" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
+[node name="Cartas" type="Button" parent="CanvasLayer"]
+offset_left = 1760.0
+offset_top = 968.0
+offset_right = 1911.0
+offset_bottom = 1010.0
 theme = ExtResource("10_drirx")
 text = "Cartas
 "
 
-[node name="Propriedades" type="Button" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("10_drirx")
-text = "Propriedades"
-
 [connection signal="dado_foi_rolado" from="Dado" to="." method="get_resultado1"]
 [connection signal="dado_foi_rolado" from="Dado2" to="." method="get_resultado2"]
+[connection signal="pressed" from="CanvasLayer/Propriedades" to="." method="_on_propriedades_pressed"]
+[connection signal="pressed" from="CanvasLayer/Cartas" to="." method="_on_cartas_pressed"]

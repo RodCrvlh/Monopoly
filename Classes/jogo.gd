@@ -15,7 +15,7 @@ var numero_espacos: int
 var resultadoTotal: int 
 var turno: int = 0
 
-
+#Inicializa as variáveis da própria classe
 func _init() -> void:
 	
 	var i = 0
@@ -29,7 +29,9 @@ func _init() -> void:
 		players[i] = Player.new("Player"+str(i),peca, x, y, offset_x, offset_y)
 		y += offset_y
 		i += 1
-	
+
+#A função ready inicialiaz os nós na arvore de nos, todos nos que estao em cena
+#fazem parte da arvore de nós
 func _ready() -> void:
 	Events.box_acabou.connect(on_box_acabou)
 	Events.compra_sim.connect(on_compra_sim)
@@ -42,7 +44,8 @@ func _ready() -> void:
 	
 	turnoLabel.text = "Turno: " + players[turno].nome
 
-
+#na jogada o objetivo  é resetar o turno, movimentar a peca 
+#e mias para frente verificar se o jogador esta preso
 func jogada() -> void:
 	movimenta_peca()
 	if turno >= DadosJogo.n_jogadores:
@@ -84,10 +87,12 @@ func mover() -> void:
 func encontrar_box(tipo: Tipo.Espaco) -> void:
 	dado1.can_click = false 
 	dado2.can_click = false
-	
+
+	#verifica se o espaco é uma propriedade	
 	if tipo == Tipo.Espaco.TERRENO or tipo == Tipo.Espaco.FERROVIA or tipo == Tipo.Espaco.SERVICO:
 		
 		var propriedade = tabuleiro.encontrarPropriedade(players[turno].posicao, tipo)
+	
 		#caso o espaco nao foi comprado
 		if propriedade.comprada == false:
 			if players[turno].dinheiro >= propriedade.preco_compra:
@@ -146,20 +151,25 @@ func encontrar_box(tipo: Tipo.Espaco) -> void:
 		dado2.can_click = true 	
 		pass
 	
-	
+#atribui o resultado do dado1 dado ao resultado total
 func get_resultado1(resultado: Variant) -> void:
 	resultadoTotal += resultado
 
+#atribui o resultado do dado1 dado ao resultado total
 func get_resultado2(resultado: Variant) -> void:
 	resultadoTotal += resultado
 	jogada()
 	
+	#O metodo é chamado quando uma box termina, possibilitando clicar para o dado rodar
 func on_box_acabou() -> void:
 	#impede o jogador de clicar no dado assim que ele acaba
 	await get_tree().process_frame 
 	dado1.can_click = true
 	dado2.can_click = true
 	
+	#Quando o botao sim é apertado 
+	#A propriedad atribui o nome do jogador ao proprietario
+	#O Jogador adiciona propriedade a sua listas de propriedade
 func on_compra_sim() -> void:
 	var tipo = tabuleiro.espacos[players[turno].posicao].tipo
 	tabuleiro.set_comprada(players[turno].posicao, tipo)
@@ -167,3 +177,12 @@ func on_compra_sim() -> void:
 	propriedade.setProprietario(players[turno].nome)
 	players[turno].comprar(propriedade)
 	
+
+#Ainda não implementado
+func _on_propriedades_pressed() -> void:
+	pass
+	
+
+#Ainda não implementado
+func _on_cartas_pressed() -> void:
+	pass # Replace with function body.
