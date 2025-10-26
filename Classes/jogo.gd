@@ -10,7 +10,6 @@ extends Node2D
 @onready var propriedadesButton: Button = $Propriedades
 @export var boxs: Array[PackedScene]
 var players: Array[Player]
-var numero_espacos: int
 var resultadoTotal: int 
 var turno: int = 0
 
@@ -52,19 +51,26 @@ func jogada() -> void:
 #Faz a iteracao de cada espaco a ser andando de acordo com o resultadoTotal do movimento
 func movimenta_peca() -> void:
 	#Teste
-	# resultadoTotal = 1
+	#resultadoTotal = 41
 	while resultadoTotal>0 :
+		
 		players[turno].posicao += 1
 		resultadoTotal -=1
+		
 		if players[turno].posicao >= tabuleiro.espacos.size():
 			players[turno].posicao = 0
+			encontrar_box(Tipo.Espaco.INICIO)
+			
 		await(mover())
 
 	
 	dado1.can_click = true 
 	dado2.can_click = true 
-	encontrar_box(tabuleiro.espacos[players[turno].posicao].tipo)
-	await(Events.box_acabou)
+	
+	if players[turno].posicao != 0:
+		encontrar_box(tabuleiro.espacos[players[turno].posicao].tipo)
+		await(Events.box_acabou)
+	
 	resultadoTotal = 0
 	turno += 1
 	
@@ -86,6 +92,12 @@ func mover() -> void:
 func encontrar_box(tipo: Tipo.Espaco) -> void:
 	dado1.can_click = false 
 	dado2.can_click = false
+	
+	if tipo == Tipo.Espaco.INICIO:
+		var box =  boxs[3] 
+		var box_inicio = box.instantiate()
+		canvas_layer.add_child(box_inicio)	
+		players[turno].receberAluguel(200)
 
 	#verifica se o espaco é uma propriedade	
 	if tipo == Tipo.Espaco.TERRENO or tipo == Tipo.Espaco.FERROVIA or tipo == Tipo.Espaco.SERVICO:
@@ -116,9 +128,6 @@ func encontrar_box(tipo: Tipo.Espaco) -> void:
 					players[i].receberAluguel(propriedade.aluguel)
 					break;
 				i += 1
-				
-			dado1.can_click = true 
-			dado2.can_click = true 
 
 	if tipo == Tipo.Espaco.CADEIA:
 		var box =  boxs[1] 
@@ -126,29 +135,22 @@ func encontrar_box(tipo: Tipo.Espaco) -> void:
 		canvas_layer.add_child(box_prisao)
 		
 	if tipo == Tipo.Espaco.COFRE:
-		dado1.can_click = true 
-		dado2.can_click = true 	
 		pass
 			
 	if tipo == Tipo.Espaco.SORTE:
-		dado1.can_click = true 
-		dado2.can_click = true 	
 		pass
 	
 	if tipo == Tipo.Espaco.IMPOSTODERENDA:
-		dado1.can_click = true 
-		dado2.can_click = true 	
 		pass
 		
 	if tipo == Tipo.Espaco.TAXADERIQUEZA: 
-		dado1.can_click = true 
-		dado2.can_click = true 	
 		pass
 	
 	if tipo == Tipo.Espaco.VAPARACADEIA:
-		dado1.can_click = true 
-		dado2.can_click = true 	
 		pass
+	
+	dado1.can_click = true 
+	dado2.can_click = true 	
 	
 #atribui o resultado do dado1 dado ao resultado total
 func get_resultado1(resultado: Variant) -> void:
