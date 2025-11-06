@@ -13,9 +13,9 @@ var players: Array[Player]
 var resultadoTotal: int 
 var turno: int = 0
 
-#Inicializa as variáveis da própria classe
 func _init() -> void:
 	
+	#Front end das labels de jogador 
 	var i = 0
 	var x = 1660
 	var y = 200
@@ -51,7 +51,7 @@ func jogada() -> void:
 #Faz a iteracao de cada espaco a ser andando de acordo com o resultadoTotal do movimento
 func movimenta_peca() -> void:
 	#Teste
-	#resultadoTotal = 41
+	#resultadoTotal = 32
 	while resultadoTotal>0 :
 		
 		players[turno].posicao += 1
@@ -149,8 +149,6 @@ func encontrar_box(tipo: Tipo.Espaco) -> void:
 	if tipo == Tipo.Espaco.VAPARACADEIA:
 		pass
 	
-	dado1.can_click = true 
-	dado2.can_click = true 	
 	
 #atribui o resultado do dado1 dado ao resultado total
 func get_resultado1(resultado: Variant) -> void:

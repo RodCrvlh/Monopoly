@@ -27,6 +27,7 @@ func _init(n: String, p: int, pC: int, vHa: int, a0: int, a1: int, a2: int, a3:
 	valorHotel = vHo
 	
 func aprimorarPropriedade() -> void:
+	print("oi")
 	if nivel == 1:
 		nivel += 1
 		aluguel = aluguel1

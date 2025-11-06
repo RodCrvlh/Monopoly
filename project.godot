@@ -17,8 +17,8 @@ config/icon="res://art/icon.svg"
 
 [autoload]
 
-Events="*res://Classes/Events.gd"
-DadosJogo="*res://Classes/dados_jogo.gd"
+Events="*res://Classes/Jogo/Eventos/Events.gd"
+DadosJogo="*res://Classes/Dados do Jogo/dados_jogo.gd"
 
 [display]
 

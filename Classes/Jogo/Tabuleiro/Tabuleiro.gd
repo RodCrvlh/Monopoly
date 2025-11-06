@@ -34,7 +34,7 @@ func _init() -> void:
 	terrenos[15] = Terreno.new("Pacaembu", 27, 260, 1500, 240, 1200, 3600, 8500, 10250, 12000, 1500, 7500)
 	terrenos[16] = Terreno.new("Jerusalem", 29, 280, 1300,240,1200, 3600, 8500, 10250, 12000, 1500, 7500)
 	terrenos[17] = Terreno.new("Barra da Tijuca", 31, 300, 1500, 260, 1300, 3900, 9000,11000,12750, 2000, 10000)
-	terrenos[18] = Terreno.new("Jardim Botânico", 31, 300, 1500, 260, 1300, 3900, 9000,11000,12750, 2000, 10000)
+	terrenos[18] = Terreno.new("Jardim Botânico", 32, 300, 1500, 260, 1300, 3900, 9000,11000,12750, 2000, 10000)
 	terrenos[19] = Terreno.new("", 34, 320, 1500, 280, 1500, 4500, 100000, 12000, 14000, 2000, 10000)
 	terrenos[20] = Terreno.new("Avenida Morumbi", 37, 350, 1750, 350, 1750, 5000, 11000, 13000, 15000, 2000, 10000 )
 	terrenos[21] = Terreno.new("Rua Oscar Freire", 39, 400, 2000, 500, 2000, 6000, 14000, 17000, 20000, 2000, 10000)

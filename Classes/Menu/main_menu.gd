@@ -11,7 +11,7 @@ extends Control
 func _ready() -> void:
 	options_menu.visible = false
 	handle_connecting_signals()
-	
+
 
 func on_start_pressed() -> void:
 	DadosJogo.n_jogadores = options_menu.n_jogadores

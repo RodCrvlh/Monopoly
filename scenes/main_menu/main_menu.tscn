@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://bm18rj6e1f2rr"]
 
-[ext_resource type="Script" uid="uid://h1msl2ni8lgf" path="res://scenes/main_menu/main_menu.gd" id="1_ob46e"]
+[ext_resource type="Script" uid="uid://h1msl2ni8lgf" path="res://Classes/Menu/main_menu.gd" id="1_ob46e"]
 [ext_resource type="Texture2D" uid="uid://nx3dplmnqryj" path="res://art/monopoly3.webp" id="2_ob46e"]
 [ext_resource type="Theme" uid="uid://bkfdl8u4ommu1" path="res://art/DefaultTheme.tres" id="3_3ovsr"]
 [ext_resource type="PackedScene" uid="uid://co46t68sretbd" path="res://scenes/options_menu/options_menu.tscn" id="3_wem23"]
-[ext_resource type="Script" uid="uid://buatg88srx7ux" path="res://scenes/main_menu/resize.gd" id="4_uqeha"]
+[ext_resource type="Script" uid="uid://buatg88srx7ux" path="res://Classes/Menu/resize.gd" id="4_uqeha"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glbon"]
 bg_color = Color(0.717647, 0.0705882, 0.101961, 1)

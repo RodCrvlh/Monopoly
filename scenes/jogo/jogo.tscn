@@ -1,24 +1,22 @@
 [gd_scene load_steps=13 format=3 uid="uid://cwmy3fpfix05v"]
 
-[ext_resource type="Script" uid="uid://cbbor56vu71ns" path="res://Classes/jogo.gd" id="1_sq8yp"]
+[ext_resource type="Script" uid="uid://cbbor56vu71ns" path="res://Classes/Jogo/jogo.gd" id="1_sq8yp"]
 [ext_resource type="Texture2D" uid="uid://brb7xk3p5p8d2" path="res://art/tabuleiro monopoly oficial.jpg" id="2_0c0ry"]
 [ext_resource type="PackedScene" uid="uid://cle06fmrhrvks" path="res://scenes/Box/Comprarbox.tscn" id="3_drirx"]
 [ext_resource type="PackedScene" uid="uid://be5yp650m3a1b" path="res://scenes/Box/PrisaoBox.tscn" id="3_gsaar"]
 [ext_resource type="PackedScene" uid="uid://do18u77xw150c" path="res://scenes/dado/dado.tscn" id="4_k05ng"]
 [ext_resource type="PackedScene" uid="uid://gth1xi13d2ga" path="res://scenes/Box/AluguelBox.tscn" id="4_r5l4e"]
 [ext_resource type="PackedScene" uid="uid://bx4pbpyfsjv4x" path="res://scenes/Box/InicioBox.tscn" id="5_48asj"]
-[ext_resource type="PackedScene" uid="uid://xprvsrvffc6y" path="res://scenes/Aprimorar/aprimorar.tscn" id="5_r5l4e"]
-[ext_resource type="Script" uid="uid://dilrp2pxs227a" path="res://Classes/Tabuleiro.gd" id="6_4sjka"]
-[ext_resource type="Script" uid="uid://c6uqflxavcxch" path="res://Classes/Espaco.gd" id="7_ogo8m"]
+[ext_resource type="Script" uid="uid://dilrp2pxs227a" path="res://Classes/Jogo/Tabuleiro/Tabuleiro.gd" id="6_4sjka"]
+[ext_resource type="PackedScene" uid="uid://dxrlw2j6whxr7" path="res://scenes/Box/AprimorarBox.tscn" id="6_7xw7e"]
+[ext_resource type="Script" uid="uid://c6uqflxavcxch" path="res://Classes/Jogo/Tabuleiro/Espaco/Espaco.gd" id="7_ogo8m"]
 [ext_resource type="Theme" uid="uid://bkfdl8u4ommu1" path="res://art/DefaultTheme.tres" id="10_drirx"]
 
 [sub_resource type="GDScript" id="GDScript_1b3iq"]
 
 [node name="Jogo" type="Node2D"]
 script = ExtResource("1_sq8yp")
-boxs = Array[PackedScene]([ExtResource("3_drirx"), ExtResource("3_gsaar"), ExtResource("4_r5l4e"), ExtResource("5_48asj")])
-
-[node name="Aprimorar" parent="." instance=ExtResource("5_r5l4e")]
+boxs = Array[PackedScene]([ExtResource("3_drirx"), ExtResource("3_gsaar"), ExtResource("4_r5l4e"), ExtResource("5_48asj"), ExtResource("6_7xw7e")])
 
 [node name="Tabuleiro" type="Node" parent="." node_paths=PackedStringArray("espacos")]
 script = ExtResource("6_4sjka")
@@ -127,7 +125,7 @@ posicao = 16
 position = Vector2(176, 368)
 script = ExtResource("7_ogo8m")
 posicao = 17
-tipo = 7
+tipo = 8
 
 [node name="Casa18" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(176, 264)
@@ -154,7 +152,7 @@ posicao = 21
 position = Vector2(480, 80)
 script = ExtResource("7_ogo8m")
 posicao = 22
-tipo = 6
+tipo = 8
 
 [node name="Casa23" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(616, 72)
@@ -197,7 +195,7 @@ posicao = 29
 position = Vector2(1560, 80)
 script = ExtResource("7_ogo8m")
 posicao = 30
-tipo = 9
+tipo = 8
 
 [node name="Casa31" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(1568, 200)
@@ -213,13 +211,12 @@ posicao = 32
 position = Vector2(1560, 368)
 script = ExtResource("7_ogo8m")
 posicao = 33
-tipo = 7
+tipo = 8
 
 [node name="Casa34" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(1568, 440)
 script = ExtResource("7_ogo8m")
 posicao = 34
-tipo = 8
 
 [node name="Casa35" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(1576, 536)
@@ -231,7 +228,7 @@ tipo = 8
 position = Vector2(1576, 624)
 script = ExtResource("7_ogo8m")
 posicao = 36
-tipo = 6
+tipo = 8
 
 [node name="Casa37" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(1568, 704)
@@ -242,12 +239,13 @@ posicao = 37
 position = Vector2(1568, 784)
 script = ExtResource("7_ogo8m")
 posicao = 38
-tipo = 5
+tipo = 8
 
 [node name="Casa39" type="Marker2D" parent="Tabuleiro"]
 position = Vector2(1576, 872)
 script = ExtResource("7_ogo8m")
 posicao = 39
+tipo = 8
 
 [node name="Dado" parent="." instance=ExtResource("4_k05ng")]
 z_index = 2

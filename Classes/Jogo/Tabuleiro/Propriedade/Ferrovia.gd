@@ -5,6 +5,7 @@ var aluguel: int
 var aluguel2: int
 var aluguel3: int
 var aluguel4: int
+var nivel: int = 1
 
 func _init(n: String, p:int, pc: int, vH: int, a1: int, a2: int, a3: int, a4: int) -> void:
 	super(n, p, pc, vH)
@@ -12,3 +13,16 @@ func _init(n: String, p:int, pc: int, vH: int, a1: int, a2: int, a3: int, a4: in
 	aluguel2 = a2
 	aluguel3 = a3
 	aluguel4 = a4
+
+func aprimorarPropriedade() -> void:
+	
+	if nivel == 1:
+		aluguel = aluguel2
+		
+	elif nivel == 2:
+		aluguel = aluguel3
+	
+	elif nivel == 3:
+		aluguel = aluguel4
+
+	nivel += 1

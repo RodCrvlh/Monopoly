@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://gth1xi13d2ga"]
 
 [ext_resource type="PackedScene" uid="uid://cmqm1k0kvwfan" path="res://scenes/Box/questionbox.tscn" id="1_70sve"]
-[ext_resource type="Script" uid="uid://5lfe5di06ny8" path="res://Classes/Aluguelbox.gd" id="2_0vs0v"]
+[ext_resource type="Script" uid="uid://5lfe5di06ny8" path="res://Classes/Box/Aluguelbox.gd" id="2_0vs0v"]
 
 [node name="QuestionBox" instance=ExtResource("1_70sve")]
 script = ExtResource("2_0vs0v")
