@@ -28,7 +28,6 @@ func mover_peao_visual(id_peao, movimento):
 		
 		peoes[id_peao].posicao += 1
 		movimento -=1
-		
 		await(executar_animacao_peao(id_peao)) 
 		
 		#tamanho total do tabuleiro sem contar o espacço 40 que é prisão
@@ -37,10 +36,9 @@ func mover_peao_visual(id_peao, movimento):
 
 func executar_animacao_peao(id_peao): 
 	var peao_visual = peoes[id_peao].sprite
-	var destino = espacos[peoes[id_peao].posicao]
+	var destino = espacos[peoes[id_peao].posicao].position
 	
 	var tween = create_tween()
-	
 	tween.tween_property(peao_visual, "position", destino, 1.0)
 	timer.start()
 	await timer.timeout

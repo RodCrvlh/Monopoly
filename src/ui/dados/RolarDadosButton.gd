@@ -13,12 +13,18 @@ func _ready():
 	button.connect("pressed", _on_button_pressed)
 	# Alternativa mais curta: connect("pressed", _on_self_pressed)
 
+func set_button_true():
+	button.visible = true
+	
+func set_button_false():
+	button.visible = false
+	
 # 3. Esta função é chamada quando o botão é pressionado
 func _on_button_pressed():
 	# 4. EMITA o seu sinal customizado!	
 	# O "Chefe" (GameManager) estará ouvindo por este sinal.
 	emit_signal("botao_rolar_dados_pressionado")
 	
+	set_button_false()
 	# (Opcional) Você pode desabilitar o botão aqui
 	# para evitar cliques duplos.
-	button.disabled = true

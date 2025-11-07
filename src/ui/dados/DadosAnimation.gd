@@ -4,20 +4,16 @@ extends Node
 @onready var animation_player: AnimationPlayer = $Dado/AnimationPlayer
 @onready var timer: Timer = $Dado/Timer
 var resultado: int
-signal dado_foi_rolado(resultado)
-var can_click: bool = true
 
-func _ready() -> void:
-	randomize()
-	resultado = 0
-	
-func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_click") and can_click:
-		can_click = false
-		animation_player.play("rolar")
-		timer.start()
-		
-func _on_timer_timeout() -> void:
-	resultado = randf_range(1,6)
+func _ready():
+	timer.connect("timer_timeout", on_timer_timeout)
+
+func animacao_rolar(res):
+	animation_player.play("rolar")
+	resultado = res 
+	timer.start()
+	await(timer.timeout)
 	animation_player.play(str(resultado))
-	emit_signal("dado_foi_rolado", resultado)
+
+func on_timer_timeout():
+	animation_player.play(str(resultado))

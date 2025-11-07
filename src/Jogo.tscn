@@ -10,10 +10,9 @@
 [node name="Jogo" type="Node2D"]
 script = ExtResource("1_e2g04")
 
-[node name="Tabuleiro" parent="." node_paths=PackedStringArray("espacos") instance=ExtResource("2_bskcm")]
-espacos = []
+[node name="Tabuleiro" parent="." instance=ExtResource("2_bskcm")]
 
-[node name="UI" parent="." instance=ExtResource("5_m2xh4")]
+[node name="Ui" parent="." instance=ExtResource("5_m2xh4")]
 script = ExtResource("4_gr6t6")
 
 [node name="Timer" type="Timer" parent="."]

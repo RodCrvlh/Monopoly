@@ -25,7 +25,7 @@ func iniciar_jogada(player, board_node): # TABULEIRO VAI SER SINGLETON
 	
 	print("Jogada: Pronta. Esperando rolagem de dados para ", player.name)
 # VOLTA PRO GAME MANAGER E FICA PARADO NA INICIAR_PROXIMO_TURNO() ATÉ QUE O BOTÃO DO DADO SEJA PRESSIONADO
-
+	
 
 func on_rolar_dados_solicitado(res1: int, res2: int):
 	if estado_atual != EstadoTurno.ESPERANDO_DADOS:

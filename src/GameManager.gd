@@ -20,11 +20,12 @@ var dado2 = Dado.new()
 # O nó 'Tabuleiro' (para mover peões)
 @onready var board_node = $Tabuleiro
 # O nó 'UI' (para atualizar botões e texto)
-@onready var ui_node: CanvasLayer = $UI
-
+@onready var ui_node: CanvasLayer = $Ui
+@onready var rolar_dados_container = $Ui/RolarDados
 
 func _ready():
 	ui_node.rolar_dados.connect("botao_rolar_dados_pressionado", _on_botao_rolar_dados_pressionado)
+	
 	## ATENÇÃO  
 	comeca_jogo()
 
@@ -93,16 +94,20 @@ func iniciar_proximo_turno():
 	
 	jogada_atual.iniciar_jogada(player_atual, board_node)
 	
-	ui_node.rolar_dados.visible = true
+	rolar_dados_container.visible = true
 # VAI PARA JOGADA.INICIAR_JOGADA(), DEPOIS VOLTA E ESPERA O BOTÃO DO DADO SER PRESSIONADO.
 	
 func _on_botao_rolar_dados_pressionado():
+	rolar_dados_container.visible = false 
+	
 	var jogada_node = find_child("Jogada_*", false, false)
 	
 	if jogada_node:
 		var res1 = dado1.rolar_dado()
 		var res2 = dado2.rolar_dado()
 		
+		ui_node.animacao_rolar(res1, res2)
+
 		#IMPLEMENTAR LÓGICA DA UI
 		jogada_node.on_rolar_dados_solicitado(res1, res2)
 	else:
@@ -119,7 +124,7 @@ func _on_jogada_terminada():
 
 	# 2. Chamar o próximo turno, "fechando" o loop
 	iniciar_proximo_turno()
-
+	
 
 # 4. FUNÇÕES DE CHECAGEM
 func _checar_vitoria():
