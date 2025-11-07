@@ -1,5 +1,5 @@
 extends CanvasLayer
-class_name UI
+class_name Ui
 
 @onready var rolar_dados: BoxContainer = $RolarDados
 @onready var dados_animation_1: Node2D = $DadosAnimation/DadosAnimation1

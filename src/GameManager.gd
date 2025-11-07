@@ -20,12 +20,10 @@ var dado2 = Dado.new()
 # O nó 'Tabuleiro' (para mover peões)
 @onready var board_node = $Tabuleiro
 # O nó 'UI' (para atualizar botões e texto)
-@onready var ui_node: CanvasLayer = $Ui
-@onready var rolar_dados_container = $Ui/RolarDados
+@onready var ui_node: Ui = $Ui
 
 func _ready():
 	ui_node.rolar_dados.connect("botao_rolar_dados_pressionado", _on_botao_rolar_dados_pressionado)
-	
 	## ATENÇÃO  
 	comeca_jogo()
 
@@ -94,11 +92,12 @@ func iniciar_proximo_turno():
 	
 	jogada_atual.iniciar_jogada(player_atual, board_node)
 	
-	rolar_dados_container.visible = true
+	ui_node.set_rolar_dados_visibility(true)
 # VAI PARA JOGADA.INICIAR_JOGADA(), DEPOIS VOLTA E ESPERA O BOTÃO DO DADO SER PRESSIONADO.
 	
 func _on_botao_rolar_dados_pressionado():
-	rolar_dados_container.visible = false 
+	
+	ui_node.set_rolar_dados_visibility(false)
 	
 	var jogada_node = find_child("Jogada_*", false, false)
 	
