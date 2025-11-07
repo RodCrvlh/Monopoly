@@ -10,12 +10,12 @@ signal botao_rolar_dados_pressionado
 func _ready():
 	# 2. Conecte o sinal "pressed" (nativo do Botão)
 	# a uma função DENTRO DESTE PRÓPRIO SCRIPT.
-	button.connect("pressed", _on_self_pressed)
+	button.connect("pressed", _on_button_pressed)
 	# Alternativa mais curta: connect("pressed", _on_self_pressed)
 
 # 3. Esta função é chamada quando o botão é pressionado
-func _on_self_pressed():
-	# 4. EMITA o seu sinal customizado!
+func _on_button_pressed():
+	# 4. EMITA o seu sinal customizado!	
 	# O "Chefe" (GameManager) estará ouvindo por este sinal.
 	emit_signal("botao_rolar_dados_pressionado")
 	

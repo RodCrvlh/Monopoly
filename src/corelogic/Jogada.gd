@@ -36,7 +36,7 @@ func on_rolar_dados_solicitado(res1: int, res2: int):
 	
 	
 	resultado_dados = res1 + res2
-	tabuleiro.mover_peao_visual(player_da_jogada.peao_id, resultado_dados)
+	tabuleiro.mover_peao_visual(player_da_jogada.id_peao, resultado_dados)
 	_on_movimento_do_peao_terminado()
 
 

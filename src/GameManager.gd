@@ -24,7 +24,7 @@ var dado2 = Dado.new()
 
 
 func _ready():
-	ui_node.connect("botao_rolar_dados_pressionado", _on_botao_rolar_dados_pressionado)
+	ui_node.rolar_dados.connect("botao_rolar_dados_pressionado", _on_botao_rolar_dados_pressionado)
 	## ATENÇÃO  
 	comeca_jogo()
 
@@ -48,7 +48,7 @@ func criar_jogadores():
 	players.resize(DadosJogo.n_jogadores) 
 	while i < players.size():
 		var peca = DadosJogo.container_pecas[i]
-		players[i] = Player.new("Player"+str(i), 1500, "Peao_Player"+str(i))
+		players[i] = Player.new("Player"+str(i), 1500, i)
 		y += offset_y
 		i += 1
 	
@@ -93,7 +93,7 @@ func iniciar_proximo_turno():
 	
 	jogada_atual.iniciar_jogada(player_atual, board_node)
 	
-	#ui_node.rolar_dados.visible = true
+	ui_node.rolar_dados.visible = true
 # VAI PARA JOGADA.INICIAR_JOGADA(), DEPOIS VOLTA E ESPERA O BOTÃO DO DADO SER PRESSIONADO.
 	
 func _on_botao_rolar_dados_pressionado():

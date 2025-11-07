@@ -8,7 +8,7 @@ signal faliu_sinal
 
 ## 1. VARIÁVEIS DE ESTADO (PROPRIEDADES)
 var nome_jogador: String = "Jogador"
-var id_peao: String = "" # ID do peão visual (ex: "Peao_Player1")
+var id_peao: int
 
 var dinheiro: int = 0:
 	set(valor):
@@ -29,7 +29,7 @@ var propriedades_possuidas: Array = []
 
 
 ## 2. FUNÇÃO DE INICIALIZAÇÃO
-func _init(p_nome: String, dinheiro_inicial: int, p_id_peao: String):
+func _init(p_nome: String, dinheiro_inicial: int, p_id_peao: int):
 	self.nome_jogador = p_nome
 	self.id_peao = p_id_peao
 	self.dinheiro = dinheiro_inicial

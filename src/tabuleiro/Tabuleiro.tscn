@@ -6,7 +6,7 @@
 
 [node name="Tabuleiro" type="Node2D" node_paths=PackedStringArray("espacos")]
 script = ExtResource("1_8gt47")
-espacos = [NodePath("Casa0"), NodePath("Casa1"), NodePath("Casa2"), NodePath("Casa3"), NodePath("Casa4"), NodePath("Casa5"), NodePath("Casa6"), NodePath("Casa7"), NodePath("Casa8"), NodePath("Casa9"), NodePath("Casa10"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+espacos = [NodePath("Casa0"), NodePath("Casa1"), NodePath("Casa2"), NodePath("Casa3"), NodePath("Casa4"), NodePath("Casa5"), NodePath("Casa6"), NodePath("Casa7"), NodePath("Casa8"), NodePath("Casa9"), NodePath("Casa10"), NodePath("Casa11"), NodePath("Casa12"), NodePath("Casa13"), NodePath("Casa14"), NodePath("Casa15"), NodePath("Casa16"), NodePath("Casa17"), NodePath("Casa18"), NodePath("Casa19"), NodePath("Casa20"), NodePath("Casa21"), NodePath("Casa22"), NodePath("Casa23"), NodePath("Casa24"), NodePath("Casa25"), NodePath("Casa26"), NodePath("Casa27"), NodePath("Casa28"), NodePath("Casa29"), NodePath("Casa30"), NodePath("Casa31"), NodePath("Casa32"), NodePath("Casa33"), NodePath("Casa34"), NodePath("Casa35"), NodePath("Casa36"), NodePath("Casa37"), NodePath("Casa38"), NodePath("Casa39"), NodePath("Prisao")]
 
 [node name="Tabuleiro7" type="Sprite2D" parent="."]
 position = Vector2(848, 536)
@@ -236,3 +236,6 @@ tipo = 8
 [node name="Prisao" type="Marker2D" parent="."]
 position = Vector2(185, 978)
 scale = Vector2(1.12756, 0.953004)
+script = ExtResource("2_8gt47")
+
+[node name="Timer" type="Timer" parent="."]
