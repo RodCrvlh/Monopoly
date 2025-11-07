@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://gth1xi13d2ga"]
+
+[ext_resource type="PackedScene" uid="uid://cmqm1k0kvwfan" path="res://antigo/scenes/Box/questionbox.tscn" id="1_70sve"]
+[ext_resource type="Script" uid="uid://5lfe5di06ny8" path="res://antigo/Classes/Box/Aluguelbox.gd" id="2_0vs0v"]
+
+[node name="QuestionBox" instance=ExtResource("1_70sve")]
+script = ExtResource("2_0vs0v")
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "Voce teve que pagar "
+
+[node name="ok" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
+layout_mode = 2
+text = "ok"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Hbox/ok" to="." method="_on_ok_pressed"]

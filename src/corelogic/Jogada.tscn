@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jjpllpbalbaw"]
+
+[ext_resource type="Script" uid="uid://c64pmgo2u6hig" path="res://src/corelogic/Jogada.gd" id="1_rwrsj"]
+
+[node name="Jogada" type="Node2D"]
+script = ExtResource("1_rwrsj")

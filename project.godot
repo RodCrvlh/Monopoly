@@ -13,12 +13,12 @@ config_version=5
 config/name="Monopoly"
 run/main_scene="uid://bm18rj6e1f2rr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://art/icon.svg"
+config/icon="res://src/assets/art/icon.svg"
 
 [autoload]
 
-Events="*res://Classes/Jogo/Eventos/Events.gd"
-DadosJogo="*res://Classes/Dados do Jogo/dados_jogo.gd"
+Events="*res://antigo/Classes/Jogo/Eventos/Events.gd"
+DadosJogo="*res://src/assets/DadosJogo.gd"
 
 [display]
 

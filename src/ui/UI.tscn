@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://budjntw0swdqx"]
+
+[ext_resource type="PackedScene" uid="uid://bwlvlj247q23o" path="res://src/ui/dados/RolarDadosButton.tscn" id="1_tmjim"]
+[ext_resource type="PackedScene" uid="uid://do18u77xw150c" path="res://src/ui/dados/DadosAnimation.tscn" id="2_d40vq"]
+
+[node name="Ui" type="CanvasLayer"]
+
+[node name="RolarDados" parent="." instance=ExtResource("1_tmjim")]
+offset_left = 718.0
+offset_top = 486.0
+offset_right = 982.0
+offset_bottom = 591.0
+
+[node name="DadosAnimation" type="Node" parent="."]
+
+[node name="DadosAnimation1" parent="DadosAnimation" instance=ExtResource("2_d40vq")]
+position = Vector2(1666, 51)
+
+[node name="DadosAnimation2" parent="DadosAnimation" instance=ExtResource("2_d40vq")]
+position = Vector2(1785, 51)

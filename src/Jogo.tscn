@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwmy3fpfix05v"]
+
+[ext_resource type="Script" uid="uid://dmpgyrcl42rbb" path="res://src/GameManager.gd" id="1_e2g04"]
+[ext_resource type="PackedScene" uid="uid://budjntw0swdqx" path="res://src/ui/UI.tscn" id="5_m2xh4"]
+
+[sub_resource type="GDScript" id="GDScript_1b3iq"]
+
+[node name="Jogo" type="Node2D"]
+script = ExtResource("1_e2g04")
+
+[node name="UI" parent="." instance=ExtResource("5_m2xh4")]
+
+[node name="Timer" type="Timer" parent="."]
+script = SubResource("GDScript_1b3iq")

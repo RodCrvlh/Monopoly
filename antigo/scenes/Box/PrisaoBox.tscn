@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://be5yp650m3a1b"]
+
+[ext_resource type="PackedScene" uid="uid://cmqm1k0kvwfan" path="res://antigo/scenes/Box/questionbox.tscn" id="1_jw423"]
+[ext_resource type="Script" uid="uid://c4ogso3fcpaxu" path="res://antigo/Classes/Box/prisao_box.gd" id="2_ha2se"]
+
+[node name="QuestionBox" instance=ExtResource("1_jw423")]
+script = ExtResource("2_ha2se")
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "Voce caiu na prisao!"
+
+[node name="ok" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
+layout_mode = 2
+text = "OK
+"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Hbox/ok" to="." method="_on_ok_pressed"]

@@ -1,0 +1,238 @@
+[gd_scene load_steps=4 format=3 uid="uid://otemy486wury"]
+
+[ext_resource type="Script" uid="uid://cdfopibu3q56h" path="res://src/tabuleiro/Tabuleiro.gd" id="1_8gt47"]
+[ext_resource type="Texture2D" uid="uid://brb7xk3p5p8d2" path="res://src/assets/art/tabuleiro monopoly oficial.jpg" id="1_hhkuq"]
+[ext_resource type="Script" uid="uid://c6uqflxavcxch" path="res://src/tabuleiro/Espaco.gd" id="2_8gt47"]
+
+[node name="Tabuleiro" type="Node2D" node_paths=PackedStringArray("espacos")]
+script = ExtResource("1_8gt47")
+espacos = [NodePath("Casa0"), NodePath("Casa1"), NodePath("Casa2"), NodePath("Casa3"), NodePath("Casa4"), NodePath("Casa5"), NodePath("Casa6"), NodePath("Casa7"), NodePath("Casa8"), NodePath("Casa9"), NodePath("Casa10"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+
+[node name="Tabuleiro7" type="Sprite2D" parent="."]
+position = Vector2(848, 536)
+scale = Vector2(1.12756, 0.953004)
+texture = ExtResource("1_hhkuq")
+
+[node name="Casa0" type="Marker2D" parent="."]
+position = Vector2(1552, 984)
+script = ExtResource("2_8gt47")
+tipo = 0
+metadata/_custom_type_script = "uid://c6uqflxavcxch"
+
+[node name="Casa1" type="Marker2D" parent="."]
+position = Vector2(1384, 1000)
+script = ExtResource("2_8gt47")
+posicao = 1
+
+[node name="Casa2" type="Marker2D" parent="."]
+position = Vector2(1248, 992)
+script = ExtResource("2_8gt47")
+posicao = 2
+tipo = 8
+
+[node name="Casa3" type="Marker2D" parent="."]
+position = Vector2(1120, 1000)
+script = ExtResource("2_8gt47")
+posicao = 3
+
+[node name="Casa4" type="Marker2D" parent="."]
+position = Vector2(992, 1008)
+script = ExtResource("2_8gt47")
+posicao = 4
+tipo = 8
+
+[node name="Casa5" type="Marker2D" parent="."]
+position = Vector2(864, 992)
+script = ExtResource("2_8gt47")
+posicao = 5
+tipo = 2
+
+[node name="Casa6" type="Marker2D" parent="."]
+position = Vector2(720, 1000)
+script = ExtResource("2_8gt47")
+posicao = 6
+
+[node name="Casa7" type="Marker2D" parent="."]
+position = Vector2(600, 992)
+script = ExtResource("2_8gt47")
+posicao = 7
+tipo = 8
+
+[node name="Casa8" type="Marker2D" parent="."]
+position = Vector2(464, 992)
+script = ExtResource("2_8gt47")
+posicao = 8
+
+[node name="Casa9" type="Marker2D" parent="."]
+position = Vector2(328, 992)
+script = ExtResource("2_8gt47")
+posicao = 9
+
+[node name="Casa10" type="Marker2D" parent="."]
+position = Vector2(75, 1041)
+script = ExtResource("2_8gt47")
+posicao = 10
+tipo = 8
+
+[node name="Casa11" type="Marker2D" parent="."]
+position = Vector2(154, 881)
+script = ExtResource("2_8gt47")
+posicao = 11
+metadata/_custom_type_script = "uid://c6uqflxavcxch"
+
+[node name="Casa12" type="Marker2D" parent="."]
+position = Vector2(148, 795)
+script = ExtResource("2_8gt47")
+posicao = 12
+tipo = 3
+
+[node name="Casa13" type="Marker2D" parent="."]
+position = Vector2(160, 704)
+script = ExtResource("2_8gt47")
+posicao = 13
+
+[node name="Casa14" type="Marker2D" parent="."]
+position = Vector2(160, 616)
+script = ExtResource("2_8gt47")
+posicao = 14
+
+[node name="Casa15" type="Marker2D" parent="."]
+position = Vector2(168, 528)
+script = ExtResource("2_8gt47")
+posicao = 15
+tipo = 2
+
+[node name="Casa16" type="Marker2D" parent="."]
+position = Vector2(168, 440)
+script = ExtResource("2_8gt47")
+posicao = 16
+
+[node name="Casa17" type="Marker2D" parent="."]
+position = Vector2(176, 368)
+script = ExtResource("2_8gt47")
+posicao = 17
+tipo = 8
+
+[node name="Casa18" type="Marker2D" parent="."]
+position = Vector2(176, 264)
+script = ExtResource("2_8gt47")
+posicao = 18
+
+[node name="Casa19" type="Marker2D" parent="."]
+position = Vector2(169, 179)
+script = ExtResource("2_8gt47")
+posicao = 19
+
+[node name="Casa20" type="Marker2D" parent="."]
+position = Vector2(172, 73)
+script = ExtResource("2_8gt47")
+posicao = 20
+tipo = 8
+
+[node name="Casa21" type="Marker2D" parent="."]
+position = Vector2(336, 69)
+script = ExtResource("2_8gt47")
+posicao = 21
+
+[node name="Casa22" type="Marker2D" parent="."]
+position = Vector2(480, 80)
+script = ExtResource("2_8gt47")
+posicao = 22
+tipo = 8
+
+[node name="Casa23" type="Marker2D" parent="."]
+position = Vector2(616, 72)
+script = ExtResource("2_8gt47")
+posicao = 23
+
+[node name="Casa24" type="Marker2D" parent="."]
+position = Vector2(744, 72)
+script = ExtResource("2_8gt47")
+posicao = 24
+
+[node name="Casa25" type="Marker2D" parent="."]
+position = Vector2(872, 72)
+script = ExtResource("2_8gt47")
+posicao = 25
+tipo = 2
+
+[node name="Casa26" type="Marker2D" parent="."]
+position = Vector2(1000, 72)
+script = ExtResource("2_8gt47")
+posicao = 26
+
+[node name="Casa27" type="Marker2D" parent="."]
+position = Vector2(1128, 72)
+script = ExtResource("2_8gt47")
+posicao = 27
+
+[node name="Casa28" type="Marker2D" parent="."]
+position = Vector2(1256, 80)
+script = ExtResource("2_8gt47")
+posicao = 28
+tipo = 3
+
+[node name="Casa29" type="Marker2D" parent="."]
+position = Vector2(1392, 72)
+script = ExtResource("2_8gt47")
+posicao = 29
+
+[node name="Casa30" type="Marker2D" parent="."]
+position = Vector2(1560, 80)
+script = ExtResource("2_8gt47")
+posicao = 30
+tipo = 8
+
+[node name="Casa31" type="Marker2D" parent="."]
+position = Vector2(1577, 192)
+script = ExtResource("2_8gt47")
+posicao = 31
+
+[node name="Casa32" type="Marker2D" parent="."]
+position = Vector2(1576, 272)
+script = ExtResource("2_8gt47")
+posicao = 32
+
+[node name="Casa33" type="Marker2D" parent="."]
+position = Vector2(1573, 369)
+script = ExtResource("2_8gt47")
+posicao = 33
+tipo = 8
+
+[node name="Casa34" type="Marker2D" parent="."]
+position = Vector2(1568, 440)
+script = ExtResource("2_8gt47")
+posicao = 34
+
+[node name="Casa35" type="Marker2D" parent="."]
+position = Vector2(1576, 536)
+script = ExtResource("2_8gt47")
+posicao = 35
+tipo = 8
+
+[node name="Casa36" type="Marker2D" parent="."]
+position = Vector2(1576, 624)
+script = ExtResource("2_8gt47")
+posicao = 36
+tipo = 8
+
+[node name="Casa37" type="Marker2D" parent="."]
+position = Vector2(1568, 704)
+script = ExtResource("2_8gt47")
+posicao = 37
+
+[node name="Casa38" type="Marker2D" parent="."]
+position = Vector2(1568, 784)
+script = ExtResource("2_8gt47")
+posicao = 38
+tipo = 8
+
+[node name="Casa39" type="Marker2D" parent="."]
+position = Vector2(1576, 872)
+script = ExtResource("2_8gt47")
+posicao = 39
+tipo = 8
+
+[node name="Prisao" type="Marker2D" parent="."]
+position = Vector2(185, 978)
+scale = Vector2(1.12756, 0.953004)

@@ -1,0 +1,157 @@
+[gd_scene load_steps=12 format=3 uid="uid://do18u77xw150c"]
+
+[ext_resource type="Texture2D" uid="uid://dxa3d04b58un3" path="res://src/assets/art/dice.png" id="1_nntwd"]
+[ext_resource type="Script" uid="uid://cl7iuge5qw1ug" path="res://antigo/Classes/Jogo/Dado/Dado.gd" id="1_tbv0i"]
+
+[sub_resource type="Animation" id="Animation_uvwln"]
+resource_name = "1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_10blc"]
+resource_name = "2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_0ldd6"]
+resource_name = "3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_fl5nn"]
+resource_name = "4"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_t2aah"]
+resource_name = "5"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_oipht"]
+resource_name = "6"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_tbv0i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nntwd"]
+resource_name = "rolar"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.201047, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 2, 5, 3, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uvwln"]
+_data = {
+&"1": SubResource("Animation_uvwln"),
+&"2": SubResource("Animation_10blc"),
+&"3": SubResource("Animation_0ldd6"),
+&"4": SubResource("Animation_fl5nn"),
+&"5": SubResource("Animation_t2aah"),
+&"6": SubResource("Animation_oipht"),
+&"RESET": SubResource("Animation_tbv0i"),
+&"rolar": SubResource("Animation_nntwd")
+}
+
+[node name="DadosAnimation" type="Node2D"]
+script = ExtResource("1_tbv0i")
+
+[node name="Dado" type="Sprite2D" parent="."]
+position = Vector2(40, 36)
+scale = Vector2(2.5, 2.25)
+texture = ExtResource("1_nntwd")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dado"]
+libraries = {
+&"": SubResource("AnimationLibrary_uvwln")
+}
+
+[node name="Timer" type="Timer" parent="Dado"]
+one_shot = true
+
+[connection signal="timeout" from="Dado/Timer" to="." method="_on_timer_timeout"]
