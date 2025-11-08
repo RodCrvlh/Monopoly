@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmqm1k0kvwfan"]
 
-[ext_resource type="Script" uid="uid://b6fgcfrxw4amt" path="res://antigo/Classes/Box/questionbox.gd" id="1_86n8g"]
+[ext_resource type="Script" uid="uid://b6fgcfrxw4amt" path="res://src/assets/Box/questionbox.gd" id="1_86n8g"]
 [ext_resource type="Theme" uid="uid://bkfdl8u4ommu1" path="res://src/assets/art/DefaultTheme.tres" id="1_hn1i1"]
 
 [node name="QuestionBox" type="CenterContainer"]

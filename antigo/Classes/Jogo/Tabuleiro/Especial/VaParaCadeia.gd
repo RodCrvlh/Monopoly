@@ -1,2 +1,0 @@
-extends Especial
-class_name VaParaCadeia

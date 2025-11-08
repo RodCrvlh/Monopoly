@@ -13,7 +13,6 @@ config_version=5
 config/name="Monopoly"
 run/main_scene="uid://bm18rj6e1f2rr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://src/assets/art/icon.svg"
 
 [autoload]
 

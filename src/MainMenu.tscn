@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://h1msl2ni8lgf" path="res://src/MainMenu.gd" id="1_uo0r1"]
 [ext_resource type="Texture2D" uid="uid://nx3dplmnqryj" path="res://src/assets/art/monopoly3.webp" id="2_gdrf8"]
 [ext_resource type="Theme" uid="uid://bkfdl8u4ommu1" path="res://src/assets/art/DefaultTheme.tres" id="3_ofpu7"]
-[ext_resource type="PackedScene" uid="uid://co46t68sretbd" path="res://antigo/scenes/options_menu/options_menu.tscn" id="4_uyn61"]
-[ext_resource type="Script" uid="uid://buatg88srx7ux" path="res://antigo/Classes/Menu/resize.gd" id="5_anj2y"]
+[ext_resource type="PackedScene" uid="uid://co46t68sretbd" path="res://src/Options.tscn" id="4_uyn61"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glbon"]
 bg_color = Color(0.717647, 0.0705882, 0.101961, 1)
@@ -77,6 +76,15 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_color = Color(1, 1, 1, 0.6)
 shadow_size = 10
+
+[sub_resource type="GDScript" id="GDScript_cdwbc"]
+script/source = "extends Control
+
+#2func _ready() -> void:
+	#if Engine.has_singleton(\"DisplayServer\"):
+	#	DisplayServer.window_set_resize(Vector2())
+		
+"
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -183,4 +191,4 @@ offset_bottom = -177.0
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("5_anj2y")
+script = SubResource("GDScript_cdwbc")
