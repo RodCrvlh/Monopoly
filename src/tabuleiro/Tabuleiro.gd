@@ -28,11 +28,14 @@ func mover_peao_visual(id_peao, movimento):
 		
 		peoes[id_peao].posicao += 1
 		movimento -=1
-		await(executar_animacao_peao(id_peao)) 
 		
 		#tamanho total do tabuleiro sem contar o espacço 40 que é prisão
-		if peoes[id_peao].posicao >= 39:
+		if peoes[id_peao].posicao >	 39:
 			peoes[id_peao].posicao = 0
+			
+		await(executar_animacao_peao(id_peao)) 
+		
+
 
 func executar_animacao_peao(id_peao): 
 	var peao_visual = peoes[id_peao].sprite

@@ -15,7 +15,7 @@ func _ready():
 
 func set_button_visibility(b:bool):
 	button.visible = b
-	print(b)
+
 
 	
 	

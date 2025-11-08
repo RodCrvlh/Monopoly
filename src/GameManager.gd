@@ -22,6 +22,9 @@ var dado2 = Dado.new()
 # O nó 'UI' (para atualizar botões e texto)
 @onready var ui_node: Ui = $Ui
 
+func _init():
+	DadosJogo.instanciando_pecas()
+	
 func _ready():
 	ui_node.rolar_dados.connect("botao_rolar_dados_pressionado", _on_botao_rolar_dados_pressionado)
 	## ATENÇÃO  
@@ -40,15 +43,11 @@ func comeca_jogo():
 
 func criar_jogadores():
 	var i = 0
-	var x = 1660
-	var y = 200
-	var offset_x = 150
-	var offset_y = 50
+	
 	players.resize(DadosJogo.n_jogadores) 
 	while i < players.size():
 		var peca = DadosJogo.container_pecas[i]
 		players[i] = Player.new("Player"+str(i), 1500, i)
-		y += offset_y
 		i += 1
 	
 	i = 0
@@ -88,7 +87,7 @@ func iniciar_proximo_turno():
 	
 	jogada_atual.connect("jogada_terminada", _on_jogada_terminada)
 	
-	#ui_node.atualizar_hud(player_atual)
+	ui_node.mover_label_sua_vez(player_atual.get_id_peao())
 	
 	jogada_atual.iniciar_jogada(player_atual, board_node)
 	

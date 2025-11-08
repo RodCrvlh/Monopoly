@@ -8,10 +8,10 @@
 script = ExtResource("1_d40vq")
 
 [node name="RolarDados" parent="." instance=ExtResource("1_tmjim")]
-offset_left = 809.0
-offset_top = 452.0
-offset_right = 1073.0
-offset_bottom = 557.0
+offset_left = 360.0
+offset_top = 680.0
+offset_right = 624.0
+offset_bottom = 785.0
 
 [node name="DadosAnimation" type="Node" parent="."]
 

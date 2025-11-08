@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brb7xk3p5p8d2"
-path="res://.godot/imported/tabuleiro monopoly oficial.jpg-4ebdcf3aa4666b455e205b6fcef93e90.ctex"
+uid="uid://g4ko4sbm1nnp"
+path="res://.godot/imported/PawnsA3.png-6392a1df96c4fe1e1ca9be3fe7a2bdfd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/art/tabuleiro monopoly oficial.jpg"
-dest_files=["res://.godot/imported/tabuleiro monopoly oficial.jpg-4ebdcf3aa4666b455e205b6fcef93e90.ctex"]
+source_file="res://src/assets/art/peças/peças/PawnsA3.png"
+dest_files=["res://.godot/imported/PawnsA3.png-6392a1df96c4fe1e1ca9be3fe7a2bdfd.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcpib3qv05qcj"
-path="res://.godot/imported/peca.png-544cab7db9189a1a07a13e8fc917d298.ctex"
+uid="uid://du2kttpg0lobb"
+path="res://.godot/imported/PawnsA6.png-a24698d5b16b3f4d82a685c442a80d1b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/art/peca.png"
-dest_files=["res://.godot/imported/peca.png-544cab7db9189a1a07a13e8fc917d298.ctex"]
+source_file="res://src/assets/art/peças/peças/PawnsA6.png"
+dest_files=["res://.godot/imported/PawnsA6.png-a24698d5b16b3f4d82a685c442a80d1b.ctex"]
 
 [params]
 

@@ -49,7 +49,7 @@ func _on_movimento_do_peao_terminado():
 	print("Jogada: ", player_da_jogada.name, " parou na casa ", casa_atual)
 	
 	# 2. Lógica da casa (comprar, pagar aluguel, etc.)
-	# ...
+	# ...2
 	# ... (Esta é a parte complexa do Monopólio)
 	# ...
 	

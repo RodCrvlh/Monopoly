@@ -42,6 +42,7 @@ func adicionar_dinheiro(valor: int):
 	self.dinheiro += valor
 	print(nome_jogador, " recebeu $", valor, ". Total: $", dinheiro)
 
+
 func remover_dinheiro(valor: int) -> bool:
 	if dinheiro >= valor:
 		self.dinheiro -= valor
@@ -50,10 +51,12 @@ func remover_dinheiro(valor: int) -> bool:
 	else:
 		return false
 
+
 func declarar_falencia():
 	print(nome_jogador, " FALIU!")
 	esta_falido = true
 	emit_signal("faliu_sinal")
+
 
 func faliu() -> bool:
 	return esta_falido
@@ -76,6 +79,7 @@ func mudar_posicao(passos: int):
 func adicionar_propriedade(recurso_propriedade):
 	propriedades_possuidas.append(recurso_propriedade)
 
+
 func remover_propriedade(recurso_propriedade):
 	propriedades_possuidas.erase(recurso_propriedade)
 
@@ -86,6 +90,11 @@ func ir_para_prisao():
 	esta_na_prisao = true
 	turnos_restantes_prisao = 3
 
+
 func tentar_sair_prisao():
 	# ... (lógica para pagar, usar carta ou rolar dados) ...
 	pass
+
+
+func get_id_peao() -> int:
+	return id_peao

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8lofbujr1cx6"
-path="res://.godot/imported/Pecas.png-382808d36c0ac69f1f86f3661e6787e2.ctex"
+uid="uid://cjtdqcog7dyt7"
+path="res://.godot/imported/tabuleiro-monopoly.png-87d70a96dc17b70e8805589da73003e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/assets/art/Pecas.png"
-dest_files=["res://.godot/imported/Pecas.png-382808d36c0ac69f1f86f3661e6787e2.ctex"]
+source_file="res://src/assets/art/tabuleiro-monopoly.png"
+dest_files=["res://.godot/imported/tabuleiro-monopoly.png-87d70a96dc17b70e8805589da73003e1.ctex"]
 
 [params]
 
