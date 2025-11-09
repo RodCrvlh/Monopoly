@@ -34,7 +34,6 @@ func mover_peao_visual(id_peao, movimento):
 			peoes[id_peao].posicao = 0
 			
 		await(executar_animacao_peao(id_peao)) 
-		
 
 
 func executar_animacao_peao(id_peao): 
@@ -45,3 +44,8 @@ func executar_animacao_peao(id_peao):
 	tween.tween_property(peao_visual, "position", destino, 1.0)
 	timer.start()
 	await timer.timeout
+
+
+func get_espaco(posicao_jogador: int):
+	
+	return espacos[posicao_jogador]

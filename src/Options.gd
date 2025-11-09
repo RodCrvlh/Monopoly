@@ -3,11 +3,12 @@ extends Control
 
 @onready var exit_button: Button = $MarginContainer/VBoxContainer/Exit_Button
 @onready var label_jogadores: Label = $MarginContainer/VBoxContainer/BoxJogadores/LabelJogadores
-@onready var mais_jogador: Button = $MarginContainer/VBoxContainer/BoxJogadores/MaisJogador
-@onready var menos_jogador: Button = $VBoxContainer/BoxJogadores/MenosJogador
+@onready var mais_jogador: Button = $MarginContainer/VBoxContainer/BoxJogadores/maisJogador
+@onready var menos_jogador: Button = $MarginContainer/VBoxContainer/BoxJogadores/menosJogador
 @onready var label_bots: Label = $MarginContainer/VBoxContainer/BoxBots/LabelBots
-@onready var mais_bot: Button = $VBoxContainer/BoxBots/maisBot
-@onready var menos_bot: Button = $VBoxContainer/BoxBots/menosBot
+@onready var mais_bot: Button = $MarginContainer/VBoxContainer/BoxBots/maisBot
+@onready var menos_bot: Button = $MarginContainer/VBoxContainer/BoxBots/menosBot
+
 var n_jogadores: int = 2
 var n_bots: int = 0
 

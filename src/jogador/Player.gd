@@ -98,3 +98,7 @@ func tentar_sair_prisao():
 
 func get_id_peao() -> int:
 	return id_peao
+
+
+func get_posicao() -> int:
+	return indice_posicao_atual

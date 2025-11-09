@@ -104,9 +104,21 @@ func _on_botao_rolar_dados_pressionado():
 		var res1 = dado1.rolar_dado()
 		var res2 = dado2.rolar_dado()
 		
-		ui_node.animacao_rolar(res1, res2)
-
+		#atualiza a posicao do jogador atual
+		var player_atual = players[jogador_atual_idx]		
+		player_atual.mudar_posicao(res1+res2)
+		
+		var posicao_jogador = player_atual.get_posicao()
+		
+		#pega o espaco e ativa a box correspondente
+		var espaco = board_node.get_espaco(posicao_jogador)
+		ui_node.ativar_box(espaco)
+		
 		#IMPLEMENTAR LÓGICA DA UI
+		ui_node.animacao_rolar(res1, res2)
+		#ui_node.encontrar_box()
+		
+		#Volta para jogada
 		jogada_node.on_rolar_dados_solicitado(res1, res2)
 	else:
 		print("GameManager: Botão de dados pressionado, mas não há jogada ativa?")

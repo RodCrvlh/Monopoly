@@ -1,0 +1,2 @@
+extends Propriedade
+class_name Servico

@@ -7,7 +7,7 @@ class_name Ui
 @onready var label_nome_jogadores: Array[Label]
 @onready var label_dinheiro_jogadores: Array[Label]
 @onready var label_sua_vez: Label
-
+@export var box_container: Array[PackedScene]
 
 func _ready():
 	rolar_dados.visible = true
@@ -94,3 +94,13 @@ func set_rolar_dados_visibility(b: bool):
 func animacao_rolar(res1: int, res2: int):
 	dados_animation_1.animacao_rolar(res1)
 	dados_animation_2.animacao_rolar(res2)
+
+
+func ativar_box(espaco: Espaco): 
+	
+	if espaco is Terreno or espaco is Ferrovia or espaco is Servico:
+		var box = box_container[0]
+		var box_compra = box.instantiate()
+		add_child(box_compra)
+		box_compra.set_mensagem(espaco.precoCompra)
+		

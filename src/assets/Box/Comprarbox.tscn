@@ -10,7 +10,7 @@ sim = false
 [node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
 text = "Deseja comprar a propriedade?
 			
-			Preço: "
+			Preço: R$"
 
 [node name="sim" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
 custom_minimum_size = Vector2(100, 0)

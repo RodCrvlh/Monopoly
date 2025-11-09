@@ -51,7 +51,7 @@ layout_mode = 2
 theme = ExtResource("2_yv8em")
 text = "Numero de Jogadores: 2"
 
-[node name="MaisJogador" type="Button" parent="MarginContainer/VBoxContainer/BoxJogadores"]
+[node name="maisJogador" type="Button" parent="MarginContainer/VBoxContainer/BoxJogadores"]
 custom_minimum_size = Vector2(100, 50.1)
 layout_mode = 2
 theme = ExtResource("2_yv8em")
@@ -95,7 +95,7 @@ layout_mode = 2
 size_flags_vertical = 10
 text = "Sair"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BoxJogadores/MaisJogador" to="." method="_on_mais_jogador_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BoxJogadores/maisJogador" to="." method="_on_mais_jogador_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BoxJogadores/MenosJogador" to="." method="_on_menos_jogador_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BoxBots/maisBot" to="." method="_on_mais_bot_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BoxBots/menosBot" to="." method="_on_menos_bot_pressed"]
