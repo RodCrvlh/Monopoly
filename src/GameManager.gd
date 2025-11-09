@@ -120,11 +120,12 @@ func _on_botao_rolar_dados_pressionado():
 		
 		#pega o espaco e ativa a box correspondente
 		var espaco = board_node.get_espaco(posicao_jogador)
-		var box = ui_node.ativar_box(espaco)
+		var box = ui_node.ativar_box(espaco, player_atual)
 		
 		if box:
 			box.connect("compra_sim", _on_compra_sim)
 			box.connect("compra_nao", _on_compra_nao)
+			box.connect("pagar_aluguel", _on_pagar_aluguel)
 		
 		jogada_node._finalizar_a_jogada()
 	
@@ -145,7 +146,8 @@ func _on_compra_sim(espaco: Espaco):
 	
 	player_atual.remover_dinheiro(espaco.precoCompra)
 	player_atual.adicionar_propriedade(espaco)
-	board_node.set_propriedade_comprada(posicao_jogador, true)
+	espaco.set_comprada(true)
+	espaco.set_proprietario(player_atual.nome_jogador)
 	
 	ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
 	
@@ -185,16 +187,39 @@ func _on_compra_sim(espaco: Espaco):
 		if cont != 0:
 			freelance.aprimorar(res1+res2,cont)
 
+
 func _on_compra_nao():
 	print("GameManager: Sinal compra nao foi recebido")
 
+
+func _on_pagar_aluguel(espaco: Espaco):
+
+	print("Jogador esta pagando aluguel")
+	var player_atual = players[jogador_atual_idx]
+	player_atual.remover_dinheiro(espaco.aluguel_atual)
+	
+	var i = 0
+	while  i< players.size():
+		if players[i].nome_jogador == espaco.proprietario:
+			players[i].adicionar_dinheiro(espaco.aluguel_atual)
+			ui_node.set_label_dinheiro(players[i].dinheiro, i)
+		
+		i += 1
+	
+	ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
+	
+	
 # 3. FUNÇÃO CHAMADA PELO SINAL DE TÉRMINO
 func _on_jogada_terminada():
 	print("GameManager: Recebeu sinal de 'jogada_terminada'.")
 	
+	var player_atual = players[jogador_atual_idx]
+	ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
+	
 	# 1. Avançar o índice do jogador
 	jogador_atual_idx = (jogador_atual_idx + 1) % players.size()
-
+	
+	
 	# 2. Chamar o próximo turno, "fechando" o loop
 	iniciar_proximo_turno()
 	

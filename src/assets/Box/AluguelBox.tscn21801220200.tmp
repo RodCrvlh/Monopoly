@@ -7,8 +7,7 @@
 script = ExtResource("2_0vs0v")
 
 [node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
-text = "Aluguel!
-Voce teve que pagar : R$"
+text = "Voce teve que pagar "
 
 [node name="ok" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
 layout_mode = 2

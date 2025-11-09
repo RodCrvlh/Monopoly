@@ -15,6 +15,7 @@ enum Cor {
 @export var cor: Cor
 @export var n_casas: int
 @export var hipotecada: bool
+@export var aluguel_atual:int = aluguel 
 @export var aluguel: int
 @export var aluguel1: int
 @export var aluguel2: int
@@ -23,7 +24,6 @@ enum Cor {
 @export var aluguel_hotel: int
 @export var valor_casa: int
 @export var valor_hotel: int
-var aluguel_atual:int
 var monopolio: bool = false
 
 func construir_casa():
@@ -52,7 +52,7 @@ func construir_hotel():
 		aluguel_atual = aluguel_hotel
 
 
-func aprimora(a:int=0, b:int=0):
+func aprimorar(a:int=0, b:int=0):
 	print("Voce aprimorou essa disciplina!")
 	monopolio = true
 	aluguel_atual *= 2

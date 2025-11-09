@@ -7,7 +7,7 @@ var aluguel_atual: int = 0
 @export var aluguel3: int
 @export var aluguel4: int
 
-func _aprimora(cont: int, b:int=0):
+func aprimorar(cont: int, b:int=0):
 	print("Voce aprimorou essa orgaobolsa!")
 	if cont == 1:
 		aluguel_atual = aluguel1

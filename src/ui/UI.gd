@@ -13,9 +13,11 @@ class_name Ui
 func _ready():
 	rolar_dados.visible = true
 	criar_labels()
-	box_container.resize(1)
+	box_container.resize(2)
 	box_container[0] = preload("res://src/assets/Box/Comprarbox.tscn")
-
+	box_container[1] = preload("res://src/assets/Box/AluguelBox.tscn")
+	
+	
 func criar_labels():
 	var i = 0
 	var x = 1070
@@ -98,7 +100,7 @@ func animacao_rolar(res1: int, res2: int):
 	dados_animation_2.animacao_rolar(res2)
 
 
-func ativar_box(espaco: Espaco) -> CenterContainer: 
+func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer: 
 	
 	if espaco is Disciplina or espaco is OrgaoBolsa or espaco is Freelance:
 		
@@ -111,6 +113,16 @@ func ativar_box(espaco: Espaco) -> CenterContainer:
 			box_compra.set_espaco(espaco)
 		
 			return box_compra
+		
+		if espaco.proprietario == player_atual.nome_jogador:
+			
+			var box = box_container[1]
+			var box_aluguel = box.instantiate()
+			add_child(box_aluguel)
+			box_aluguel.set_mensagem(espaco.aluguel_atual)
+			box_aluguel.set_espaco(espaco)
+			
+			return box_aluguel
 		
 	return null
 
