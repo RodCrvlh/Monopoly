@@ -27,6 +27,7 @@ func _init():
 	
 func _ready():
 	ui_node.rolar_dados.connect("botao_rolar_dados_pressionado", _on_botao_rolar_dados_pressionado)
+	
 	## ATENÇÃO  
 	comeca_jogo()
 
@@ -104,26 +105,88 @@ func _on_botao_rolar_dados_pressionado():
 		var res1 = dado1.rolar_dado()
 		var res2 = dado2.rolar_dado()
 		
-		#atualiza a posicao do jogador atual
-		var player_atual = players[jogador_atual_idx]		
-		player_atual.mudar_posicao(res1+res2)
-		
-		var posicao_jogador = player_atual.get_posicao()
-		
-		#pega o espaco e ativa a box correspondente
-		var espaco = board_node.get_espaco(posicao_jogador)
-		ui_node.ativar_box(espaco)
-		
 		#IMPLEMENTAR LÓGICA DA UI
 		ui_node.animacao_rolar(res1, res2)
 		#ui_node.encontrar_box()
 		
 		#Volta para jogada
 		jogada_node.on_rolar_dados_solicitado(res1, res2)
+		
+		var player_atual = players[jogador_atual_idx]
+		player_atual.mudar_posicao(res1+res2)
+		
+		
+		var posicao_jogador = player_atual.get_posicao()
+		
+		#pega o espaco e ativa a box correspondente
+		var espaco = board_node.get_espaco(posicao_jogador)
+		var box = ui_node.ativar_box(espaco)
+		
+		if box:
+			box.connect("compra_sim", _on_compra_sim)
+			box.connect("compra_nao", _on_compra_nao)
+		
+		jogada_node._finalizar_a_jogada()
+	
 	else:
 		print("GameManager: Botão de dados pressionado, mas não há jogada ativa?")
 # VAI PARA JOGADA.ON_ROLAR_DADOS_SOLICITADO()
+		
+		#atualiza a posicao do jogador atual
 
+func _on_compra_sim(espaco: Espaco):
+	
+	print("GameManager: Sinal compra sim foi recebido")
+	var player_atual = players[jogador_atual_idx]
+	
+	var controle_compra = ControleCompra.new()
+	
+	var posicao_jogador = player_atual.get_posicao()
+	
+	player_atual.remover_dinheiro(espaco.precoCompra)
+	player_atual.adicionar_propriedade(espaco)
+	board_node.set_propriedade_comprada(posicao_jogador, true)
+	
+	ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
+	
+	if espaco is Disciplina:
+		
+		var disciplina:Disciplina = espaco as Disciplina
+		print("Espaco é disciplina")
+		
+		if controle_compra.verificar_monopolio(player_atual, espaco):
+			disciplina.aprimorar(0, 0)
+	
+	elif espaco is OrgaoBolsa:
+		
+		var orgao_bolsa:OrgaoBolsa = espaco as OrgaoBolsa
+		
+		print("Espaco é orgao bolsa")
+		var cont = controle_compra.verificar_orgao_bolsa(player_atual)
+		
+		if cont != 0:
+			orgao_bolsa.aprimorar(cont, 0)
+		
+	elif espaco is Freelance:
+		
+		var freelance:Freelance = espaco as Freelance
+		
+		print("Espaco é freelance")
+		var cont = controle_compra.verificar_freelance(player_atual)
+		
+		#Rola os dados para definiro valor de aluguel
+		var res1 = dado1.rolar_dado()
+		var res2 = dado2.rolar_dado()
+		
+		#IMPLEMENTAR LÓGICA DA UI
+		ui_node.animacao_rolar(res1, res2)
+		#ui_node.encontrar_box()
+		
+		if cont != 0:
+			freelance.aprimorar(res1+res2,cont)
+
+func _on_compra_nao():
+	print("GameManager: Sinal compra nao foi recebido")
 
 # 3. FUNÇÃO CHAMADA PELO SINAL DE TÉRMINO
 func _on_jogada_terminada():

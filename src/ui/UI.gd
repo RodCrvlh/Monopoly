@@ -7,12 +7,14 @@ class_name Ui
 @onready var label_nome_jogadores: Array[Label]
 @onready var label_dinheiro_jogadores: Array[Label]
 @onready var label_sua_vez: Label
-@export var box_container: Array[PackedScene]
+@onready var box_container: Array[PackedScene]
+
 
 func _ready():
 	rolar_dados.visible = true
 	criar_labels()
-
+	box_container.resize(1)
+	box_container[0] = preload("res://src/assets/Box/Comprarbox.tscn")
 
 func criar_labels():
 	var i = 0
@@ -96,11 +98,21 @@ func animacao_rolar(res1: int, res2: int):
 	dados_animation_2.animacao_rolar(res2)
 
 
-func ativar_box(espaco: Espaco): 
+func ativar_box(espaco: Espaco) -> CenterContainer: 
 	
-	if espaco is Terreno or espaco is Ferrovia or espaco is Servico:
-		var box = box_container[0]
-		var box_compra = box.instantiate()
-		add_child(box_compra)
-		box_compra.set_mensagem(espaco.precoCompra)
+	if espaco is Disciplina or espaco is OrgaoBolsa or espaco is Freelance:
 		
+		if espaco.comprada == false:
+		
+			var box = box_container[0]
+			var box_compra = box.instantiate()
+			add_child(box_compra)
+			box_compra.set_mensagem(espaco.precoCompra)
+			box_compra.set_espaco(espaco)
+		
+			return box_compra
+		
+	return null
+
+func set_label_dinheiro(precoCompra: int, id_jogador_atual:int):
+	label_dinheiro_jogadores[id_jogador_atual].text = "Dinheiro: R$"+ str(precoCompra)

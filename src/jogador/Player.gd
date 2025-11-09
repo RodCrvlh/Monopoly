@@ -25,7 +25,7 @@ var turnos_restantes_prisao: int = 0
 var esta_falido: bool = false
 
 # Inventário
-var propriedades_possuidas: Array = []
+var propriedades_possuidas: Array = [Espaco]
 
 
 ## 2. FUNÇÃO DE INICIALIZAÇÃO
@@ -102,3 +102,45 @@ func get_id_peao() -> int:
 
 func get_posicao() -> int:
 	return indice_posicao_atual
+
+
+func verificar_monopolio(disciplina: Disciplina) -> int:	 
+	
+	var i = 0
+	var cont = 0
+	 
+	while i < propriedades_possuidas.size():
+		if propriedades_possuidas[i] is Disciplina:
+			if propriedades_possuidas[i].cor == disciplina.cor:
+				cont += 1
+
+	if disciplina.cor == Disciplina.Cor.MARROM or disciplina.cor == Disciplina.Cor.AZULESCURO:
+		if cont == 2:
+			return cont 
+	
+	elif cont == 3:
+		return cont
+		
+	
+	return 0
+
+
+func verificar_orgao_bolsa() -> int:
+	
+	var i = 0
+	var cont = 0
+	while i < propriedades_possuidas.size():
+		if propriedades_possuidas[i] is OrgaoBolsa: 
+			cont += 1
+			
+	return cont
+
+
+func verifica_freelance() -> int:
+	var i = 0
+	var cont = 0
+	while i < propriedades_possuidas.size():
+		if propriedades_possuidas[i] is OrgaoBolsa: 
+			cont += 1
+			
+	return cont

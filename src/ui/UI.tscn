@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://budjntw0swdqx"]
+[gd_scene load_steps=4 format=3 uid="uid://budjntw0swdqx"]
 
 [ext_resource type="Script" uid="uid://xihemnyk87b" path="res://src/ui/UI.gd" id="1_d40vq"]
 [ext_resource type="PackedScene" uid="uid://bwlvlj247q23o" path="res://src/ui/dados/RolarDadosButton.tscn" id="1_tmjim"]
-[ext_resource type="PackedScene" uid="uid://cle06fmrhrvks" path="res://src/assets/Box/Comprarbox.tscn" id="2_8pwlb"]
 [ext_resource type="PackedScene" uid="uid://do18u77xw150c" path="res://src/ui/dados/DadosAnimation.tscn" id="2_d40vq"]
 
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource("1_d40vq")
-box_container = Array[PackedScene]([ExtResource("2_8pwlb")])
 
 [node name="RolarDados" parent="." instance=ExtResource("1_tmjim")]
 offset_left = 360.0

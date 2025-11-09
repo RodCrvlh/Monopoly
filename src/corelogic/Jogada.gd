@@ -36,14 +36,14 @@ func on_rolar_dados_solicitado(res1: int, res2: int):
 	
 	
 	resultado_dados = res1 + res2
-	await(tabuleiro.mover_peao_visual(player_da_jogada.id_peao, resultado_dados))
+	tabuleiro.mover_peao_visual(player_da_jogada.id_peao, resultado_dados)
 	_on_movimento_do_peao_terminado()
 
 
 func _on_movimento_do_peao_terminado():
 	estado_atual = EstadoTurno.ACAO_NA_CASA
 	
-	player_da_jogada.mudar_posicao(resultado_dados)
+	#player_da_jogada.mudar_posicao(resultado_dados)
 	var casa_atual = player_da_jogada.indice_posicao_atual
 	
 	print("Jogada: ", player_da_jogada.name, " parou na casa ", casa_atual)
@@ -54,7 +54,7 @@ func _on_movimento_do_peao_terminado():
 	
 	# 3. Quando a ação da casa terminar (ex: clicou em 'Comprar'),
 	# você finalmente chama a função de término.
-	_finalizar_a_jogada()
+	
 
 
 # 3. Função que termina o turno
