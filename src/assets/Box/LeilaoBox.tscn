@@ -16,12 +16,16 @@ custom_minimum_size = Vector2(60, 60)
 [node name="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
 theme_override_constants/separation = 21
 
-[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+[node name="NomeJogador" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
 text = "É hora do Leilao!
-Vez de 
+Vez de "
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+text = "
 Maior Lance:"
 
-[node name="DigitaValor" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+[node name="DigitaValor" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
 layout_mode = 2
 
 [node name="Lance" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
@@ -31,6 +35,9 @@ text = "Dar Lance"
 [node name="Sair" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="1"]
 layout_mode = 2
 text = "Sair"
+
+[node name="Timer" type="Timer" parent="PanelContainer/MarginContainer" index="1"]
+wait_time = 0.8
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Hbox/Lance" to="." method="_on_lance_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Hbox/Sair" to="." method="_on_sair_pressed"]

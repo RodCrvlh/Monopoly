@@ -13,7 +13,8 @@ var players = [] # Array para guardar os nós PlayerData
 var jogador_atual_idx = 0
 var dado1 = Dado.new()
 var dado2 = Dado.new()
-
+var leilao: ControleLeilao
+var box_leilao: LeilaoBox
 ## REFERÊNCIAS DA CENA
 # O nó 'Players' deve ser um filho deste nó 'GameManager'
 @onready var players_node = $Players
@@ -88,7 +89,7 @@ func iniciar_proximo_turno():
 	
 	jogada_atual.connect("jogada_terminada", _on_jogada_terminada)
 	
-	ui_node.mover_label_sua_vez(player_atual.get_id_peao())
+	
 	
 	jogada_atual.iniciar_jogada(player_atual, board_node)
 	
@@ -188,10 +189,56 @@ func _on_compra_sim(espaco: Espaco):
 			freelance.aprimorar(res1+res2,cont)
 
 
-func _on_compra_nao():
+func _on_compra_nao(espaco: Espaco):
 	print("GameManager: Sinal compra nao foi recebido")
+	
+	leilao = ControleLeilao.new()
+	var jogador_leilao_idx = (jogador_atual_idx - 1) % players.size()  
+	
+	box_leilao = ui_node.ativar_box_leilao(players[jogador_leilao_idx].nome_jogador)
+	box_leilao.set_nome_jogador_atual(players[jogador_leilao_idx].nome_jogador)
+	
+	
+	box_leilao.connect("player_saiu", on_player_saiu)
+	box_leilao.connect("dar_lance", on_dar_lance)
+	leilao.iniciar_leilao(players, espaco, ui_node.box_container[2])
 
+func on_dar_lance(valor_lance: int):
+	print("Jogador deu Lance")
+	
+	#var box_leilao = find_child("Box_Leilao", false, false)
+	
+	var saida = leilao.on_novo_lance(valor_lance)
+	
+	if saida == "Seu lance é menor que o atual!":
+		box_leilao.set_mensagem_lance_menor()
+		
+	
+	elif saida == "Dinheiro insuficiente":
+		box_leilao.set_mensagem_dinheiro_insuficiente()
+		
+		
+	else:
+		var nome_novo_jogador = leilao.avancar_proximo_jogador()
+		box_leilao.set_mensagem_lance(valor_lance)
+		box_leilao.set_nome_jogador_atual(nome_novo_jogador)
 
+func on_player_saiu():
+	
+	var ainda_ha_jogadores = leilao.on_player_saiu()
+	
+	print(str(ainda_ha_jogadores))
+	if ainda_ha_jogadores:
+		var nome_jogador = leilao.avancar_proximo_jogador()
+		box_leilao.set_nome_jogador_atual(nome_jogador)
+
+	else:
+		var nome_vencedor = leilao.finalizar_leilao()
+		box_leilao.set_mensagem_final(nome_vencedor)
+		await(box_leilao.terminou)
+		leilao.destruir_leilao()
+
+	
 func _on_pagar_aluguel(espaco: Espaco):
 
 	print("Jogador esta pagando aluguel")
@@ -207,8 +254,8 @@ func _on_pagar_aluguel(espaco: Espaco):
 		i += 1
 	
 	ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
-	
-	
+
+
 # 3. FUNÇÃO CHAMADA PELO SINAL DE TÉRMINO
 func _on_jogada_terminada():
 	print("GameManager: Recebeu sinal de 'jogada_terminada'.")
@@ -219,10 +266,13 @@ func _on_jogada_terminada():
 	# 1. Avançar o índice do jogador
 	jogador_atual_idx = (jogador_atual_idx + 1) % players.size()
 	
+	ui_node.mover_label_sua_vez(player_atual.get_id_peao())
 	
 	# 2. Chamar o próximo turno, "fechando" o loop
 	iniciar_proximo_turno()
-	
+
+
+
 
 # 4. FUNÇÕES DE CHECAGEM
 func _checar_vitoria():
@@ -233,6 +283,7 @@ func _checar_vitoria():
 			jogadores_ativos += 1
 	
 	return jogadores_ativos <= 1
+
 
 # 5. RECEBER SINAIS DA UI
 # O GameManager é o único que "ouve" a UI.

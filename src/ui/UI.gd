@@ -13,9 +13,10 @@ class_name Ui
 func _ready():
 	rolar_dados.visible = true
 	criar_labels()
-	box_container.resize(2)
+	box_container.resize(3)
 	box_container[0] = preload("res://src/assets/Box/Comprarbox.tscn")
 	box_container[1] = preload("res://src/assets/Box/AluguelBox.tscn")
+	box_container[2] = preload("res://src/assets/Box/LeilaoBox.tscn")
 	
 	
 func criar_labels():
@@ -125,6 +126,18 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 			return box_aluguel
 		
 	return null
+
+
+func ativar_box_leilao(nome_jogador: String) -> CenterContainer:
+	var box = box_container[2]
+	var box_leilao = box.instantiate()
+	add_child(box_leilao)
+	box_leilao.name = "Box_Leilao"
+	box_leilao.set_nome_jogador_atual(nome_jogador)
+	
+	return box_leilao
+
+
 
 func set_label_dinheiro(precoCompra: int, id_jogador_atual:int):
 	label_dinheiro_jogadores[id_jogador_atual].text = "Dinheiro: R$"+ str(precoCompra)

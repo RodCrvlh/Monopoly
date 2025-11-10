@@ -1,8 +1,7 @@
 extends Node
 class_name ControleLeilao
 
-var vencedor: Player
-var jogadoers_participantes: Array[Player]
+var jogadoers_participantes: Array
 var maior_lance: int = 0
 var idx_jogador_atual: int = -1
 var propriedade: Espaco
@@ -10,84 +9,97 @@ var box_leilao: PackedScene
 
 
 
-func iniciar_leilao(players: Array[Player], espaco: Espaco, box: PackedScene): 
-	
+func iniciar_leilao(players: Array, espaco: Espaco, box: PackedScene): 
+	print("Leilao foi iniciado")
 	box_leilao = box
+	
+	
 	propriedade = espaco 
 	jogadoers_participantes = players.duplicate()
-	box_leilao.connect("player_saiu", on_player_saiu)
-	box_leilao.connect("novo_lance", on_novo_lance)
+
 	
 	avancar_proximo_jogador()
 
 
-func on_novo_lance(lance: int):
+func on_novo_lance(lance: int) -> String:
 	var jogador_atual = jogadoers_participantes[idx_jogador_atual]
+	print("Lance do jogador "+jogador_atual.nome_jogador+"valor:"+str(lance))
 	
 	if lance > maior_lance and lance < jogador_atual.dinheiro:
 		maior_lance = lance 
-		vencedor = jogador_atual
-		box_leilao.set_mensagem_lance(jogador_atual.nome_jogador, maior_lance)
+		return jogador_atual.nome_jogador
+	
+	elif lance < maior_lance:
+		return "Seu lance é menor que o atual!"
 	
 	else:
-		box_leilao.set_mensagem_dinheiro_insuficiente()
+		return "Dinheiro insuficiente"
 
 
-func on_player_saiu():
-		
-		jogadoers_participantes.find(idx_jogador_atual)
-		
-		if idx_jogador_atual != -1:
-			jogadoers_participantes.remove_at(idx_jogador_atual)
-			
-		verificar_termino()
-
-
-func verificar_termino():
+func on_player_saiu() -> bool:
+	print("Jogador saiu do leilao")
+	jogadoers_participantes.find(idx_jogador_atual)
 	
-	if jogadoers_participantes.size() <= 1:
-		finalizar_leilao()
+	if idx_jogador_atual != 0:
+		jogadoers_participantes.remove_at(idx_jogador_atual)
+		
+
+	return verificar_termino()
+
+
+func verificar_termino() -> bool:
+	print("Verificando termino")
+	if jogadoers_participantes == []:
+		return false
+		
+	elif jogadoers_participantes.size() == 1 and maior_lance == 0:
+		return true
+	
+	elif jogadoers_participantes.size() == 1 and maior_lance > 0:
+		return false
 	
 	else:
-		avancar_proximo_jogador()
+		return true
 
 
-func avancar_proximo_jogador():
+
+func avancar_proximo_jogador() -> String:
 	
-	var proximo_idx = jogadoers_participantes.find(idx_jogador_atual)
-	
+	var proximo_idx = idx_jogador_atual+1
 	#se ainda existe mais de um jogador faz uma volta circuilar no vetor
-	if proximo_idx != -1:
-		proximo_idx = (proximo_idx+1) %jogadoers_participantes.size()
+	if proximo_idx > 0:
+		proximo_idx = proximo_idx %jogadoers_participantes.size()
+	
 	
 	#so existe um jogador
 	else:
 		proximo_idx = 0
 		
+		
 	idx_jogador_atual = proximo_idx
+	
+	var nome_jogador = jogadoers_participantes[idx_jogador_atual].nome_jogador
+	print("Proximo Jogador:"+nome_jogador)
+	return nome_jogador
 
 
 func finalizar_leilao(): 
-	if jogadoers_participantes.size() > 0 and maior_lance > 0:
-		propriedade.set_proprietario(vencedor.nome_jogador)
+	if maior_lance > 0:
+		propriedade.set_proprietario(jogadoers_participantes[0].nome_jogador)
 		propriedade.set_comprada(true)
-		vencedor.adicionar_propriedade(propriedade)
-		vencedor.remover_dinheiro(maior_lance)
+		jogadoers_participantes[0].adicionar_propriedade(propriedade)
+		jogadoers_participantes[0].remover_dinheiro(maior_lance)
 		
-		box_leilao.set_mensagem_final(vencedor.nome_jogador+" é o vencedor do leilao")
-		var timer: Timer
-		timer.wait_time = 0.2
-		timer.start()
-		await(timer.timeout)
-		box_leilao.destruir_box()
-		box_leilao.destruir_box()
+		return jogadoers_participantes[0].nome_jogador 
+		
 		
 	else:
-		box_leilao.set_mensagem_final("Ninguem comprou esta propriedade!")
-		var timer: Timer
-		timer.wait_time = 0.2
-		timer.start()
-		await(timer.timeout)
-		box_leilao.destruir_box()
+		return  ""
+
 	
+func destruir_leilao():
+	var timer = Timer.new()
+	timer.wait_time = 0.2
+	timer.start()
+	await(timer.timeout)
 	queue_free()
