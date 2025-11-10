@@ -51,7 +51,6 @@ func set_mensagem_dinheiro_insuficiente():
 
 
 func set_mensagem_final(nome_vencedor: String):
-	print("chegou no final")
 	if nome_vencedor == "":
 		label_nome_jogador.text = "Ninguem comprou esta propriedade!"
 		mensagem.text = ""

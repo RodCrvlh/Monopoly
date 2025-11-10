@@ -12,5 +12,4 @@ func set_mensagem(texto: String):
 
 func _input(event: InputEvent) -> void:
 	if hbox.visible == false and Input.is_action_just_pressed("ui_click"):
-		emit_signal("box_acabou")
 		queue_free()
