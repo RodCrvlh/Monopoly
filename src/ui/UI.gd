@@ -123,8 +123,12 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 			box_aluguel.set_espaco(espaco)
 			
 			return box_aluguel
-		
+	print("\n Checou se era IC \n")
+	if espaco is IC:
+		espaco.realizar_acao(player_atual)
+	
 	return null
+	
 
 func set_label_dinheiro(precoCompra: int, id_jogador_atual:int):
 	label_dinheiro_jogadores[id_jogador_atual].text = "Dinheiro: R$"+ str(precoCompra)

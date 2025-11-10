@@ -12,10 +12,10 @@ enum EstadoTurno {
 }
 
 var estado_atual = EstadoTurno.ESPERANDO_DADOS
-var player_da_jogada = null
-var tabuleiro = null
+var player_da_jogada: Player
+var tabuleiro: Tabuleiro
 var resultado_dados = 0
-	
+var posicao_inicial: int
 
 func iniciar_jogada(player, board_node): # TABULEIRO VAI SER SINGLETON
 	self.player_da_jogada = player
