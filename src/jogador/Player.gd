@@ -45,7 +45,7 @@ func adicionar_dinheiro(valor: int):
 
 func remover_dinheiro(valor: int) -> bool:
 	if dinheiro >= valor:
-		self.dinheiro -= valor
+		self.dinheiro = dinheiro - valor
 		print(nome_jogador, " pagou $", valor, ". Total: $", dinheiro)
 		return true
 	else:
@@ -55,6 +55,13 @@ func remover_dinheiro(valor: int) -> bool:
 func declarar_falencia():
 	print(nome_jogador, " FALIU!")
 	esta_falido = true
+	nome_jogador += "faliu"
+	dinheiro = 0
+	var i = 0
+	while i < propriedades_possuidas.size():
+		propriedades_possuidas[i].resetar()
+		
+	propriedades_possuidas
 	emit_signal("faliu_sinal")
 
 

@@ -20,3 +20,9 @@ func aprimorar(cont: int, b:int=0):
 	
 	if cont == 4:
 		aluguel_atual = aluguel4
+
+
+func resetar():
+	aluguel_atual = 0
+	comprada = false
+	proprietario = ""

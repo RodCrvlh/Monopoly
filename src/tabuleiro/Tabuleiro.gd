@@ -49,7 +49,6 @@ func executar_animacao_peao(id_peao):
 
 func set_propriedade_comprada(posicao: int, sinal: bool):
 	if espacos[posicao] is Disciplina:
-		print("Espaco é uma disciplina")
 		espacos[posicao].set_comprada(sinal)
 	elif espacos[posicao] is OrgaoBolsa:
 		espacos[posicao].set_comprada(sinal)

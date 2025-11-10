@@ -16,7 +16,7 @@ offset_bottom = 785.0
 [node name="DadosAnimation" type="Node" parent="."]
 
 [node name="DadosAnimation1" parent="DadosAnimation" instance=ExtResource("2_d40vq")]
-position = Vector2(1666, 51)
+position = Vector2(1336, 96)
 
 [node name="DadosAnimation2" parent="DadosAnimation" instance=ExtResource("2_d40vq")]
-position = Vector2(1785, 51)
+position = Vector2(1456, 96)

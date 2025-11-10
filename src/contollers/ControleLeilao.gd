@@ -90,7 +90,7 @@ func finalizar_leilao():
 		vencedor.adicionar_propriedade(propriedade)
 		vencedor.remover_dinheiro(maior_lance)
 		
-		return vencedor.nome_jogador 
+		return vencedor.nome_jogador
 		
 		
 	else:

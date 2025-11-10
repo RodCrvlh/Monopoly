@@ -13,3 +13,9 @@ func calcular_aluguel(resultado_dados: int, cont: int):
 func aprimorar(resultado_dados: int, cont: int):
 	print("Voce aprimorou esse freelance!")
 	calcular_aluguel(resultado_dados, cont)  
+
+
+func resetar():
+	aluguel_atual = 0
+	comprada = false
+	proprietario = ""

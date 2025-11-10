@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk7pn3tmw0dh7"]
+
+[ext_resource type="PackedScene" uid="uid://cmqm1k0kvwfan" path="res://src/assets/Box/questionbox.tscn" id="1_f87xj"]
+[ext_resource type="Script" uid="uid://brvftx8cg262n" path="res://src/assets/Box/VendaBox.gd" id="2_jqqj2"]
+
+[node name="QuestionBox" instance=ExtResource("1_f87xj")]
+script = ExtResource("2_jqqj2")
+sim = null
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "Propriedades a serem vendidas"

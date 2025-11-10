@@ -28,7 +28,7 @@ func _init():
 	
 func _ready():
 	ui_node.rolar_dados.connect("botao_rolar_dados_pressionado", _on_botao_rolar_dados_pressionado)
-	
+	ui_node.connect("vender", _on_vender_propriedade)
 	## ATENÇÃO  
 	comeca_jogo()
 
@@ -189,7 +189,13 @@ func _on_compra_sim(espaco: Espaco):
 		if cont != 0:
 			freelance.aprimorar(res1+res2,cont)
 
-
+func _on_vender_propriedade(divida: int):
+	var controle_venda = ControleVenda.new()
+	
+	if controle_venda.verificar_venda(players[jogador_atual_idx], divida):
+		var box_venda = ui_node.ativar_box_venda(players[jogador_atual_idx], divida, controle_venda.valores_propriedades)
+		
+	
 func _on_compra_nao(espaco: Espaco):
 	print("GameManager: Sinal compra nao foi recebido")
 	
@@ -237,9 +243,20 @@ func on_player_saiu():
 
 	else:
 		var nome_vencedor = leilao.finalizar_leilao()
+		var id_vencedor: int
+		var i = 0
+		
+		while i < players.size():
+			if nome_vencedor == players[i].nome_jogador:
+				id_vencedor = i
+			i += 1
+		
+		
+		ui_node.set_label_dinheiro(players[id_vencedor].dinheiro, id_vencedor)
+		leilao.destruir_leilao()
+	
 		box_leilao.set_mensagem_final(nome_vencedor)
 		await(box_leilao.terminou)
-		leilao.destruir_leilao()
 
 
 func _on_pagar_aluguel(espaco: Espaco):

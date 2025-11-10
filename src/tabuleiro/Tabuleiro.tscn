@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://cjtdqcog7dyt7" path="res://src/assets/art/tabuleiro-monopoly.png" id="2_yvm1e"]
 [ext_resource type="Script" uid="uid://c4iu8rlkddjkg" path="res://src/tabuleiro/espaço/propriedade/Disciplina.gd" id="4_yvm1e"]
 [ext_resource type="Script" uid="uid://dhynymb6yg43" path="res://src/tabuleiro/espaço/propriedade/OrgaoBolsa.gd" id="5_7ukix"]
-[ext_resource type="Script" uid="uid://ber8inqxt2m65" path="res://src/tabuleiro/espaço/propriedade/especial/Imposto.gd" id="5_lq0am"]
+[ext_resource type="Script" path="res://src/tabuleiro/espaço/propriedade/especial/Imposto.gd" id="5_lq0am"]
 [ext_resource type="Script" uid="uid://4n2f3l836edi" path="res://src/tabuleiro/espaço/propriedade/especial/IC.gd" id="5_mid5o"]
 [ext_resource type="Script" uid="uid://b6i2ikweer1cd" path="res://src/tabuleiro/espaço/propriedade/Freelance.gd" id="6_hpnu8"]
-[ext_resource type="Script" uid="uid://djbuggp8kdqau" path="res://src/tabuleiro/espaço/propriedade/especial/Sorte.gd" id="7_otc3o"]
+[ext_resource type="Script" path="res://src/tabuleiro/espaço/propriedade/especial/Sorte.gd" id="7_otc3o"]
 
 [node name="Tabuleiro" type="Node2D" node_paths=PackedStringArray("espacos")]
 script = ExtResource("1_8gt47")

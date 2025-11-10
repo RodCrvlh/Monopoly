@@ -27,9 +27,13 @@ func realizar_acao(player: Player):
 	
 	if operacao >= 0:
 		player.adicionar_dinheiro(operacao)
+		return 0
+		
 	else:
-		player.remover_dinheiro(-operacao) # -operacao está correto (ex: -(-100) = 100)
-	
+		var compra_realizada = player.remover_dinheiro(-operacao) # -operacao está correto (ex: -(-100) = 100)
+		
+		if compra_realizada == false:
+			return operacao
 	# 3. REMOVIDA a linha 'removeDoBanco'.
 	# A carta já foi "puxada" do baralho atual pela função getRandom().
 	# baralho.removeDoBanco(BaralhoIC.getTitle(carta)) # <--- NÃO FAÇA ISSO

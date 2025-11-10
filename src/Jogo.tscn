@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwmy3fpfix05v"]
+[gd_scene load_steps=7 format=3 uid="uid://cwmy3fpfix05v"]
 
 [ext_resource type="Script" uid="uid://dmpgyrcl42rbb" path="res://src/GameManager.gd" id="1_e2g04"]
 [ext_resource type="PackedScene" uid="uid://otemy486wury" path="res://src/tabuleiro/Tabuleiro.tscn" id="2_bskcm"]
 [ext_resource type="PackedScene" uid="uid://1gyd4b6t5kuv" path="res://src/cartas/BaralhoIC.tscn" id="4_m2xh4"]
-[ext_resource type="PackedScene" uid="uid://bg5nqeitobie" path="res://src/cartas/BaralhoSorte.tscn" id="5_a3m58"]
+[ext_resource type="PackedScene" path="res://src/cartas/BaralhoSorte.tscn" id="5_a3m58"]
 [ext_resource type="PackedScene" uid="uid://budjntw0swdqx" path="res://src/ui/UI.tscn" id="5_m2xh4"]
-[ext_resource type="Script" uid="uid://bcyikds0umxgg" path="res://src/cartas/BaralhoSorte.gd" id="6_e2g04"]
 
 [sub_resource type="GDScript" id="GDScript_1b3iq"]
 
@@ -24,4 +23,3 @@ script = SubResource("GDScript_1b3iq")
 [node name="BaralhoIc" parent="Baralhos" instance=ExtResource("4_m2xh4")]
 
 [node name="BaralhoSorte" parent="Baralhos" instance=ExtResource("5_a3m58")]
-script = ExtResource("6_e2g04")
