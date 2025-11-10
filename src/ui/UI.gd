@@ -124,8 +124,12 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 			box_aluguel.set_espaco(espaco)
 			
 			return box_aluguel
-		
+	print("\n Checou se era IC \n")
+	if espaco is IC:
+		espaco.realizar_acao(player_atual)
+	
 	return null
+	
 
 
 func ativar_box_leilao(nome_jogador: String) -> CenterContainer:
