@@ -127,6 +127,7 @@ func _on_botao_rolar_dados_pressionado():
 			box.connect("compra_sim", _on_compra_sim)
 			box.connect("compra_nao", _on_compra_nao)
 			box.connect("pagar_aluguel", _on_pagar_aluguel)
+			
 		
 		jogada_node._finalizar_a_jogada()
 	

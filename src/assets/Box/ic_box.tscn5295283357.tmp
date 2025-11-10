@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbv0dcuwi04vq"]
+
+[ext_resource type="PackedScene" uid="uid://cmqm1k0kvwfan" path="res://src/assets/Box/questionbox.tscn" id="1_j6yu7"]
+[ext_resource type="Script" uid="uid://bfpy6jnm11uni" path="res://src/assets/Box/IcBox.gd" id="2_w04id"]
+[ext_resource type="PackedScene" uid="uid://cle06fmrhrvks" path="res://src/assets/Box/Comprarbox.tscn" id="3_li4yl"]
+
+[node name="QuestionBox" instance=ExtResource("1_j6yu7")]
+script = ExtResource("2_w04id")
+
+[node name="QuestionBox" parent="." index="1" instance=ExtResource("3_li4yl")]
+layout_mode = 2

@@ -2,6 +2,7 @@ extends Espaco
 class_name IC
 
 # NÃO inicialize o 'baralho' aqui fora.
+var carta_atual
 
 func realizar_acao(player: Player):
 	print("\n comecou funcao em IC \n")
@@ -15,14 +16,14 @@ func realizar_acao(player: Player):
 		return
 
 	# 2. Obtenha a carta
-	var carta = baralho.getRandom()
+	carta_atual = baralho.getRandom()
 	
-	if carta == null:
+	if carta_atual == null:
 		print("ERRO: BaralhoIC não retornou nenhuma carta.")
 		return
 
-	print("\n" + BaralhoIC.getText(carta) + "\n")
-	var operacao = BaralhoIC.getDelta(carta)
+	print("\n" + BaralhoIC.getText(carta_atual) + "\n")
+	var operacao = BaralhoIC.getDelta(carta_atual)
 	
 	if operacao >= 0:
 		player.adicionar_dinheiro(operacao)

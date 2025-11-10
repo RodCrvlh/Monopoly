@@ -9,7 +9,7 @@ signal terminou()
 @onready var label_nome_jogador: Label = $PanelContainer/MarginContainer/VBoxContainer/NomeJogador
 @onready var digita_valor: LineEdit = $PanelContainer/MarginContainer/VBoxContainer/DigitaValor
 @onready var mensagem: Label = $PanelContainer/MarginContainer/VBoxContainer/Label
-@onready var timer: Timer = $PanelContainer/MarginContainer/Timer
+@onready var timer: Timer = $Timer
 
 var lance_feito: bool = false
 var sair: bool = false
@@ -44,9 +44,10 @@ func set_mensagem_lance(lance:int) -> void:
 func set_mensagem_dinheiro_insuficiente():
 	label_nome_jogador.text = "Voce nao tem dinheiro para fazer esse lance, tente outro lance menor!"
 	valor_lance = valor_lance_antigo
-	ativar_timer()
+	await(ativar_timer())
+	print("timer nao funciona")
 	set_nome_jogador_atual(nome_jogador_atual)
-	
+
 
 
 func set_mensagem_final(nome_vencedor: String):
@@ -62,12 +63,14 @@ func set_mensagem_final(nome_vencedor: String):
 	hbox.visible = false
 	digita_valor.visible = false
 	emit_signal("terminou")
-	ativar_timer()
+	await(ativar_timer())
 	destruir_box()
 
 func set_mensagem_lance_menor():
-	label_nome_jogador.text = "Dinheiro insuficiente"
-
+	label_nome_jogador.text = nome_jogador_atual+" seu lance é menor que o maior lance"
+	await(ativar_timer())
+	print("timer nao funciona")
+	set_nome_jogador_atual(nome_jogador_atual)
 
 func on_valor_lance_modificado(valor: String):
 	var novo_valor = valor as int

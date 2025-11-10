@@ -13,10 +13,11 @@ class_name Ui
 func _ready():
 	rolar_dados.visible = true
 	criar_labels()
-	box_container.resize(3)
+	box_container.resize(4)
 	box_container[0] = preload("res://src/assets/Box/Comprarbox.tscn")
 	box_container[1] = preload("res://src/assets/Box/AluguelBox.tscn")
 	box_container[2] = preload("res://src/assets/Box/LeilaoBox.tscn")
+	box_container[3] = preload("res://src/assets/Box/ic_box.tscn")
 	
 	
 func criar_labels():
@@ -125,8 +126,14 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 			
 			return box_aluguel
 	print("\n Checou se era IC \n")
+	
 	if espaco is IC:
+		var box = box_container[3]
+		var box_ic = box.instantiate()
+		add_child(box_ic) 
 		espaco.realizar_acao(player_atual)
+		var textoBox = BaralhoIC.getText(espaco.carta_atual)
+		box_ic.set_mensagem(textoBox)  
 	
 	return null
 	

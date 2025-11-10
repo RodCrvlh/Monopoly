@@ -65,17 +65,14 @@ func verificar_termino() -> bool:
 
 func avancar_proximo_jogador() -> String:
 	
+	
 	var proximo_idx = idx_jogador_atual+1
+	
 	#se ainda existe mais de um jogador faz uma volta circuilar no vetor
-	if proximo_idx > 0:
+	if proximo_idx == jogadoers_participantes.size():
 		proximo_idx = proximo_idx %jogadoers_participantes.size()
 	
 	
-	#so existe um jogador
-	else:
-		proximo_idx = 0
-		
-		
 	idx_jogador_atual = proximo_idx
 	
 	var nome_jogador = jogadoers_participantes[idx_jogador_atual].nome_jogador
@@ -96,7 +93,7 @@ func finalizar_leilao():
 	else:
 		return  ""
 
-	
+
 func destruir_leilao():
 	var timer = Timer.new()
 	timer.wait_time = 0.2

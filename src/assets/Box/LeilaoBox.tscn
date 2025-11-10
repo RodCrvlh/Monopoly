@@ -36,8 +36,8 @@ text = "Dar Lance"
 layout_mode = 2
 text = "Sair"
 
-[node name="Timer" type="Timer" parent="PanelContainer/MarginContainer" index="1"]
-wait_time = 0.8
+[node name="Timer" type="Timer" parent="." index="1"]
+wait_time = 2.0
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Hbox/Lance" to="." method="_on_lance_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Hbox/Sair" to="." method="_on_sair_pressed"]
