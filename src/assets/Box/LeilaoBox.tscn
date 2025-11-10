@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://3qaf76n2gpbb"]
+
+[ext_resource type="PackedScene" uid="uid://cmqm1k0kvwfan" path="res://src/assets/Box/questionbox.tscn" id="1_nf5cv"]
+[ext_resource type="Script" uid="uid://b0ecjvduplx0v" path="res://src/assets/Box/LeilaoBox.gd" id="2_wrjkx"]
+
+[node name="QuestionBox" instance=ExtResource("1_nf5cv")]
+offset_left = -184.0
+offset_top = -128.0
+offset_right = -184.0
+offset_bottom = -128.0
+script = ExtResource("2_wrjkx")
+
+[node name="PanelContainer" parent="." index="0"]
+custom_minimum_size = Vector2(60, 60)
+
+[node name="VBoxContainer" parent="PanelContainer/MarginContainer" index="0"]
+theme_override_constants/separation = 21
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "É hora do Leilao!
+Vez de 
+Maior Lance:"
+
+[node name="DigitaValor" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Lance" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
+layout_mode = 2
+text = "Dar Lance"
+
+[node name="Sair" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="1"]
+layout_mode = 2
+text = "Sair"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Hbox/Lance" to="." method="_on_lance_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Hbox/Sair" to="." method="_on_sair_pressed"]
