@@ -5,3 +5,11 @@
 
 [node name="QuestionBox" instance=ExtResource("1_j6yu7")]
 script = ExtResource("2_w04id")
+
+[node name="ok" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "ok
+"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Hbox/ok" to="." method="_on_ok_pressed"]

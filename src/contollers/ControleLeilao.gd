@@ -1,6 +1,7 @@
 extends Node
 class_name ControleLeilao
 
+var vencedor: Player
 var jogadoers_participantes: Array
 var maior_lance: int = 0
 var idx_jogador_atual: int = -1
@@ -27,6 +28,7 @@ func on_novo_lance(lance: int) -> String:
 	
 	if lance > maior_lance and lance < jogador_atual.dinheiro:
 		maior_lance = lance 
+		vencedor = jogador_atual
 		return jogador_atual.nome_jogador
 	
 	elif lance < maior_lance:
@@ -40,27 +42,28 @@ func on_player_saiu() -> bool:
 	print("Jogador saiu do leilao")
 	jogadoers_participantes.find(idx_jogador_atual)
 	
-	if idx_jogador_atual != 0:
-		jogadoers_participantes.remove_at(idx_jogador_atual)
-		
+	
+	jogadoers_participantes.remove_at(idx_jogador_atual)
+	idx_jogador_atual -= 1
 
 	return verificar_termino()
 
 
 func verificar_termino() -> bool:
 	print("Verificando termino")
-	if jogadoers_participantes == []:
+	
+	if jogadoers_participantes.size() == 1 and maior_lance == 0:
+		return true
+		
+	if jogadoers_participantes.size() == 1 and maior_lance >= 0:
+		
 		return false
 		
-	elif jogadoers_participantes.size() == 1 and maior_lance == 0:
-		return true
-	
-	elif jogadoers_participantes.size() == 1 and maior_lance > 0:
+	elif jogadoers_participantes.size() < 1:
 		return false
 	
 	else:
 		return true
-
 
 
 func avancar_proximo_jogador() -> String:
@@ -82,12 +85,12 @@ func avancar_proximo_jogador() -> String:
 
 func finalizar_leilao(): 
 	if maior_lance > 0:
-		propriedade.set_proprietario(jogadoers_participantes[0].nome_jogador)
+		propriedade.set_proprietario(vencedor.nome_jogador)
 		propriedade.set_comprada(true)
-		jogadoers_participantes[0].adicionar_propriedade(propriedade)
-		jogadoers_participantes[0].remover_dinheiro(maior_lance)
+		vencedor.adicionar_propriedade(propriedade)
+		vencedor.remover_dinheiro(maior_lance)
 		
-		return jogadoers_participantes[0].nome_jogador 
+		return vencedor.nome_jogador 
 		
 		
 	else:

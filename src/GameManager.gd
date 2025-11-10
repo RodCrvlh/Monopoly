@@ -204,6 +204,7 @@ func _on_compra_nao(espaco: Espaco):
 	box_leilao.connect("dar_lance", on_dar_lance)
 	leilao.iniciar_leilao(players, espaco, ui_node.box_container[2])
 
+
 func on_dar_lance(valor_lance: int):
 	print("Jogador deu Lance")
 	
@@ -224,6 +225,7 @@ func on_dar_lance(valor_lance: int):
 		box_leilao.set_mensagem_lance(valor_lance)
 		box_leilao.set_nome_jogador_atual(nome_novo_jogador)
 
+
 func on_player_saiu():
 	
 	var ainda_ha_jogadores = leilao.on_player_saiu()
@@ -239,7 +241,7 @@ func on_player_saiu():
 		await(box_leilao.terminou)
 		leilao.destruir_leilao()
 
-	
+
 func _on_pagar_aluguel(espaco: Espaco):
 
 	print("Jogador esta pagando aluguel")
@@ -271,8 +273,6 @@ func _on_jogada_terminada():
 	
 	# 2. Chamar o próximo turno, "fechando" o loop
 	iniciar_proximo_turno()
-
-
 
 
 # 4. FUNÇÕES DE CHECAGEM
