@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg5nqeitobie"]
+
+[ext_resource type="Script" uid="uid://bcyikds0umxgg" path="res://src/cartas/BaralhoSorte.gd" id="1_uesp0"]
+
+[node name="BaralhoSorte" type="Node"]
+script = ExtResource("1_uesp0")

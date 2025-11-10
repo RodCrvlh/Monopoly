@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://otemy486wury"]
+[gd_scene load_steps=9 format=3 uid="uid://otemy486wury"]
 
 [ext_resource type="Script" uid="uid://cdfopibu3q56h" path="res://src/tabuleiro/Tabuleiro.gd" id="1_8gt47"]
 [ext_resource type="Script" uid="uid://c6uqflxavcxch" path="res://src/tabuleiro/espaço/Espaco.gd" id="2_8gt47"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dhynymb6yg43" path="res://src/tabuleiro/espaço/propriedade/OrgaoBolsa.gd" id="5_7ukix"]
 [ext_resource type="Script" uid="uid://4n2f3l836edi" path="res://src/tabuleiro/espaço/propriedade/especial/IC.gd" id="5_mid5o"]
 [ext_resource type="Script" uid="uid://b6i2ikweer1cd" path="res://src/tabuleiro/espaço/propriedade/Freelance.gd" id="6_hpnu8"]
+[ext_resource type="Script" uid="uid://djbuggp8kdqau" path="res://src/tabuleiro/espaço/propriedade/especial/Sorte.gd" id="7_otc3o"]
 
 [node name="Tabuleiro" type="Node2D" node_paths=PackedStringArray("espacos")]
 script = ExtResource("1_8gt47")
@@ -95,7 +96,7 @@ posicao = 6
 
 [node name="Casa7" type="Marker2D" parent="."]
 position = Vector2(328, 1000)
-script = ExtResource("2_8gt47")
+script = ExtResource("7_otc3o")
 posicao = 7
 
 [node name="Casa8" type="Marker2D" parent="."]
@@ -223,7 +224,7 @@ valorHipoteca = 900
 posicao = 16
 
 [node name="Casa17" type="Marker2D" parent="."]
-position = Vector2(56, 368)
+position = Vector2(68, 365)
 script = ExtResource("6_hpnu8")
 precoCompra = 150
 valorHipoteca = 750
@@ -287,7 +288,7 @@ posicao = 21
 
 [node name="Casa22" type="Marker2D" parent="."]
 position = Vector2(256, 64)
-script = ExtResource("2_8gt47")
+script = ExtResource("7_otc3o")
 posicao = 22
 
 [node name="Casa23" type="Marker2D" parent="."]
@@ -432,7 +433,7 @@ posicao = 32
 
 [node name="Casa33" type="Marker2D" parent="."]
 position = Vector2(894, 368)
-script = ExtResource("2_8gt47")
+script = ExtResource("7_otc3o")
 posicao = 33
 
 [node name="Casa34" type="Marker2D" parent="."]
