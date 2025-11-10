@@ -125,10 +125,8 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 			box_aluguel.set_espaco(espaco)
 			
 			return box_aluguel
-	print("Checou se era IC")
 	
 	if espaco is IC or espaco is Sorte:
-		print("\nentrou em ic\n")
 		var box = box_container[3]
 		var box_ic = box.instantiate()
 		add_child(box_ic) 
@@ -136,6 +134,12 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 		var textoBox = Baralho.getText(espaco.carta_atual)
 		box_ic.set_mensagem(textoBox)  
 		
+	if espaco is Imposto:
+		var box = box_container[3]
+		var box_ic = box.instantiate()
+		add_child(box_ic) 
+		espaco.pagarImposto(player_atual)
+		box_ic.set_mensagem("Você teve que pagar R$200 de imposto.")
 	return null
 	
 
