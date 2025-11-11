@@ -23,6 +23,10 @@ func iniciar_jogada(player, board_node): # TABULEIRO VAI SER SINGLETON
 	
 	name = "Jogada_" + player.name
 	
+	if player_da_jogada.statusVS:
+		print("\npulou a jogada, está de VS\n")
+		_on_movimento_do_peao_terminado()
+	
 	print("Jogada: Pronta. Esperando rolagem de dados para ", player.name)
 # VOLTA PRO GAME MANAGER E FICA PARADO NA INICIAR_PROXIMO_TURNO() ATÉ QUE O BOTÃO DO DADO SEJA PRESSIONADO
 	

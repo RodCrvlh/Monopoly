@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbdteojhv8hb"]
+
+[ext_resource type="PackedScene" uid="uid://bhp0mw48ksjk" path="res://src/assets/Box/CompraNegadaBox.tscn" id="1_i2x1y"]
+
+[node name="QuestionBox" instance=ExtResource("1_i2x1y")]

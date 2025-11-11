@@ -16,7 +16,7 @@ signal venda_acabou(propriedades_vendidas)
 func _ready():
 	rolar_dados.visible = true
 	criar_labels()
-	box_container.resize(9)
+	box_container.resize(10)
 	box_container[0] = preload("res://src/assets/Box/Comprarbox.tscn")
 	box_container[1] = preload("res://src/assets/Box/AluguelBox.tscn")
 	box_container[2] = preload("res://src/assets/Box/LeilaoBox.tscn")
@@ -26,6 +26,7 @@ func _ready():
 	box_container[6] = preload("res://src/assets/Box/BoxFim.tscn")
 	box_container[7] = preload("res://src/assets/Box/AprimoraBox.tscn")
 	box_container[8] = preload("res://src/assets/Box/AprimorarNegada.tscn")
+	box_container[9] = preload("res://src/assets/Box/FaliuBox.tscn")
 	
 func criar_labels():
 	var i = 0
@@ -169,7 +170,8 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 		box_ic.set_mensagem(textoBox)  
 		
 		if player_atual.divida > 0:
-			emit_signal("vender", player_atual.divida)
+			pass
+			#emit_signal("vender", player_atual.divida)
 		
 		return
 		
@@ -181,10 +183,33 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 		box_ic.set_mensagem("Você teve que pagar R$200 de imposto.")
 		
 		if player_atual.divida > 0:
-			emit_signal("vender", player_atual.divida)
-		
+			pass
+			#emit_signal("vender", player_atual.divida)
+	
 		return
-
+		
+	if espaco is FicouDeVS:
+		# 1. Mostra a mensagem
+		var box = box_container[3]
+		var box_ic = box.instantiate()
+		add_child(box_ic) 
+		box_ic.set_mensagem("Você ficou de VS...")
+		# 2. Executa a LÓGICA (instantâneo)
+		espaco.ficouDeVS(player_atual, Tabuleiro.getInstance())
+		# 3. Executa a ANIMAÇÃO (separadamente)
+		# A função executar_animacao_peao não tem mais "await"
+		Tabuleiro.getInstance().executar_animacao_peao(player_atual.id_peao)
+		return
+		# Agora o código continua imediatamente, sem congelar.
+	
+	if espaco is VS:
+		var box = box_container[3]
+		var box_ic = box.instantiate()
+		add_child(box_ic)
+		box_ic.set_mensagem("Vamos ver se você dá sorte (se sair 2 numeros iguais no dado, você escapa da VS)\n Você tem mais " + str(player_atual.turnosRestantesVS) + " chances.")
+		espaco.VS(player_atual, Tabuleiro.getInstance())
+		
+		
 	return null
 
 
@@ -199,17 +224,18 @@ func ativar_box_leilao(nome_jogador: String) -> CenterContainer:
 
 
 func ativar_box_venda(player:Player, divida: int, valores_propriedades: Array[int]) -> CenterContainer:
-	var box = box_container[4]
-	var box_venda = box.instantiate()
-	add_child(box_venda)
+	pass
+	#var box = box_container[4]
+	#var box_venda = box.instantiate()
+	#add_child(box_venda)
 	
-	box_venda.set_nome_jogador(player.nome_jogador)
-	box_venda.set_propriedades_possuidas(player.propriedades_possuidas, valores_propriedades)
-	box_venda.set_divida(divida)
+	#box_venda.set_nome_jogador(player.nome_jogador)
+	#box_venda.set_propriedades_possuidas(player.propriedades_possuidas, valores_propriedades)
+	#box_venda.set_divida(divida)
 	
 
-
-	return box_venda
+	return
+	#return box_venda
 
 
 func ativar_box_fim(player:Player):
@@ -217,9 +243,16 @@ func ativar_box_fim(player:Player):
 	var box_fim = box.instantiate()
 	add_child(box_fim)
 	
-	box_fim.set_label(player.nome_jogador)
+	box_fim.set_label("Parabéns"+player.nome_jogador+"\n Você ganhou o jogo!")
 	return box_fim
-
+	
+func ativar_box_faliu(player:Player):
+	var box = box_container[9]
+	var box_faliu = box.instantiate()
+	add_child(box_faliu)
+	
+	box_faliu.set_label(player.nome_jogador+"faliu")
+	return box_faliu
 
 func set_label_dinheiro(precoCompra: int, id_jogador_atual:int):
 	label_dinheiro_jogadores[id_jogador_atual].text = "Dinheiro: R$"+ str(precoCompra)
