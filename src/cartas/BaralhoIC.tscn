@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://1gyd4b6t5kuv"]
 
-[ext_resource type="Script" uid="uid://g1bwqj3wdsq7" path="res://src/cartas/BaralhoIC.gd" id="1_a3ate"]
+[ext_resource type="Script" uid="uid://g1bwqj3wdsq7" path="res://src/contollers/BaralhoIC.gd" id="1_a3ate"]
 
 [node name="BaralhoIc" type="Node"]
 script = ExtResource("1_a3ate")

@@ -14,7 +14,7 @@ var dinheiro: int = 0:
 	set(valor):
 		dinheiro = valor
 		emit_signal("dinheiro_mudou", dinheiro)
-
+var divida: int = 0
 var indice_posicao_atual: int = 0:
 	set(valor):
 		indice_posicao_atual = valor
@@ -49,6 +49,7 @@ func remover_dinheiro(valor: int) -> bool:
 		print(nome_jogador, " pagou $", valor, ". Total: $", dinheiro)
 		return true
 	else:
+		divida = valor
 		return false
 
 
@@ -59,8 +60,16 @@ func declarar_falencia():
 	dinheiro = 0
 	var i = 0
 	while i < propriedades_possuidas.size():
-		propriedades_possuidas[i].resetar()
+		if propriedades_possuidas[i] is Disciplina:
+			propriedades_possuidas[i].resetar()
 		
+		elif propriedades_possuidas[i] is OrgaoBolsa:
+			propriedades_possuidas[i].resetar()
+		
+		elif propriedades_possuidas[i] is Freelance:
+			propriedades_possuidas[i].resetar()
+		
+		i+= 1
 	propriedades_possuidas
 	emit_signal("faliu_sinal")
 
@@ -91,6 +100,10 @@ func remover_propriedade(recurso_propriedade):
 	propriedades_possuidas.erase(recurso_propriedade)
 
 
+func remover_propriedade_por_idx(idx: int):
+	remover_propriedade(propriedades_possuidas[idx])
+	
+	
 func ir_para_prisao():
 	print(nome_jogador, " foi para a prisão!")
 	self.indice_posicao_atual = 40 # (Índice da prisão)

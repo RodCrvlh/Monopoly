@@ -1,6 +1,7 @@
 extends Espaco
 class_name  Propriedade
 
+@export var nome: String
 @export var precoCompra: int
 @export var valorHipoteca: int
 @export var comprada: bool = false

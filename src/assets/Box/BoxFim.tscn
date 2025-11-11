@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpkjq56yrj0h3"]
+
+[ext_resource type="PackedScene" uid="uid://bhp0mw48ksjk" path="res://src/assets/Box/CompraNegadaBox.tscn" id="1_5k3fv"]
+[ext_resource type="Script" uid="uid://ksgyt4jkg5ga" path="res://src/assets/Box/BoxFim.gd" id="2_75rht"]
+
+[node name="QuestionBox" instance=ExtResource("1_5k3fv")]
+script = ExtResource("2_75rht")
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "
+"

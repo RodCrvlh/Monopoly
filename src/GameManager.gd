@@ -29,6 +29,7 @@ func _init():
 func _ready():
 	ui_node.rolar_dados.connect("botao_rolar_dados_pressionado", _on_botao_rolar_dados_pressionado)
 	ui_node.connect("vender", _on_vender_propriedade)
+	ui_node.connect("vennda_acabou", _on_venda_acabou)
 	## ATENÇÃO  
 	comeca_jogo()
 
@@ -43,6 +44,7 @@ func comeca_jogo():
 	# 2. Iniciar o primeiro turno
 	iniciar_proximo_turno()
 
+
 func criar_jogadores():
 	var i = 0
 	
@@ -56,7 +58,8 @@ func criar_jogadores():
 	while i < players.size():
 		add_child(players[i])
 		i += 1
-	
+
+
 # ATENÇÃO
 func instanciar_jogador(nome, dinheiro_inicial):
 	var novo_jogador = PlayerScene.instantiate()
@@ -73,6 +76,8 @@ func instanciar_jogador(nome, dinheiro_inicial):
 func iniciar_proximo_turno():
 	if _checar_vitoria():
 		print("FIM DE JOGO!")
+		ui_node.ativar_box_fim(players[jogador_atual_idx])
+		ui_node.connect("fim", _on_fim_jogo)
 		# ... (mostrar tela de vitória) ...
 		get_tree().quit() # (Exemplo de como fechar)
 		return
@@ -95,7 +100,8 @@ func iniciar_proximo_turno():
 	
 	ui_node.set_rolar_dados_visibility(true)
 # VAI PARA JOGADA.INICIAR_JOGADA(), DEPOIS VOLTA E ESPERA O BOTÃO DO DADO SER PRESSIONADO.
-	
+
+
 func _on_botao_rolar_dados_pressionado():
 	
 	ui_node.set_rolar_dados_visibility(false)
@@ -136,6 +142,7 @@ func _on_botao_rolar_dados_pressionado():
 # VAI PARA JOGADA.ON_ROLAR_DADOS_SOLICITADO()
 		
 		#atualiza a posicao do jogador atual
+
 
 func _on_compra_sim(espaco: Espaco):
 	
@@ -189,13 +196,48 @@ func _on_compra_sim(espaco: Espaco):
 		if cont != 0:
 			freelance.aprimorar(res1+res2,cont)
 
+
+func _on_pagar_aluguel(espaco: Espaco):
+
+	print("Jogador esta pagando aluguel")
+	var player_atual = players[jogador_atual_idx]
+	if player_atual.remover_dinheiro(espaco.aluguel_atual) == false:
+		print("tem como vender")
+		ui_node.emit_signal("vender")
+		
+	var i = 0
+	while  i< players.size():
+		if players[i].nome_jogador == espaco.proprietario:
+			players[i].adicionar_dinheiro(espaco.aluguel_atual)
+			ui_node.set_label_dinheiro(players[i].dinheiro, i)
+		
+		i += 1
+	
+	ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
+
+
 func _on_vender_propriedade(divida: int):
 	var controle_venda = ControleVenda.new()
 	
 	if controle_venda.verificar_venda(players[jogador_atual_idx], divida):
 		var box_venda = ui_node.ativar_box_venda(players[jogador_atual_idx], divida, controle_venda.valores_propriedades)
-		
+		players[jogador_atual_idx].remover_dinheiro(divida)
 	
+	else: 
+		return
+	
+	controle_venda.destruir()
+
+
+func _on_venda_acabou(propriedades_vendidas: Array[bool]):
+	
+	var i = 0
+	
+	while i < propriedades_vendidas.size():
+		if propriedades_vendidas[i]:
+			players[jogador_atual_idx].remover_propriedade
+
+
 func _on_compra_nao(espaco: Espaco):
 	print("GameManager: Sinal compra nao foi recebido")
 	
@@ -259,23 +301,6 @@ func on_player_saiu():
 		await(box_leilao.terminou)
 
 
-func _on_pagar_aluguel(espaco: Espaco):
-
-	print("Jogador esta pagando aluguel")
-	var player_atual = players[jogador_atual_idx]
-	player_atual.remover_dinheiro(espaco.aluguel_atual)
-	
-	var i = 0
-	while  i< players.size():
-		if players[i].nome_jogador == espaco.proprietario:
-			players[i].adicionar_dinheiro(espaco.aluguel_atual)
-			ui_node.set_label_dinheiro(players[i].dinheiro, i)
-		
-		i += 1
-	
-	ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
-
-
 # 3. FUNÇÃO CHAMADA PELO SINAL DE TÉRMINO
 func _on_jogada_terminada():
 	print("GameManager: Recebeu sinal de 'jogada_terminada'.")
@@ -298,9 +323,14 @@ func _checar_vitoria():
 	var jogadores_ativos = 0
 	for p in players:
 		if not p.faliu():
+			
 			jogadores_ativos += 1
 	
 	return jogadores_ativos <= 1
+
+func _on_fim_jogo():
+	get_tree().quit() # (Exemplo de como fechar)
+	return
 
 
 # 5. RECEBER SINAIS DA UI

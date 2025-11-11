@@ -5,7 +5,19 @@
 
 [node name="QuestionBox" instance=ExtResource("1_f87xj")]
 script = ExtResource("2_jqqj2")
-sim = null
 
-[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
-text = "Propriedades a serem vendidas"
+[node name="Titulo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+text = "Voce precisa vender propriedades para pagar a divida!
+"
+
+[node name="Divida" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
+text = "Propriedades a serem vendidas:"
+
+[node name="ok" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
+layout_mode = 2
+
+[node name="Timer" type="Timer" parent="." index="1"]

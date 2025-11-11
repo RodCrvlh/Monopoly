@@ -12,6 +12,7 @@ var preco_compra: int
 var espaco_utilizado
 
 
+
 func _ready() -> void:
 	pass
 

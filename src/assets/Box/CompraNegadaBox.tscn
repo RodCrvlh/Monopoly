@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhp0mw48ksjk"]
+
+[ext_resource type="PackedScene" uid="uid://cmqm1k0kvwfan" path="res://src/assets/Box/questionbox.tscn" id="1_xn0fh"]
+[ext_resource type="Script" uid="uid://cu13yfu6h3w45" path="res://src/assets/Box/CompraNegadaBox.gd" id="2_8b5fb"]
+
+[node name="QuestionBox" instance=ExtResource("1_xn0fh")]
+script = ExtResource("2_8b5fb")
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "Você não possui o dinheiro suficiente para comprar essa propriedade!"
+
+[node name="ok" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
+layout_mode = 2
+text = "ok
+"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Hbox/ok" to="." method="_on_ok_pressed"]
