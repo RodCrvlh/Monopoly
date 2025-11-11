@@ -543,6 +543,7 @@ posicao = 39
 position = Vector2(96, 952)
 scale = Vector2(1.12756, 0.953004)
 script = ExtResource("2_8gt47")
+posicao = 40
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3

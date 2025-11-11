@@ -131,7 +131,7 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 				
 				
 		if espaco.proprietario != player_atual.nome_jogador:
-			
+			print(player_atual.nome_jogador+" esta pagando aluguel")
 			var box = box_container[1]
 			var box_aluguel = box.instantiate()
 			add_child(box_aluguel)
@@ -206,6 +206,7 @@ func ativar_box_fim(player:Player):
 	add_child(box_fim)
 	
 	box_fim.set_label(player.nome_jogador)
+	return box_fim
 
 
 func set_label_dinheiro(precoCompra: int, id_jogador_atual:int):

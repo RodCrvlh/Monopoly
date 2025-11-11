@@ -76,12 +76,10 @@ func instanciar_jogador(nome, dinheiro_inicial):
 func iniciar_proximo_turno():
 	if _checar_vitoria():
 		print("FIM DE JOGO!")
-		ui_node.ativar_box_fim(players[jogador_atual_idx])
-		ui_node.connect("fim", _on_fim_jogo)
-		# ... (mostrar tela de vitória) ...
-		get_tree().quit() # (Exemplo de como fechar)
-		return
-
+		var box_fim = ui_node.ativar_box_fim(players[jogador_atual_idx])
+		await(box_fim.fim)
+		get_tree().quit()
+		
 	var player_atual = players[jogador_atual_idx]
 	
 	if player_atual.faliu():
@@ -200,10 +198,14 @@ func _on_compra_sim(espaco: Espaco):
 func _on_pagar_aluguel(espaco: Espaco):
 
 	print("Jogador esta pagando aluguel")
+	
 	var player_atual = players[jogador_atual_idx]
-	if player_atual.remover_dinheiro(espaco.aluguel_atual) == false:
+	var tem_dinheiro = player_atual.remover_dinheiro(espaco.aluguel_atual)
+	print(player_atual.nome_jogador+" pagou aluguel")
+	if tem_dinheiro == false:
 		print("tem como vender")
 		ui_node.emit_signal("vender")
+		
 		
 	var i = 0
 	while  i< players.size():
@@ -328,9 +330,6 @@ func _checar_vitoria():
 	
 	return jogadores_ativos <= 1
 
-func _on_fim_jogo():
-	get_tree().quit() # (Exemplo de como fechar)
-	return
 
 
 # 5. RECEBER SINAIS DA UI

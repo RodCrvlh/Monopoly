@@ -2,6 +2,7 @@ extends CenterContainer
 class_name Aluguel_box
 
 signal pagar_aluguel(espaco: Espaco)
+signal acabou()
 
 @onready var mensagem: Label = $PanelContainer/MarginContainer/VBoxContainer/Label
 @onready var hbox: HBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/Hbox
