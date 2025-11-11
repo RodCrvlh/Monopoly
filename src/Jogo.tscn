@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dmpgyrcl42rbb" path="res://src/GameManager.gd" id="1_e2g04"]
 [ext_resource type="PackedScene" uid="uid://otemy486wury" path="res://src/tabuleiro/Tabuleiro.tscn" id="2_bskcm"]
 [ext_resource type="PackedScene" uid="uid://1gyd4b6t5kuv" path="res://src/cartas/BaralhoIC.tscn" id="4_m2xh4"]
-[ext_resource type="PackedScene" path="res://src/cartas/BaralhoSorte.tscn" id="5_a3m58"]
+[ext_resource type="PackedScene" uid="uid://bg5nqeitobie" path="res://src/cartas/BaralhoSorte.tscn" id="5_a3m58"]
 [ext_resource type="PackedScene" uid="uid://budjntw0swdqx" path="res://src/ui/UI.tscn" id="5_m2xh4"]
 
 [sub_resource type="GDScript" id="GDScript_1b3iq"]

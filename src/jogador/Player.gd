@@ -20,8 +20,8 @@ var indice_posicao_atual: int = 0:
 		indice_posicao_atual = valor
 		emit_signal("posicao_mudou", indice_posicao_atual)
 
-var esta_na_prisao: bool = false
-var turnos_restantes_prisao: int = 0
+var statusVS: bool = false
+var turnosRestantesVS: int = 0
 var esta_falido: bool = false
 
 # Inventário
@@ -79,7 +79,7 @@ func faliu() -> bool:
 
 
 func mudar_posicao(passos: int):
-	if esta_na_prisao:
+	if statusVS:
 		return
 
 	var nova_posicao = (indice_posicao_atual + passos) % 40 
@@ -91,6 +91,14 @@ func mudar_posicao(passos: int):
 		
 	self.indice_posicao_atual = nova_posicao
 
+func sairDaVS():
+	if not self.statusVS:
+		print("O player não está de VS")
+		return
+	else:
+		self.statusVS = false
+		self.turnosRestantesVS = 0
+		self.indice_posicao_atual = 10
 
 func adicionar_propriedade(recurso_propriedade):
 	propriedades_possuidas.append(recurso_propriedade)
@@ -103,12 +111,6 @@ func remover_propriedade(recurso_propriedade):
 func remover_propriedade_por_idx(idx: int):
 	remover_propriedade(propriedades_possuidas[idx])
 	
-	
-func ir_para_prisao():
-	print(nome_jogador, " foi para a prisão!")
-	self.indice_posicao_atual = 40 # (Índice da prisão)
-	esta_na_prisao = true
-	turnos_restantes_prisao = 3
 
 
 func tentar_sair_prisao():

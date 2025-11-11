@@ -5,6 +5,11 @@ class_name Tabuleiro
 @onready var peoes: Array[Peao] 
 @onready var timer: Timer = $Timer
 
+static var _instance = null
+
+# 2. O método estático que qualquer script pode chamar
+static func getInstance():
+	return _instance
 
 func _init() -> void:
 	var i = 0
@@ -15,6 +20,13 @@ func _init() -> void:
 		i += 1
 		
 func _ready():
+	if _instance != null and _instance != self:
+		print("ERRO: Duplicata de Tabuleiro detectada. Destruindo.")
+		queue_free()
+		return
+
+	_instance = self
+	print("Singleton Tabuleiro pronto.")
 	var i = 0
 	while i < DadosJogo.n_jogadores:
 		add_child(peoes[i].sprite) #adiciona os sprites na arvore
@@ -37,15 +49,21 @@ func mover_peao_visual(id_peao, movimento):
 		await(executar_animacao_peao(id_peao)) 
 
 
+func sairDaVS(player: Player, movimento: int):
+	peoes[player.id_peao].posicao = 10
+	mover_peao_visual(player.id_peao, movimento)
+
 func executar_animacao_peao(id_peao): 
 	var peao_visual = peoes[id_peao].sprite
 	var destino = espacos[peoes[id_peao].posicao].position
 	
 	var tween = create_tween()
 	tween.tween_property(peao_visual, "position", destino, 1.0)
-	timer.start()
-	await timer.timeout
 
+
+func ficouDeVS(idPeao: int):
+	peoes[idPeao].posicao = 40
+	executar_animacao_peao(idPeao)
 
 func set_propriedade_comprada(posicao: int, sinal: bool):
 	if espacos[posicao] is Disciplina:

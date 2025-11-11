@@ -171,9 +171,31 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 		
 		if player_atual.divida > 0:
 			emit_signal("vender", player_atual.divida)
-		
+	
 		return
-
+		
+	if espaco is FicouDeVS:
+		# 1. Mostra a mensagem
+		var box = box_container[3]
+		var box_ic = box.instantiate()
+		add_child(box_ic) 
+		box_ic.set_mensagem("Você ficou de VS...")
+		# 2. Executa a LÓGICA (instantâneo)
+		espaco.ficouDeVS(player_atual, Tabuleiro.getInstance())
+		# 3. Executa a ANIMAÇÃO (separadamente)
+		# A função executar_animacao_peao não tem mais "await"
+		Tabuleiro.getInstance().executar_animacao_peao(player_atual.id_peao)
+		return
+		# Agora o código continua imediatamente, sem congelar.
+	
+	if espaco is VS:
+		var box = box_container[3]
+		var box_ic = box.instantiate()
+		add_child(box_ic)
+		box_ic.set_mensagem("Vamos ver se você dá sorte (se sair 2 numeros iguais no dado, você escapa da VS)\n Você tem mais " + str(player_atual.turnosRestantesVS) + " chances.")
+		espaco.VS(player_atual, Tabuleiro.getInstance())
+		
+		
 	return null
 
 

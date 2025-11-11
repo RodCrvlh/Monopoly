@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://otemy486wury"]
+[gd_scene load_steps=12 format=3 uid="uid://otemy486wury"]
 
 [ext_resource type="Script" uid="uid://cdfopibu3q56h" path="res://src/tabuleiro/Tabuleiro.gd" id="1_8gt47"]
 [ext_resource type="Script" uid="uid://c6uqflxavcxch" path="res://src/tabuleiro/espaço/Espaco.gd" id="2_8gt47"]
 [ext_resource type="Texture2D" uid="uid://cjtdqcog7dyt7" path="res://src/assets/art/tabuleiro-monopoly.png" id="2_yvm1e"]
 [ext_resource type="Script" uid="uid://c4iu8rlkddjkg" path="res://src/tabuleiro/espaço/propriedade/Disciplina.gd" id="4_yvm1e"]
 [ext_resource type="Script" uid="uid://dhynymb6yg43" path="res://src/tabuleiro/espaço/propriedade/OrgaoBolsa.gd" id="5_7ukix"]
-[ext_resource type="Script" uid="uid://ber8inqxt2m65" path="res://src/tabuleiro/espaço/propriedade/especial/Imposto.gd" id="5_lq0am"]
-[ext_resource type="Script" uid="uid://4n2f3l836edi" path="res://src/tabuleiro/espaço/propriedade/especial/IC.gd" id="5_mid5o"]
+[ext_resource type="Script" uid="uid://ber8inqxt2m65" path="res://src/tabuleiro/espaço/especial/Imposto.gd" id="5_lq0am"]
+[ext_resource type="Script" uid="uid://4n2f3l836edi" path="res://src/tabuleiro/espaço/especial/IC.gd" id="5_mid5o"]
 [ext_resource type="Script" uid="uid://b6i2ikweer1cd" path="res://src/tabuleiro/espaço/propriedade/Freelance.gd" id="6_hpnu8"]
-[ext_resource type="Script" uid="uid://djbuggp8kdqau" path="res://src/tabuleiro/espaço/propriedade/especial/Sorte.gd" id="7_otc3o"]
+[ext_resource type="Script" uid="uid://djbuggp8kdqau" path="res://src/tabuleiro/espaço/especial/Sorte.gd" id="7_otc3o"]
+[ext_resource type="Script" uid="uid://bt0uvqghku20v" path="res://src/tabuleiro/espaço/especial/FicouDeVS.gd" id="10_n5ind"]
+[ext_resource type="Script" uid="uid://bgyp2p1rpmtb4" path="res://src/tabuleiro/espaço/especial/VS.gd" id="11_lpqrr"]
 
 [node name="Tabuleiro" type="Node2D" node_paths=PackedStringArray("espacos")]
 script = ExtResource("1_8gt47")
@@ -416,7 +418,7 @@ posicao = 29
 
 [node name="Casa30" type="Marker2D" parent="."]
 position = Vector2(904, 80)
-script = ExtResource("2_8gt47")
+script = ExtResource("10_n5ind")
 posicao = 30
 
 [node name="Casa31" type="Marker2D" parent="."]
@@ -542,7 +544,8 @@ posicao = 39
 [node name="Prisao" type="Marker2D" parent="."]
 position = Vector2(96, 952)
 scale = Vector2(1.12756, 0.953004)
-script = ExtResource("2_8gt47")
+script = ExtResource("11_lpqrr")
+posicao = 40
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3

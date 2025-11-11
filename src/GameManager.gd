@@ -116,10 +116,12 @@ func _on_botao_rolar_dados_pressionado():
 		ui_node.animacao_rolar(res1, res2)
 		#ui_node.encontrar_box()
 		
+		var player_atual = players[jogador_atual_idx]
 		#Volta para jogada
+		
 		jogada_node.on_rolar_dados_solicitado(res1, res2)
 		
-		var player_atual = players[jogador_atual_idx]
+		
 		player_atual.mudar_posicao(res1+res2)
 		
 		

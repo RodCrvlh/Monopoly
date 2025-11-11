@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0471hivgur24"]
+
+[ext_resource type="Script" uid="uid://bgyp2p1rpmtb4" path="res://src/tabuleiro/espaço/especial/VS.gd" id="1_ikkly"]
+[ext_resource type="PackedScene" uid="uid://budjntw0swdqx" path="res://src/ui/UI.tscn" id="2_0n5bq"]
+
+[node name="Vs" type="Node"]
+script = ExtResource("1_ikkly")
+
+[node name="Ui" parent="." instance=ExtResource("2_0n5bq")]
