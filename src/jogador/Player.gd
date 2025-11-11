@@ -25,7 +25,7 @@ var turnos_restantes_prisao: int = 0
 var esta_falido: bool = false
 
 # Inventário
-var propriedades_possuidas: Array = [Espaco]
+var propriedades_possuidas: Array[Espaco]
 
 
 ## 2. FUNÇÃO DE INICIALIZAÇÃO
@@ -94,8 +94,7 @@ func mudar_posicao(passos: int):
 
 func adicionar_propriedade(recurso_propriedade):
 	propriedades_possuidas.append(recurso_propriedade)
-
-
+	
 func remover_propriedade(recurso_propriedade):
 	propriedades_possuidas.erase(recurso_propriedade)
 

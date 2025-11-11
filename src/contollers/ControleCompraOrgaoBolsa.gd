@@ -1,0 +1,13 @@
+extends Node
+class_name ControleCompraOrgaoBolsa
+
+func verificar_orgao_bolsa(player: Player) -> int:
+	
+	var i = 0
+	var cont = 0
+	while i < player.propriedades_possuidas.size():
+		if player.propriedades_possuidas[i] is OrgaoBolsa: 
+			cont += 1
+		i += 1
+		
+	return cont

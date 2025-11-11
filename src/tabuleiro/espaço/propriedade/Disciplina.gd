@@ -27,7 +27,7 @@ enum Cor {
 var monopolio: bool = false
 
 
-func construir_casa():
+func aprimora_credito():
 	if n_casas == 0:
 		aluguel_atual = aluguel1
 		n_casas += 1

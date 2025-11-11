@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://lc5otoitoon5"]
+
+[ext_resource type="PackedScene" uid="uid://bhp0mw48ksjk" path="res://src/assets/Box/CompraNegadaBox.tscn" id="1_n1nv2"]
+
+[node name="QuestionBox" instance=ExtResource("1_n1nv2")]
+
+[node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="0"]
+text = "Você não possui o dinheiro suficiente para aprimorar essa propriedade!"

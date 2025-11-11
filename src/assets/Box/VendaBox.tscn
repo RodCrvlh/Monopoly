@@ -13,11 +13,14 @@ text = "Voce precisa vender propriedades para pagar a divida!
 
 [node name="Divida" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="1"]
 layout_mode = 2
+text = "R$ 0
+"
 
 [node name="Label" parent="PanelContainer/MarginContainer/VBoxContainer" index="2"]
 text = "Propriedades a serem vendidas:"
 
 [node name="ok" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Hbox" index="0"]
 layout_mode = 2
+text = "OK"
 
 [node name="Timer" type="Timer" parent="." index="1"]

@@ -14,18 +14,26 @@ func verificar_venda(jogador: Player, divida: int):
 		if jogador.propriedades_possuidas[i] is Disciplina:
 			var n_casas = jogador.propriedades_possuidas[i].n_casas
 			var valor_casa = jogador.propriedades_possuidas[i].valor_casa/2  
-			valores_propriedades[i] +=  n_casas*valor_casa
-			dinheiro_venda_total += valores_propriedades[i]
+			
+			if n_casas == 0:
+				valores_propriedades[i] = jogador.propriedades_possuidas[i].precoCompra/2
+				dinheiro_venda_total += valores_propriedades[i]
+			
+			else:
+				valores_propriedades[i] =  n_casas*valor_casa
+				dinheiro_venda_total += valores_propriedades[i]
 		
 		elif jogador.propriedades_possuidas[i] is OrgaoBolsa:
-			valores_propriedades[i] += jogador.propriedades_possuidas[i].precoCompra/2
-		
+			valores_propriedades[i] = jogador.propriedades_possuidas[i].precoCompra/2
+			dinheiro_venda_total += valores_propriedades[i]
+			
 		elif jogador.propriedades_possuidas[i] is Freelance:
-			valores_propriedades[i] += jogador.propriedades_possuidas[i].precoCompra/2
+			valores_propriedades[i] = jogador.propriedades_possuidas[i].precoCompra/2
+			dinheiro_venda_total += valores_propriedades[i]
 		
 			
 		i += 1
-	
+
 	if dinheiro_venda_total > divida:
 		return true
 		

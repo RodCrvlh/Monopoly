@@ -1,17 +1,21 @@
 extends CenterContainer
 class_name Aluguel_box
 
-signal pagar_aluguel(espaco: Espaco)
+signal pagar_aluguel(espaco: Espaco, player_atual)
 signal acabou()
 
 @onready var mensagem: Label = $PanelContainer/MarginContainer/VBoxContainer/Label
 @onready var hbox: HBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/Hbox
 var preco_compra: int
 var espaco_utilizado
+var player_atual: Player
 
 func _ready() -> void:
 	pass
 
+func set_player_atual(player: Player):
+	player_atual = player
+	
 func set_mensagem(p:int) -> void:
 	if is_instance_valid(mensagem):
 		mensagem.text += str(p)
@@ -27,6 +31,6 @@ func _on_ok_pressed() -> void:
 	
 func _input(event: InputEvent) -> void:
 	if hbox.visible == false and Input.is_action_just_pressed("ui_click"):
-		emit_signal("pagar_aluguel", espaco_utilizado)
+		emit_signal("pagar_aluguel", espaco_utilizado, player_atual)
 		
 		queue_free()

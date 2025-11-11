@@ -16,7 +16,7 @@ signal venda_acabou(propriedades_vendidas)
 func _ready():
 	rolar_dados.visible = true
 	criar_labels()
-	box_container.resize(7)
+	box_container.resize(9)
 	box_container[0] = preload("res://src/assets/Box/Comprarbox.tscn")
 	box_container[1] = preload("res://src/assets/Box/AluguelBox.tscn")
 	box_container[2] = preload("res://src/assets/Box/LeilaoBox.tscn")
@@ -24,6 +24,8 @@ func _ready():
 	box_container[4] = preload("res://src/assets/Box/VendaBox.tscn")
 	box_container[5] = preload("res://src/assets/Box/CompraNegadaBox.tscn")
 	box_container[6] = preload("res://src/assets/Box/BoxFim.tscn")
+	box_container[7] = preload("res://src/assets/Box/AprimoraBox.tscn")
+	box_container[8] = preload("res://src/assets/Box/AprimorarNegada.tscn")
 	
 func criar_labels():
 	var i = 0
@@ -137,11 +139,26 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 			add_child(box_aluguel)
 			box_aluguel.set_mensagem(espaco.aluguel_atual)
 			box_aluguel.set_espaco(espaco)
-			
+			box_aluguel.set_player_atual(player_atual)
 			return box_aluguel
 		
-		elif espaco.proprietario == player_atual.nome_jogador:
-			print("Futuramente sera implementado aprimorarCredito")
+		elif espaco.proprietario == player_atual.nome_jogador and espaco is Disciplina:
+			if player_atual.dinheiro > espaco.valor_casa:
+				print("Acionando aprimorarCredito")
+				var box = box_container[7]
+				var box_aprimora = box.instantiate()
+				add_child(box_aprimora)
+				box_aprimora.set_mensagem(espaco.valor_casa)
+				box_aprimora.set_espaco(espaco)
+				box_aprimora.set_player(player_atual)
+			
+			else:
+				var box = box_container[8]
+				var box_aprimora_negada = box.instantiate()
+				add_child(box_aprimora_negada)
+				
+				
+			return  
 	
 	if espaco is IC or espaco is Sorte:
 		var box = box_container[3]
@@ -151,12 +168,6 @@ func ativar_box(espaco: Espaco, player_atual: Player) -> CenterContainer:
 		var textoBox = Baralho.getText(espaco.carta_atual)
 		box_ic.set_mensagem(textoBox)  
 		
-		if espaco is IC:
-			print("IC")
-		
-		else:
-			print("Sorte")
-			
 		if player_atual.divida > 0:
 			emit_signal("vender", player_atual.divida)
 		
@@ -195,6 +206,7 @@ func ativar_box_venda(player:Player, divida: int, valores_propriedades: Array[in
 	box_venda.set_nome_jogador(player.nome_jogador)
 	box_venda.set_propriedades_possuidas(player.propriedades_possuidas, valores_propriedades)
 	box_venda.set_divida(divida)
+	
 
 
 	return box_venda

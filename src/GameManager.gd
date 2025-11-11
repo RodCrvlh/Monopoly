@@ -131,6 +131,7 @@ func _on_botao_rolar_dados_pressionado():
 			box.connect("compra_sim", _on_compra_sim)
 			box.connect("compra_nao", _on_compra_nao)
 			box.connect("pagar_aluguel", _on_pagar_aluguel)
+			box.connect("aprimora_credito", _on_aprimora_credito_disciplina)
 			
 		
 		jogada_node._finalizar_a_jogada()
@@ -147,7 +148,7 @@ func _on_compra_sim(espaco: Espaco):
 	print("GameManager: Sinal compra sim foi recebido")
 	var player_atual = players[jogador_atual_idx]
 	
-	var controle_compra = ControleCompra.new()
+	
 	
 	var posicao_jogador = player_atual.get_posicao()
 	
@@ -159,7 +160,7 @@ func _on_compra_sim(espaco: Espaco):
 	ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
 	
 	if espaco is Disciplina:
-		
+		var controle_compra = ControleCompraDisciplina.new()
 		var disciplina:Disciplina = espaco as Disciplina
 		print("Espaco é disciplina")
 		
@@ -167,7 +168,7 @@ func _on_compra_sim(espaco: Espaco):
 			disciplina.aprimorar(0, 0)
 	
 	elif espaco is OrgaoBolsa:
-		
+		var controle_compra = ControleCompraOrgaoBolsa.new()
 		var orgao_bolsa:OrgaoBolsa = espaco as OrgaoBolsa
 		
 		print("Espaco é orgao bolsa")
@@ -177,7 +178,7 @@ func _on_compra_sim(espaco: Espaco):
 			orgao_bolsa.aprimorar(cont, 0)
 		
 	elif espaco is Freelance:
-		
+		var controle_compra = ControleCompraFreeLance.new()
 		var freelance:Freelance = espaco as Freelance
 		
 		print("Espaco é freelance")
@@ -191,15 +192,25 @@ func _on_compra_sim(espaco: Espaco):
 		ui_node.animacao_rolar(res1, res2)
 		#ui_node.encontrar_box()
 		
-		if cont != 0:
-			freelance.aprimorar(res1+res2,cont)
+		freelance.aprimorar(res1+res2,cont)
 
 
-func _on_pagar_aluguel(espaco: Espaco):
+func _on_aprimora_credito_disciplina(espaco: Espaco, player: Player):
+	if espaco is Disciplina:
+		espaco.aprimora_credito()
+		
+		var i = 0
+		while  i< players.size():
+			if players[i].nome_jogador == player.nome_jogador:
+				player.remover_dinheiro(espaco.valor_casa)
+				ui_node.set_label_dinheiro(player.dinheiro,i)
+
+
+func _on_pagar_aluguel(espaco: Espaco, player_atual):
 
 	print("Jogador esta pagando aluguel")
 	
-	var player_atual = players[jogador_atual_idx]
+	var idx_jogador_atual: int
 	var tem_dinheiro = player_atual.remover_dinheiro(espaco.aluguel_atual)
 	print(player_atual.nome_jogador+" pagou aluguel")
 	if tem_dinheiro == false:
@@ -212,17 +223,20 @@ func _on_pagar_aluguel(espaco: Espaco):
 		if players[i].nome_jogador == espaco.proprietario:
 			players[i].adicionar_dinheiro(espaco.aluguel_atual)
 			ui_node.set_label_dinheiro(players[i].dinheiro, i)
+			
+		if player_atual.nome_jogador == players[i].nome_jogador:
+			idx_jogador_atual = i
 		
 		i += 1
 	
-	ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
+	ui_node.set_label_dinheiro(player_atual.dinheiro, idx_jogador_atual)
 
 
 func _on_vender_propriedade(divida: int):
 	var controle_venda = ControleVenda.new()
 	
 	if controle_venda.verificar_venda(players[jogador_atual_idx], divida):
-		var box_venda = ui_node.ativar_box_venda(players[jogador_atual_idx], divida, controle_venda.valores_propriedades)
+		var box_venda = await(ui_node.ativar_box_venda(players[jogador_atual_idx], divida, controle_venda.valores_propriedades))
 		players[jogador_atual_idx].remover_dinheiro(divida)
 	
 	else: 
