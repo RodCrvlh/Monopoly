@@ -231,24 +231,25 @@ func _on_pagar_aluguel(espaco: Espaco, player_atual: Player):
 	if tem_dinheiro == false:
 		player_atual.declarar_falencia()
 		_on_jogada_terminada()
-		return
+		
+	else:
 		
 		#print("tem como vender")
 		#ui_node.emit_signal("vender")
 		
 		
-	var i = 0
-	while  i< players.size():
-		if players[i].nome_jogador == espaco.proprietario:
-			players[i].adicionar_dinheiro(espaco.aluguel_atual)
-			ui_node.set_label_dinheiro(players[i].dinheiro, i)
+		var i = 0
+		while  i< players.size():
+			if players[i].nome_jogador == espaco.proprietario:
+				players[i].adicionar_dinheiro(espaco.aluguel_atual)
+				ui_node.set_label_dinheiro(players[i].dinheiro, i)
+				
+			if player_atual.nome_jogador == players[i].nome_jogador:
+				idx_jogador_atual = i
 			
-		if player_atual.nome_jogador == players[i].nome_jogador:
-			idx_jogador_atual = i
+			i += 1
 		
-		i += 1
-	
-	ui_node.set_label_dinheiro(player_atual.dinheiro, idx_jogador_atual)
+		ui_node.set_label_dinheiro(player_atual.dinheiro, idx_jogador_atual)
 
 
 func _on_vender_propriedade(divida: int):
