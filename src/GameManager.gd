@@ -90,7 +90,6 @@ func iniciar_proximo_turno():
 			
 		print(player_atual.nome_jogador +" faliu. Pulando turno.")
 		_on_jogada_terminada() # Pula direto para o fim do turno
-		return
 		
 	if _checar_vitoria():
 		print("FIM DE JOGO!")
@@ -118,6 +117,11 @@ func _on_botao_rolar_dados_pressionado():
 	
 	var jogada_node = find_child("Jogada_*", false, false)
 	
+	var player_atual = players[jogador_atual_idx]
+	
+	if player_atual.faliu():
+		jogada_node._finalizar_a_jogada()
+		
 	if jogada_node:
 		var res1 = dado1.rolar_dado()
 		var res2 = dado2.rolar_dado()
@@ -126,7 +130,7 @@ func _on_botao_rolar_dados_pressionado():
 		ui_node.animacao_rolar(res1, res2)
 		#ui_node.encontrar_box()
 		
-		var player_atual = players[jogador_atual_idx]
+		
 		#Volta para jogada
 		
 		jogada_node.on_rolar_dados_solicitado(res1, res2)
@@ -215,9 +219,6 @@ func _on_aprimora_credito_disciplina(espaco: Espaco, player: Player):
 		var i = controle_aprimorar_credito.coordena_aprimora_credito(espaco, player, players)
 		ui_node.set_label_dinheiro(player.dinheiro,i)
 		
-		
-
-
 
 func _on_pagar_aluguel(espaco: Espaco, player_atual: Player):
 
@@ -229,6 +230,7 @@ func _on_pagar_aluguel(espaco: Espaco, player_atual: Player):
 
 	if tem_dinheiro == false:
 		player_atual.declarar_falencia()
+		_on_jogada_terminada()
 		return
 		
 		#print("tem como vender")
@@ -338,14 +340,18 @@ func on_player_saiu():
 # 3. FUNÇÃO CHAMADA PELO SINAL DE TÉRMINO
 func _on_jogada_terminada():
 	print("GameManager: Recebeu sinal de 'jogada_terminada'.")
-	
-	var player_atual = players[jogador_atual_idx]
-	ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
-	
+
+	if jogador_atual_idx >= players.size():
+		jogador_atual_idx = 0
+		
+	else:
+		var player_atual = players[jogador_atual_idx]
+		ui_node.set_label_dinheiro(player_atual.dinheiro, jogador_atual_idx)
+
 	# 1. Avançar o índice do jogador
-	jogador_atual_idx = (jogador_atual_idx + 1) % players.size()
+		jogador_atual_idx = (jogador_atual_idx + 1) % players.size()
 	
-	ui_node.mover_label_sua_vez(player_atual.get_id_peao())
+		ui_node.mover_label_sua_vez(player_atual.get_id_peao())
 	
 	# 2. Chamar o próximo turno, "fechando" o loop
 	iniciar_proximo_turno()

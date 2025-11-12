@@ -251,7 +251,7 @@ func ativar_box_faliu(player:Player):
 	var box_faliu = box.instantiate()
 	add_child(box_faliu)
 	
-	box_faliu.set_label(player.nome_jogador+"faliu")
+	box_faliu.set_label(player.nome_jogador)
 	return box_faliu
 
 func set_label_dinheiro(precoCompra: int, id_jogador_atual:int):
